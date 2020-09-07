@@ -1,26 +1,35 @@
 <template>
 <div class="flex-1">
     <Nav />
-    <div class="p-4 h-screen">
-        <router-view>
-        </router-view>
+    <Toolbar />
+    <div class="page">
+        <router-view></router-view>
     </div>
 </div>
 </template>
 
 <script>
 import Nav from './components/Nav.vue'
+import Toolbar from './components/Toolbar.vue'
 
 export default {
     name: 'app',
     components: {
-        Nav
+        Nav,
+        Toolbar
     }
 }
 </script>
 
 <style scoped>
-.p-4{
-    padding: 0 .6em;
+h1{
+    padding: 0px !important;
+}
+
+.page{
+    height: 100vh;
+    position: relative;
+    padding-top: 5.271em;
+    background-color: white;
 }
 </style>

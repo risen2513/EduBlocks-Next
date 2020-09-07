@@ -1,5 +1,5 @@
 <template>
-    <button class='warning'>Warning</button>
+    <button class='warning icon login'>Warning</button>
 </template>
 
 <script>
@@ -10,14 +10,16 @@ export default {
 }
 </script>
 
-<style lang="postcss">
-  .btn {
-    @apply font-bold py-2 px-4 rounded;
+<style>
+  .icon::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
   }
-  .btn-blue {
-    @apply bg-blue-500 text-white;
-  }
-  .btn-blue:hover {
-    @apply bg-blue-700;
+
+  .login::before {
+    font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f007";
   }
 </style>

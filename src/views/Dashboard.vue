@@ -3,6 +3,7 @@
 </template>
 
 <script lang="ts">
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 export default {
   name: 'Dashboard'
 }
