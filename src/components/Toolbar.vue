@@ -1,7 +1,13 @@
 <template>
     <div class="toolbar">
         <div class="toolbar-column">
-            <a href="#" v-for="option in options" :class="option.class" class="button" :key="option.title">
+            <a href="#" v-for="option in left" :class="option.class" class="button" :key="option.title">
+                <font-awesome-icon v-if="option.icon" class="button-icon" :icon="option.icon"/>
+                {{option.title}}
+            </a>
+        </div>
+        <div class="toolbar-column">
+            <a href="#" v-for="option in right" :class="option.class" class="button right" :key="option.title" @click="option.func">
                 <font-awesome-icon v-if="option.icon" class="button-icon" :icon="option.icon"/>
                 {{option.title}}
             </a>
@@ -11,21 +17,33 @@
 
 <script>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { mapState, mapMutations } from "vuex";
 
 export default {
     name: 'toolbar',
     components: {
         FontAwesomeIcon
     },
+    computed: {
+        ...mapState(["pythonCode"]),
+    },
     data() {
         return {
-            options: [
+            left: [
                 {title: "Split", class: "orange toolbar-opacity", icon: ['fas', "columns"]},
                 {title: "Blocks", class: "pink toolbar-opacity", icon: ['fas', "cube"]},
                 {title: "Python", class: "purple toolbar-opacity", icon: ['fab', "python"]},
+            ],
+            right: [
+                {title: "Run", class: "green no-margin-right", icon: ['fas', "play"], func: this.showCode}
             ]
         }
     },
+    methods: {
+        showCode() {
+            alert(this.pythonCode)
+        }
+  }
 }
 </script>
 
@@ -40,6 +58,22 @@ export default {
 
 .purple {
     background-color: rgb(68, 87, 160);
+}
+
+.right {
+    float: right;
+}
+
+.no-margin-right {
+    margin-right: 0 !important;
+}
+
+.green {
+    background-color: #49B04D;
+}
+
+.button-icon {
+    margin: 0 0.4em 0 0;
 }
 
 .toolbar-opacity {

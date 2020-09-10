@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 h1{
     padding: 0px !important;
 }
@@ -32,4 +32,40 @@ h1{
     padding-top: 5.271em;
     background-color: white;
 }
+
+.blocklyToolboxDiv {
+    background-color: #585858 !important;
+    color: #FFFFFF !important;
+}
+
+div.blocklyTreeRow {
+    border-radius: 4px;
+    padding-left: 6px !important;
+}
+.blocklyTreeRow {
+    height: 51px !important;
+}
+
+.blocklyFlyoutBackground {
+    fill: #444;
+    fill-opacity: .8;
+}
+
+.blocklyTreeIconCustom {
+    background: none !important;
+    font-family: 'Font Awesome\ 5 Free';
+    font-weight: 900;
+    font-size: 1.3rem;
+    margin: 0 .25em;
+    width: 30px !important;
+    height: 100% !important;
+    line-height: 51px;
+    min-height: 45px;
+    vertical-align: middle;
+}
+
+.blocklyTreeIconCustom.imports::before {
+    content: "\f093";
+}
+
 </style>

@@ -10,7 +10,7 @@
 
   <div class="menu">
     <input class="filename" placeholder="Untitled"/>
-    <a href="#" v-for="option in options" :class="option.class" class="button" :key="option.title" @click="save()">
+    <a href="#" v-for="option in options" :class="option.class" class="button" :key="option.title" @click="option.func">
         <font-awesome-icon v-if="option.icon" class="button-icon" :icon="option.icon"/>
         {{option.title}}
     </a>
@@ -19,29 +19,34 @@
 </nav>
 </template>
 
-<script lang="ts">
+<script>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import EButton from './Button.vue'
+import { mapState } from "vuex";
 
 export default {
     name: 'Nav',
     components: {
-        EButton,
         FontAwesomeIcon
     },
     data() {
         return {
             options: [
-                {title: "Save", class: "green-button", icon: ['fas', "save"]},
+                {title: "Save", class: "green-button", icon: ['fas', "save"], func: this.save},
                 {title: "Share", class: "white-button", icon: ['fas', "share-alt"]},
                 {title: "Files", class: "white-button", icon: ['fas', "folder-open"]},
-                {title: "New", class: "white-button", icon: ['fas', "plus"]}
+                {title: "New", class: "white-button", icon: ['fas', "plus"], func: this.new}
             ]
         }
     },
+    computed: {
+        ...mapState(["xml"])
+    },
     methods: {
         save(){
-            alert("Save");
+            console.log(this.xml);
+        },
+        new(){
+            Blockly.mainWorkspace.clear();
         }
     }
 }
@@ -86,6 +91,7 @@ nav .brand {
     width: 210px; 
     color:black; 
     border: solid white 1px !important;
+    font-weight: bold;
     margin-left: 5px; 
     border-radius: 10px;
 }
