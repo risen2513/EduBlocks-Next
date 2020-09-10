@@ -9,7 +9,7 @@
   <label for="bmenub" class="burger pseudo button">menu</label>
 
   <div class="menu">
-    <input class="filename" placeholder="Untitled"/>
+    <input class="filename" placeholder="Untitled" v-model="filename"/>
     <a href="#" v-for="option in options" :class="option.class" class="button" :key="option.title" @click="option.func">
         <font-awesome-icon v-if="option.icon" class="button-icon" :icon="option.icon"/>
         {{option.title}}
@@ -23,6 +23,8 @@
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { mapState } from "vuex";
 
+import { saveFile } from '../functions/saveFile'
+
 export default {
     name: 'Nav',
     components: {
@@ -35,7 +37,8 @@ export default {
                 {title: "Share", class: "white-button", icon: ['fas', "share-alt"]},
                 {title: "Files", class: "white-button", icon: ['fas', "folder-open"]},
                 {title: "New", class: "white-button", icon: ['fas', "plus"], func: this.new}
-            ]
+            ],
+            filename: ""
         }
     },
     computed: {
@@ -43,7 +46,7 @@ export default {
     },
     methods: {
         save(){
-            console.log(this.xml);
+            saveFile(Blockly.Xml.domToPrettyText(this.xml), this.filename + ".xml", 'text/xml;charset=utf-8');
         },
         new(){
             Blockly.mainWorkspace.clear();
