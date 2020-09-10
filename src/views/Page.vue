@@ -54,25 +54,4 @@ export default {
 html, body {
   margin: 0;
 }
-
-#code {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 50%;
-  height: 50%;
-  margin: 0;
-  background-color: beige;
-}
-
-#blockly1 {
-    height: calc(100vh - 5.25em);
-    position: relative;
-    width: 100%;
-}
-
-#blockly2 {
-  width: 50%;
-  height: 50%;
-}
 </style>

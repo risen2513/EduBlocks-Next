@@ -29,7 +29,7 @@ h1{
 .page{
     height: 100vh;
     position: relative;
-    padding-top: 5.271em;
+    padding-top: 5.255em;
     background-color: white;
 }
 
