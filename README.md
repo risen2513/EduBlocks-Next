@@ -1,3 +1,2 @@
 # EduBlocks Next
-
-EduBlocks Re-Write Project. Made with Vue 3.
+The next generation codebase for EduBlocks. Built with Vue 3
