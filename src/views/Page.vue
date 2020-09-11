@@ -40,7 +40,7 @@ export default {
   },
   mounted() {
     this.$refs["workspace"].workspace.addChangeListener(() => {
-      this.$store.commit('updateXml', Blockly.Xml.workspaceToDom(this.$refs["workspace"].workspace));  
+      this.$store.commit('updateXml', Blockly.Xml.domToPrettyText(Blockly.Xml.workspaceToDom(this.$refs["workspace"].workspace)));  
       this.$store.commit('updatePythonCode', Blockly.Python.workspaceToCode(this.$refs["workspace"].workspace));    
     })
   },
@@ -54,4 +54,5 @@ export default {
 html, body {
   margin: 0;
 }
+
 </style>

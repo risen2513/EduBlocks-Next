@@ -21,9 +21,11 @@
 
 <script>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 
 import { saveFile } from '../functions/saveFile'
+import { openFile } from '../functions/openFile'
+
 
 export default {
     name: 'Nav',
@@ -35,7 +37,7 @@ export default {
             options: [
                 {title: "Save", class: "green-button", icon: ['fas', "save"], func: this.save},
                 {title: "Share", class: "white-button", icon: ['fas', "share-alt"]},
-                {title: "Files", class: "white-button", icon: ['fas', "folder-open"]},
+                {title: "Files", class: "white-button", icon: ['fas', "folder-open"], func: this.open},
                 {title: "New", class: "white-button", icon: ['fas', "plus"], func: this.new}
             ],
             filename: ""
@@ -46,7 +48,15 @@ export default {
     },
     methods: {
         save(){
-            saveFile(Blockly.Xml.domToPrettyText(this.xml), this.filename + ".xml", 'text/xml;charset=utf-8');
+            if (this.xml){
+                saveFile(this.xml, this.filename + ".xml", 'text/xml;charset=utf-8');
+            }
+        },
+        async open(){
+            let newxml = await openFile();
+            const textToDom = Blockly.Xml.textToDom(newxml);
+            let workspace = Blockly.mainWorkspace;
+            Blockly.Xml.domToWorkspace(textToDom, workspace)
         },
         new(){
             Blockly.mainWorkspace.clear();
