@@ -11,7 +11,7 @@ import '../blocks/index.ts'
 
 import { mapState, mapMutations } from "vuex";
 
-import { toolbox } from '../blocks/toolbox'
+import { toolboxXML } from '../blocks/index.ts'
 
 export default {
   name: 'app',
@@ -31,7 +31,7 @@ export default {
             colour: '#ccc',
             snap: true
           },
-        toolbox: toolbox
+        toolbox: toolboxXML
       }
     }
   },
