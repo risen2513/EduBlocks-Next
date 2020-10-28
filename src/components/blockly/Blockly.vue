@@ -6,7 +6,7 @@
 import BlocklyComponent from './BlocklyComponent.vue'
 import { ref, onMounted } from 'vue'
 import { toolboxXML } from '../../blocks/index.ts'
-import { xml, pythonCode } from '../../scripts/state/useState.js'
+import { xml, pythonCode } from '../../scripts/state/useState'
 
 export default {
     name: "blockly",

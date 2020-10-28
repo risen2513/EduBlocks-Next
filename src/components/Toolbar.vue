@@ -20,7 +20,7 @@
 
 <script>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { pythonCode, mode, updateMode } from '../scripts/state/useState.js'
+import { pythonCode, mode, updateMode } from '../scripts/state/useState'
 
 export default {
     name: 'toolbar',

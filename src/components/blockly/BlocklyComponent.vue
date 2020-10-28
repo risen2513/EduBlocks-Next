@@ -10,7 +10,7 @@
 
 <script>
 import { onMounted } from 'vue'
-import { mode } from '../../scripts/state/useState.js'
+import { mode } from '../../scripts/state/useState'
 
 export default {
   name: 'BlocklyComponent',
