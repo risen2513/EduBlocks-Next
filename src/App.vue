@@ -1,30 +1,70 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="flex-1">
+    <Nav />
+    <Toolbar />
+    <div class="page">
+      <router-view></router-view>
+    </div>
   </div>
-  <router-view/>
 </template>
 
+<script>
+import Nav from "./components/Nav.vue";
+import Toolbar from "./components/Toolbar.vue";
+
+export default {
+  name: "app",
+  components: {
+    Nav,
+    Toolbar
+  }
+};
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+h1 {
+  padding: 0px !important;
 }
 
-#nav {
-  padding: 30px;
+.page {
+  height: 100vh;
+  position: relative;
+  padding-top: 5.255em;
+  background-color: white;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.blocklyToolboxDiv {
+  background-color: #585858 !important;
+  color: #ffffff !important;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+div.blocklyTreeRow {
+  border-radius: 4px;
+  padding-left: 6px !important;
+}
+.blocklyTreeRow {
+  height: 51px !important;
+}
+
+.blocklyFlyoutBackground {
+  fill: #444;
+  fill-opacity: 0.8;
+}
+
+.blocklyTreeIconCustom {
+  background: none !important;
+  font-family: "Font Awesome\ 5 Free";
+  font-weight: 900;
+  font-size: 1.3rem;
+  margin: 0 0.25em;
+  width: 30px !important;
+  height: 100% !important;
+  line-height: 51px;
+  min-height: 45px;
+  vertical-align: middle;
+}
+
+.blocklyTreeIconCustom.imports::before {
+  content: "\f093";
 }
 </style>
