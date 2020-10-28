@@ -15,7 +15,5 @@ const toolbox = `<xml>
 
 </category>
 </xml>
-`
-export {
-    toolbox
-}
+`;
+export { toolbox };

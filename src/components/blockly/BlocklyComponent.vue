@@ -1,7 +1,9 @@
 <template>
   <div>
-    <div :class="[mode === 'Split' ? 'blocklyDiv splitBlockly' : 'blocklyDiv']" ref="blocklyDiv">
-    </div>
+    <div
+      :class="[mode === 'Split' ? 'blocklyDiv splitBlockly' : 'blocklyDiv']"
+      ref="blocklyDiv"
+    ></div>
     <xml ref="blocklyToolbox" style="display:none">
       <slot></slot>
     </xml>
@@ -9,49 +11,48 @@
 </template>
 
 <script>
-import { onMounted } from 'vue'
-import { mode } from '../../scripts/state/useState'
+import { mode } from "../../scripts/state/useState";
 
 export default {
-  name: 'BlocklyComponent',
+  name: "BlocklyComponent",
   props: {
     options: Object
   },
-  data(){
+  data() {
     return {
       workspace: null
-    }
+    };
   },
   mounted() {
-    var options = this.$props.options || {};
+    const options = this.$props.options || {};
     if (!options.toolbox) {
       options.toolbox = this.$refs["blocklyToolbox"];
     }
     this.workspace = Blockly.inject(this.$refs["blocklyDiv"], options);
   },
   setup() {
-    return { mode }
+    return { mode };
   }
- }
+};
 </script>
 
 <style>
-  .blocklyDiv {
-    width: 100%;
-    position: relative;
-    height: calc(100vh - 5.25em);
-    overflow: hidden;
-  }
+.blocklyDiv {
+  width: 100%;
+  position: relative;
+  height: calc(100vh - 5.25em);
+  overflow: hidden;
+}
 
-  .blocklyFlyoutLabelText {
-    fill: white;
-  }
+.blocklyFlyoutLabelText {
+  fill: white;
+}
 
-  .splitBlockly {
-    width: 60%;
-  }
+.splitBlockly {
+  width: 60%;
+}
 
-  .fullBlockly {
-    width: 100%;
-  }
+.fullBlockly {
+  width: 100%;
+}
 </style>

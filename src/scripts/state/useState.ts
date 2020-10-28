@@ -1,28 +1,21 @@
-import { ref } from 'vue'
+import { ref } from "vue";
 
 // Global State
-let pythonCode = ref("")
-let xml = ref("")
-let mode = ref("Split")
+const pythonCode = ref("");
+const xml = ref("");
+const mode = ref("Split");
 
 // Global Functions
 
 const resizeWindow = () => {
-    window.dispatchEvent(new Event('resize'))
-}
+  window.dispatchEvent(new Event("resize"));
+};
 
-async function updateMode(data) {
-    mode.value = data
-    await window.dispatchEvent(new Event('resize'))
-    await resizeWindow()
+async function updateMode(data: string) {
+  mode.value = data;
+  await window.dispatchEvent(new Event("resize"));
+  await resizeWindow();
 }
 
 // Export State
-export {
-    pythonCode, 
-    xml,
-    mode,
-    updateMode
-}
-
-
+export { pythonCode, xml, mode, updateMode };

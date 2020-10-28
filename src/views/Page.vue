@@ -5,31 +5,30 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
-import Blockly from '../components/blockly/Blockly.vue'
-import '../blocks/index.ts'
-import { mapState, mapMutations } from "vuex";
-import { toolboxXML } from '../blocks/index.ts';
-import { useMode } from '../scripts/state/useMode';
-
+import Blockly from "../components/blockly/Blockly.vue";
+import "../blocks/index.ts";
+import { toolboxXML } from "../blocks/index.ts";
+import { useMode } from "../scripts/state/useMode";
 
 export default {
-  name: 'page',
+  name: "page",
   components: {
     Blockly
   },
   setup() {
-    let { currentMode } = useMode();
-    
+    const { currentMode } = useMode();
+
     return {
-      currentMode, toolboxXML
-    }
+      currentMode,
+      toolboxXML
+    };
   }
-}
+};
 </script>
 
 <style>
-html, body {
+html,
+body {
   margin: 0;
 }
 

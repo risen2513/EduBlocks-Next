@@ -3,4 +3,4 @@ export const toolbox = `<xml>
   <block type="import_mlmodel"></block>
 </category>
 </xml>
-`
+`;
