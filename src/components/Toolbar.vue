@@ -1,10 +1,13 @@
 <template>
     <div class="toolbar">
         <div class="toolbar-column">
-            <a href="#" v-for="option in left" :class="option.class" class="button" :key="option.title">
-                <font-awesome-icon v-if="option.icon" class="button-icon" :icon="option.icon"/>
-                {{option.title}}
+            <a v-for="option in left" :key="option.title" :class="[mode === option.title ? '' : 'toolbar-opacity']" @click="updateMode(option.title)">
+                <a href="#" :class="option.class" class="button">
+                    <font-awesome-icon v-if="option.icon" class="button-icon" :icon="option.icon"/>
+                    {{option.title}}
+                </a>
             </a>
+            <h1></h1>
         </div>
         <div class="toolbar-column">
             <a href="#" v-for="option in right" :class="option.class" class="button right" :key="option.title" @click="option.func">
@@ -17,33 +20,34 @@
 
 <script>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { mapState, mapMutations } from "vuex";
+import { pythonCode, mode, updateMode } from '../scripts/state/useState.js'
 
 export default {
     name: 'toolbar',
     components: {
         FontAwesomeIcon
     },
-    computed: {
-        ...mapState(["pythonCode"]),
-    },
-    data() {
+    setup () {
+        const showPython = () => {
+            console.log(pythonCode.value)
+        }
+        
+        let left = [
+            {title: "Split", class: "orange", icon: ['fas', "columns"], func: updateMode},
+            {title: "Blocks", class: "pink", icon: ['fas', "cube"], func: updateMode},
+            {title: "Python", class: "purple", icon: ['fab', "python"], func: updateMode},
+        ]
+
+        let right = [
+            {title: "Run", class: "green no-margin-right", icon: ['fas', "play"], func: showPython}
+        ]
+
+        mode.value = "Split"
+        
         return {
-            left: [
-                {title: "Split", class: "orange toolbar-opacity", icon: ['fas', "columns"]},
-                {title: "Blocks", class: "pink toolbar-opacity", icon: ['fas', "cube"]},
-                {title: "Python", class: "purple toolbar-opacity", icon: ['fab', "python"]},
-            ],
-            right: [
-                {title: "Run", class: "green no-margin-right", icon: ['fas', "play"], func: this.showCode}
-            ]
+            left, right, showPython, mode, updateMode
         }
-    },
-    methods: {
-        showCode() {
-            alert(this.pythonCode)
-        }
-  }
+    }
 }
 </script>
 

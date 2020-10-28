@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import'./functions/useIcons'
+import'./scripts/state/useIcons'
 
 import { store } from "./store";
 

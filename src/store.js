@@ -1,6 +1,7 @@
 const state = {
   pythonCode: "",
-  xml: ""
+  xml: "",
+  mode: "",
 };
 
 const mutations = {
@@ -9,6 +10,9 @@ const mutations = {
   },
   updateXml(state, payload) {
     state.xml = payload;
+  },
+  updateMode(state, payload) {
+    state.mode = payload;
   }
 };
 

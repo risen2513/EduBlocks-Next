@@ -23,8 +23,8 @@
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { mapState, mapMutations } from "vuex";
 
-import { saveFile } from '../functions/saveFile'
-import { openFile } from '../functions/openFile'
+import { saveFile } from '../scripts/functions/saveFile'
+import { openFile } from '../scripts/functions/openFile'
 
 
 export default {

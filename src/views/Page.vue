@@ -1,51 +1,29 @@
 <template>
   <div id="app">
-    <BlocklyComponent id="blockly1" :options="options" ref="workspace"></BlocklyComponent>
+    <Blockly />
   </div>
 </template>
 
 <script>
-import BlocklyComponent from '../components/BlocklyComponent.vue'
-
+import { ref, onMounted } from 'vue'
+import Blockly from '../components/blockly/Blockly.vue'
 import '../blocks/index.ts'
-
 import { mapState, mapMutations } from "vuex";
+import { toolboxXML } from '../blocks/index.ts';
+import { useMode } from '../scripts/state/useMode';
 
-import { toolboxXML } from '../blocks/index.ts'
 
 export default {
-  name: 'app',
+  name: 'page',
   components: {
-    BlocklyComponent
+    Blockly
   },
-  data(){
+  setup() {
+    let { currentMode } = useMode();
+    
     return {
-      code: '',
-      options: {
-        media: 'media/',
-        renderer: 'zelos',
-        grid:
-          {
-            spacing: 25,
-            length: 3,
-            colour: '#ccc',
-            snap: true
-          },
-        toolbox: toolboxXML
-      }
+      currentMode, toolboxXML
     }
-  },
-  computed: {
-    ...mapState(["pythonCode", "xml"]),
-  },
-  mounted() {
-    this.$refs["workspace"].workspace.addChangeListener(() => {
-      this.$store.commit('updateXml', Blockly.Xml.domToPrettyText(Blockly.Xml.workspaceToDom(this.$refs["workspace"].workspace)));  
-      this.$store.commit('updatePythonCode', Blockly.Python.workspaceToCode(this.$refs["workspace"].workspace));    
-    })
-  },
-  methods: {
-    ...mapMutations(["updatePythonCode", "updateXml"]),
   }
 }
 </script>
@@ -55,4 +33,11 @@ html, body {
   margin: 0;
 }
 
+.splitBlockly {
+  width: 60%;
+}
+
+.fullBlockly {
+  width: 100%;
+}
 </style>
