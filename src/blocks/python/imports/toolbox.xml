@@ -1,7 +1,6 @@
-const toolbox = `<xml>
 <category name="Imports" colour="#ff0066" iconclass="blocklyTreeIconCustom imports">
 
-  <label text="Imports" web-class="toolboxLabel"></label>
+  <label text="Imports" web-class="myLabelStyle"></label>
 
   <block type="import_time"></block>
   <block type="import_math"></block>
@@ -14,6 +13,3 @@ const toolbox = `<xml>
   <block type="import_imagedata"></block>
 
 </category>
-</xml>
-`;
-export { toolbox };

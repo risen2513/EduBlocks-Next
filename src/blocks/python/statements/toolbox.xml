@@ -1,0 +1,120 @@
+<category name="Statements" colour="#F89621" iconclass="blocklyTreeIconCustom statements">
+
+  <label text="Statements" web-class="myLabelStyle"></label>
+  <block type="websleepnew">
+      <value name="sleep">
+        <shadow type="textinline">
+          <field name="text">1</field>
+        </shadow>
+      </value>
+  </block> 
+ 
+  <block type="webtypeanything">
+      <value name="stuff">
+        <shadow type="textinline">
+          <field name="text">     </field>
+        </shadow>
+      </value>
+  </block>
+
+  
+  <!-- <block type="webequalsblocknew">
+      <value name="text1">
+        <shadow type="textinline">
+          <field name="text">var</field>
+        </shadow>
+      </value>
+      <value name="text2">
+        <shadow type="textinline">
+          <field name="text">0</field>
+        </shadow>
+      </value>
+  </block> -->
+
+  <!-- <block type="webtextinline"></block> -->
+  <block type="webdf">
+    <value name="def">
+      <shadow type="textinline">
+          <field name="text">function_name</field>
+        </shadow>
+      </value>
+    <value name="params">
+      <shadow type="textinline">
+          <field name="text"></field>
+        </shadow>
+      </value>
+  </block>
+  <block type="webpass"></block>
+
+  <block type="webprintnew">
+      <value name="text">
+        <shadow type="textinline">
+          <field name="text">Hello World</field>
+        </shadow>
+      </value>
+  </block>
+  <block type="webvarprint">
+  <value name="var">
+        <shadow type="textinline">
+          <field name="text">Variable</field>
+        </shadow>
+      </value>
+  </block>
+  <block type="input_web">
+  <value name="NAME">
+        <shadow type="stringinline">
+          <field name="text">What is your name?</field>
+        </shadow>
+      </value>
+  </block>
+  <block type="global">
+      <value name="text">
+        <shadow type="textinline">
+          <field name="text">variable</field>
+        </shadow>
+      </value>
+  </block>
+  <block type="webint">
+    <value name="bool">
+      <shadow type="textinline">
+        <field name="text">1</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="webstr">
+    <value name="bool">
+      <shadow type="textinline">
+        <field name="text">1</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="upper_lower">
+    <value name="string">
+      <shadow type="stringinline">
+        <field name="text">hello</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="webcomma">
+    <value name="in1">
+      <shadow type="stringinline">
+        <field name="text">1</field>
+      </shadow>
+    </value>
+    <value name="in2">
+      <shadow type="stringinline">
+        <field name="text">1</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="brackets">
+    <value name="NAME">
+      <shadow type="textinline">
+        <field name="text">1</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="stringinline"></block>
+  <block type="textinline"></block>
+</category>

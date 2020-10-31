@@ -1,7 +1,16 @@
-let toolboxXML = "";
-import "./python/imports/definitions.ts";
-import "./python/imports/generators.ts";
-import { toolbox } from "./python/imports/toolbox";
-toolboxXML += toolbox;
+export let toolboxXML = "<xml>";
 
-export { toolboxXML };
+export async function getToolboxXml() {
+
+    (await import('./python/imports/definitions')).default(Blockly.Blocks);
+    (await import('./python/imports/generators')).default(Blockly.Python as any);
+    toolboxXML += require('./python/imports/toolbox.xml');
+
+    (await import('./python/statements/definitions')).default(Blockly.Blocks);
+    (await import('./python/statements/generators')).default(Blockly.Python as any);
+    toolboxXML += require('./python/statements/toolbox.xml');
+
+    toolboxXML += '</xml>';
+
+    return toolboxXML;
+}

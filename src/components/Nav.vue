@@ -33,6 +33,7 @@
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { saveFile } from "../scripts/functions/saveFile";
 import { openFile } from "../scripts/functions/openFile";
+import { xml } from "../scripts/state/useState.ts";
 
 export default {
   name: "Nav",
@@ -68,8 +69,8 @@ export default {
   },
   methods: {
     save() {
-      if (this.xml) {
-        saveFile(this.xml, this.filename + ".xml", "text/xml;charset=utf-8");
+      if (xml.value) {
+        saveFile(xml.value, this.filename + ".xml", "text/xml;charset=utf-8");
       }
     },
     async open() {
@@ -121,11 +122,11 @@ nav .brand {
 }
 
 .filename {
-  width: 255px;
+  width: 247px;
   color: black;
   border: solid white 1px !important;
   font-weight: bold;
-  margin-left: 5px;
+  margin-left: 11px;
   border-radius: 10px;
 }
 </style>

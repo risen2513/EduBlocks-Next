@@ -67,4 +67,8 @@ div.blocklyTreeRow {
 .blocklyTreeIconCustom.imports::before {
   content: "\f093";
 }
+
+.blocklyTreeIconCustom.statements::before {
+  content: "\f12a";
+}
 </style>

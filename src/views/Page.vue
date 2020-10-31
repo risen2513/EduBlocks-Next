@@ -7,7 +7,6 @@
 <script>
 import Blockly from "../components/blockly/Blockly.vue";
 import "../blocks/index.ts";
-import { toolboxXML } from "../blocks/index.ts";
 import { useMode } from "../scripts/state/useMode";
 
 export default {
@@ -19,8 +18,7 @@ export default {
     const { currentMode } = useMode();
 
     return {
-      currentMode,
-      toolboxXML
+      currentMode
     };
   }
 };
