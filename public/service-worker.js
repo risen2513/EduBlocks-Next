@@ -39,16 +39,19 @@ self.addEventListener("activate", evt => {
   self.clients.claim();
 });
 
-self.addEventListener("fetch", evt => {
-  if (evt.request.mode !== "navigate") {
-    // Not a page navigation, bail.
-    return;
+self.addEventListener("fetch", event => {
+  if (event.request.url === "https://edublocks-next.netlify.app") {
+    // or whatever your app's URL is
+    event.respondWith(
+      fetch(event.request).catch(err =>
+        self.cache.open(cache_name).then(cache => cache.match("/offline.html"))
+      )
+    );
+  } else {
+    event.respondWith(
+      fetch(event.request).catch(err =>
+        caches.match(event.request).then(response => response)
+      )
+    );
   }
-  evt.respondWith(
-    fetch(evt.request).catch(() => {
-      return caches.open(CACHE_NAME).then(cache => {
-        return cache.match("offline.html");
-      });
-    })
-  );
 });
