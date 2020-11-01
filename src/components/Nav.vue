@@ -31,7 +31,7 @@
 
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { saveFile } from "../scripts/functions/saveFile";
+import { saveAs } from "file-saver";
 import { openFile } from "../scripts/functions/openFile";
 import { xml } from "../scripts/state/useState.ts";
 
@@ -70,7 +70,10 @@ export default {
   methods: {
     save() {
       if (xml.value) {
-        saveFile(xml.value, this.filename + ".xml", "text/xml;charset=utf-8");
+        const blob = new Blob([xml.value], {
+          type: "text/xml;charset=utf-8"
+        });
+        saveAs(blob, "hello.xml");
       }
     },
     async open() {
