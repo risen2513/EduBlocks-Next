@@ -2,7 +2,7 @@
     "name": "EduBlocks",
     "short_name": "EduBlocks",
     "lang": "en-GB",
-    "start_url": "/",
+    "start_url": "https://edublocks-next.netlify.app/",
     "display": "standalone",
     "theme_color": "#1B173D",
     "background_color": "#1B173D",
@@ -46,8 +46,7 @@
         {
             "src": "/images/icons/icon-1024x1024.png",
             "sizes": "1024x1024",
-            "type": "image/png",
-            "purpose": "any maskable"
+            "type": "image/png"
         }
     ],
     "url": "https://edublocks-next.netlify.app/",
