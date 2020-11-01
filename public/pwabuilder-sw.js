@@ -22,7 +22,7 @@ workbox.routing.registerRoute(
     cacheName: HTML_CACHE,
     plugins: [
       new workbox.expiration.ExpirationPlugin({
-        maxEntries: 10
+        maxEntries: 100
       })
     ]
   })
@@ -34,7 +34,7 @@ workbox.routing.registerRoute(
     cacheName: JS_CACHE,
     plugins: [
       new workbox.expiration.ExpirationPlugin({
-        maxEntries: 15
+        maxEntries: 100
       })
     ]
   })
@@ -46,7 +46,7 @@ workbox.routing.registerRoute(
     cacheName: STYLE_CACHE,
     plugins: [
       new workbox.expiration.ExpirationPlugin({
-        maxEntries: 15
+        maxEntries: 100
       })
     ]
   })
@@ -58,7 +58,7 @@ workbox.routing.registerRoute(
     cacheName: IMAGE_CACHE,
     plugins: [
       new workbox.expiration.ExpirationPlugin({
-        maxEntries: 15
+        maxEntries: 100
       })
     ]
   })
@@ -70,7 +70,7 @@ workbox.routing.registerRoute(
     cacheName: FONT_CACHE,
     plugins: [
       new workbox.expiration.ExpirationPlugin({
-        maxEntries: 15
+        maxEntries: 100
       })
     ]
   })
