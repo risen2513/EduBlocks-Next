@@ -1,17 +1,7 @@
 "use strict";
 
-// CODELAB: Update cache names any time any of the cached files change.
-const CACHE_NAME = "EduBlocks";
-
 // CODELAB: Add list of files to cache here.
-const FILES_TO_CACHE = [
-  "/index.html",
-  "/icons/",
-  "/blockly/",
-  "/assets/",
-  "/css/",
-  "/js/"
-];
+const FILES_TO_CACHE = ["/index.html"];
 
 self.addEventListener("install", evt => {
   evt.waitUntil(
@@ -39,19 +29,21 @@ self.addEventListener("activate", evt => {
   self.clients.claim();
 });
 
-self.addEventListener("fetch", event => {
-  if (event.request.url === "https://edublocks-next.netlify.app") {
-    // or whatever your app's URL is
-    event.respondWith(
-      fetch(event.request).catch(err =>
-        self.cache.open(cache_name).then(cache => cache.match("/index.html"))
-      )
-    );
-  } else {
-    event.respondWith(
-      fetch(event.request).catch(err =>
-        caches.match(event.request).then(response => response)
-      )
-    );
+const CACHE = "EduBlocks";
+
+importScripts(
+  "https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js"
+);
+
+self.addEventListener("message", event => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
   }
 });
+
+workbox.routing.registerRoute(
+  new RegExp("/*"),
+  new workbox.strategies.StaleWhileRevalidate({
+    cacheName: CACHE
+  })
+);
