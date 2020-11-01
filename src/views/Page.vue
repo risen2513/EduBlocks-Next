@@ -7,6 +7,7 @@
 <script>
 import Blockly from "../components/blockly/Blockly.vue";
 import { useToast } from "vue-toastification";
+import { onMounted } from "vue";
 
 export default {
   name: "page",
@@ -16,18 +17,20 @@ export default {
   setup() {
     const toast = useToast();
 
-    window.addEventListener("load", () => {
-      function handleNetworkChange() {
-        if (!navigator.onLine) {
-          toast.error(
-            "Whoops! Looks like you're offline. Some features are disabled.",
-            { timeout: 6000, closeButton: false }
-          );
+    onMounted(() => {
+      window.addEventListener("load", () => {
+        function handleNetworkChange() {
+          if (!navigator.onLine) {
+            toast.error(
+              "Whoops! Looks like you're offline. Some features are disabled.",
+              { timeout: 6000, closeButton: false }
+            );
+          }
         }
-      }
 
-      window.addEventListener("online", handleNetworkChange);
-      window.addEventListener("offline", handleNetworkChange);
+        window.addEventListener("online", handleNetworkChange);
+        window.addEventListener("offline", handleNetworkChange);
+      });
     });
   }
 };
