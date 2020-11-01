@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      :class="[mode === 'Split' ? 'blocklyDiv splitBlockly' : 'blocklyDiv']"
+      :class="[view === 'Split' ? 'blocklyDiv splitBlockly' : 'blocklyDiv']"
       ref="blocklyDiv"
     ></div>
     <xml ref="blocklyToolbox" style="display:none">
@@ -11,14 +11,11 @@
 </template>
 
 <script>
-import { mode } from "../../scripts/state/useState";
-import { loadBlockly } from "./Blockly.ts";
+import { mode, view, blocklyDiv } from "../../scripts/state/useState";
+import { loadBlockly, updateBlockly } from "./Blockly.ts";
 
 export default {
   name: "BlocklyComponent",
-  props: {
-    options: Object
-  },
   data() {
     return {
       workspace: null
@@ -29,10 +26,16 @@ export default {
     if (!options.toolbox) {
       options.toolbox = this.$refs["blocklyToolbox"];
     }
-    this.workspace = loadBlockly(this.$refs["blocklyDiv"]);
+    this.workspace = loadBlockly();
+  },
+  methods: {
+    updateMode() {
+      mode.value = "Python";
+      updateBlockly();
+    }
   },
   setup() {
-    return { mode };
+    return { mode, view, blocklyDiv };
   }
 };
 </script>

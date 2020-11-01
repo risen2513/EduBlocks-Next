@@ -4,8 +4,8 @@
       <a
         v-for="option in left"
         :key="option.title"
-        :class="[mode === option.title ? '' : 'toolbar-opacity']"
-        @click="updateMode(option.title)"
+        :class="[view === option.title ? '' : 'toolbar-opacity']"
+        @click="updateView(option.title)"
       >
         <a href="#" :class="option.class" class="button">
           <font-awesome-icon
@@ -40,7 +40,7 @@
 
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { pythonCode, mode, updateMode } from "../scripts/state/useState";
+import { pythonCode, updateView, view } from "../scripts/state/useState";
 
 export default {
   name: "toolbar",
@@ -56,20 +56,17 @@ export default {
       {
         title: "Split",
         class: "orange",
-        icon: ["fas", "columns"],
-        func: updateMode
+        icon: ["fas", "columns"]
       },
       {
         title: "Blocks",
         class: "pink",
-        icon: ["fas", "cube"],
-        func: updateMode
+        icon: ["fas", "cube"]
       },
       {
         title: "Python",
         class: "purple",
-        icon: ["fab", "python"],
-        func: updateMode
+        icon: ["fab", "python"]
       }
     ];
 
@@ -82,14 +79,14 @@ export default {
       }
     ];
 
-    mode.value = "Split";
+    view.value = "Split";
 
     return {
       left,
       right,
       showPython,
-      mode,
-      updateMode
+      view,
+      updateView
     };
   }
 };

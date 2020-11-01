@@ -9930,6 +9930,9 @@ declare namespace Blockly {
   
   declare namespace Blockly {
     class Workspace extends Workspace__Class {
+      updateToolbox(toolbox: any) {
+        throw new Error('Method not implemented.');
+      }
       svgBlockCanvas_: any;
     }
     /** Fake class which should be extended to avoid inheriting static properties */
@@ -10001,6 +10004,8 @@ declare namespace Blockly {
        * @suppress {checkTypes}
        */
       dispose(): void;
+
+      updateToolbox(workspace: any)
   
       /**
        * Add a block to the list of top blocks.
