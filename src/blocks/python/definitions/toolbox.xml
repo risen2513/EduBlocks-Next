@@ -1,0 +1,49 @@
+<category name="Definitions" colour="#CDDA36" iconclass="blocklyTreeIconCustom definitions">
+
+  <label text="Definitions" web-class="myLabelStyle"></label>
+  <block type="webdefine">
+    <value name="1">
+      <shadow type="textinline">
+        <field name="text">function</field>
+      </shadow>
+    </value>
+    <value name="2">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+  <block type="webreturn2">
+    <value name="return">
+      <shadow type="textinline">
+        <field name="text">function</field> 
+      </shadow>
+    </value>
+  </block>
+  <block type="webclass">
+    <value name="class">
+      <shadow type="textinline">
+        <field name="text">class</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="inline_def">
+    <value name="def">
+      <shadow type="textinline">
+        <field name="text">function</field> 
+      </shadow>
+    </value>
+    <value name="input">
+      <shadow type="textinline">
+        <field name="text"></field> 
+      </shadow>
+    </value>
+  </block>
+  <block type="self">
+    <value name="varset">
+      <shadow type="textinline">
+        <field name="text">0</field>
+      </shadow>
+    </value>
+  </block>
+</category>

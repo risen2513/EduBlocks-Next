@@ -1,0 +1,86 @@
+/* Blockly Main Setup */
+
+.blocklyToolboxDiv {
+    background-color: #585858 !important;
+    color: #ffffff !important;
+  }
+  
+div.blocklyTreeRow {
+    border-radius: 4px;
+    padding-left: 6px !important;
+}
+.blocklyTreeRow {
+    height: 51px !important;
+}
+
+.blocklyFlyoutBackground {
+    fill: #444;
+    fill-opacity: 0.8;
+}
+
+.blocklyTreeIconCustom {
+    background: none !important;
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    font-size: 1.3rem;
+    margin: 0 0.25em;
+    width: 30px !important;
+    height: 100% !important;
+    line-height: 51px;
+    min-height: 45px;
+    vertical-align: middle;
+}
+
+/* Blockly Icons */
+
+.blocklyTreeIconCustom.imports::before {
+    content: "\f093";
+}
+
+.blocklyTreeIconCustom.statements::before {
+    content: "\f12a";
+}
+
+.blocklyTreeIconCustom.variables::before {
+    content: "\f52c";
+}
+
+.blocklyTreeIconCustom.logic::before {
+    content: "\f362";
+}
+
+.blocklyTreeIconCustom.lists::before {
+    content: "\f03a";
+}
+
+.blocklyTreeIconCustom.loops::before {
+    content: "\f2f9";
+}
+
+.blocklyTreeIconCustom.definitions::before {
+    content: "\f02d";
+}
+
+.blocklyTreeIconCustom.math::before {
+    content: "\f698";
+}
+
+.blocklyTreeIconCustom.graphs::before {
+    content: "\f200";
+}
+
+.blocklyTreeIconCustom.turtle::before {
+    content: "\f303";
+}
+
+.blocklyTreeIconCustom.random::before {
+    content: "\f074";
+}
+
+.blocklyTreeIconCustom.processing::before {
+    content: "\f53f";
+}
+
+.blocklyTreeIconCustom.requests::before {
+    content: "\f0c1";
+}

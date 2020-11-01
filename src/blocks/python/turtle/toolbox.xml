@@ -1,0 +1,76 @@
+<category name="Turtle" colour="240" iconclass="blocklyTreeIconCustom turtle">
+    <block type="import_turtle"></block>
+    <block type="turtle"></block>
+    <block type="screeninit"></block>
+    <block type="colourmode">
+        <value name="text">
+            <shadow type="textinline">
+                <field name="text">255, 0, 0</field>
+            </shadow>
+        </value>
+    </block>
+    <block type="background">
+        <value name="text">
+            <shadow type="textinline">
+                <field name="text">255, 0, 0</field>
+            </shadow>
+        </value>
+    </block>
+    <block type="directions">
+        <value name="text">
+            <shadow type="textinline">
+                <field name="text">90</field>
+            </shadow>
+        </value>
+    </block>
+    <block type="turtlespeed">
+        <value name="text">
+            <shadow type="textinline">
+                <field name="text">100</field>
+            </shadow>
+        </value>
+    </block>
+    <block type="turtleshape">
+        <value name="text">
+            <shadow type="stringinline">
+                <field name="text">turtle</field>
+            </shadow>
+        </value>
+    </block>
+    <block type="colour">
+        <value name="text">
+            <shadow type="textinline">
+                <field name="text">255, 0, 0</field>
+            </shadow>
+        </value>
+    </block>
+    <block type="colourpen">
+        <value name="text">
+            <shadow type="textinline">
+                <field name="text">255, 0, 0</field>
+            </shadow>
+        </value>
+    </block>
+    <block type="penud"></block>
+    <block type="penwidth">
+        <value name="text">
+            <shadow type="textinline">
+                <field name="text">20</field>
+            </shadow>
+        </value>
+    </block>
+    <block type="circle">
+        <value name="text">
+            <shadow type="textinline">
+                <field name="text">50</field>
+            </shadow>
+        </value>
+    </block>
+    <block type="goto">
+        <value name="text">
+            <shadow type="textinline">
+                <field name="text">5, 5</field>
+            </shadow>
+        </value>
+    </block>
+</category>  

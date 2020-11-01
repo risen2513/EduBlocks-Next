@@ -1,0 +1,62 @@
+<category name="Random" colour="#8BC248" iconclass="blocklyTreeIconCustom random">
+
+
+  <label text="Random" web-class="myLabelStyle"></label>
+
+  <block type="random_choice">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="random_randint">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="random_random">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+ 
+  <block type="random_randrange">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="random_seed">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="random_shuffle">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+    <block type="random_uniform">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+</category>

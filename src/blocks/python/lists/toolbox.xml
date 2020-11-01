@@ -1,0 +1,38 @@
+<category name="Lists" colour="#15BAD4" iconclass="blocklyTreeIconCustom lists">
+
+  <label text="Lists" web-class="myLabelStyle"></label>
+  <block type="create_list">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text">1, 2, 3, 4</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="calllist"></block>
+
+  <block type="selectlist">
+    <value name="NAME">
+      <shadow type="textinline">
+        <field name="text">3</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="selectlist2">
+    <value name="NAME">
+      <shadow type="textinline">
+        <field name="text">3</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="optionlist">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text">3</field>
+      </shadow>
+    </value>
+  </block>
+
+</category>

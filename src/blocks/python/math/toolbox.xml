@@ -1,0 +1,219 @@
+<category name="Math" colour="#1B173D" iconclass="blocklyTreeIconCustom math">
+
+  <label text="Math" web-class="myLabelStyle"></label>
+
+  <block type="operators2">
+    <value name="first">
+      <shadow type="textinline">
+        <field name="text">True</field>
+      </shadow>
+    </value>
+    <value name="last">
+      <shadow type="textinline">
+        <field name="text">True</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_acos">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_acosh">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_asin">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_asinh">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_atan">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_atanh">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_ceil">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_cos">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_acosh">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_degrees">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_exp">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_fabs">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_factorial">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_floor">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_hypot">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_log">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_log10">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_pow">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_radians">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_sin">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_sinh">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_st">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_tan">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_tanh">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="math_trunc">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+
+</category>

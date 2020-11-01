@@ -1,0 +1,51 @@
+<category name="Logic" colour="#49B04D" iconclass="blocklyTreeIconCustom logic">
+
+  <label text="Logic" web-class="myLabelStyle"></label>
+  <block type="webifinline">
+    <value name="iftext">
+      <shadow type="textinline">
+        <field name="text">True</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="webelifinline">
+    <value name="iftext">
+      <shadow type="textinline">
+        <field name="text">True</field>
+      </shadow>
+    </value> 
+  </block>
+  <block type="webelse"></block>
+  <block type="webinternal">
+    <value name="first">
+      <shadow type="textinline"> 
+        <field name="text">0</field>
+      </shadow>
+    </value>
+    <value name="last">
+      <shadow type="textinline">
+        <field name="text">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="webandor">
+    <value name="first">
+      <shadow type="textinline">
+        <field name="text">True</field>
+      </shadow>
+    </value>
+    <value name="last">
+      <shadow type="textinline">
+        <field name="text">True</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="webnot">
+    <value name="bool">
+      <shadow type="textinline">
+        <field name="text">True</field>
+      </shadow>
+    </value>
+  </block>
+
+</category>

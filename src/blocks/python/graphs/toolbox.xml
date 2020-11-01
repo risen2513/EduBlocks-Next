@@ -1,0 +1,46 @@
+<category name="Graphs" colour="#008FD1" iconclass="blocklyTreeIconCustom graphs">
+
+
+  <label text="Graphs" web-class="myLabelStyle"></label>
+
+  <block type="chart_type">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="chart_title">
+    <value name="text">
+      <shadow type="stringinline">
+        <field name="text">My awesome chart</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="chart_add">
+    <value name="text">
+      <shadow type="stringinline">
+        <field name="text">Label</field>
+      </shadow>
+    </value>
+
+    <value name="text1">
+      <shadow type="textinline">
+        <field name="text">1, 3, 8, 3</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="chart_xlabels">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="chart_render"></block>
+
+</category>

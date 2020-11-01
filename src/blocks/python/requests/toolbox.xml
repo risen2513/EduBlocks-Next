@@ -1,0 +1,79 @@
+<category name="Requests" colour="#FF69B4" iconclass="blocklyTreeIconCustom http">
+  <label text="Requests" web-class="myLabelStyle"></label>
+  <block type="import_requests"></block>
+  <block type="import_json"></block>
+  <block type="requests_get">
+    <value name="text">
+      <shadow type="stringinline">
+        <field name="text">https://api.github.com/events</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="requests_post">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text">'https://httpbin.org/post', data = {'key':'value'}</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="requests_put">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text">'https://httpbin.org/put', data = {'key':'value'}</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="requests_delete">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text">'https://httpbin.org/delete'</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="requests_head">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text">'https://httpbin.org/get'</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="requests_options">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text">'https://httpbin.org/get'</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="requests_url"></block>
+  <block type="requests_url_func"></block>
+  <block type="requests_cookies">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text">'example_cookie_name</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="json_reference">
+    <value name="input">
+      <shadow type="stringinline">
+        <field name="text">name</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="requests_rjar"></block>
+  <block type="requests_jset">
+    <value name="NAME">
+      <shadow type="textinline">
+        <field name="text">'tasty_cookie', 'yum', domain='httpbin.org', path='/cookies'</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="requests_hget">
+    <value name="NAME">
+      <shadow type="textinline">
+        <field name="text">'content-type'</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="requests_raise"></block>
+</category>

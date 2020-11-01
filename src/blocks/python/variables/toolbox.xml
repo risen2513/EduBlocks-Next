@@ -1,0 +1,12 @@
+<category name="Variables" custom="VARIABLE" colour="#0000CD" iconclass="blocklyTreeIconCustom variables">
+  <button text="A button" callbackKey="myFirstButtonPressed"></button>
+  <block type="variables_set">
+    <value name="varset">
+      <shadow type="textinline">
+        <field name="text">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="variables_get"></block>
+  <block type="textinline"></block>
+</category>
