@@ -6,7 +6,7 @@
   }
   
 div.blocklyTreeRow {
-    border-radius: 4px;
+    margin-bottom: 6px;
     padding-left: 6px !important;
 }
 .blocklyTreeRow {

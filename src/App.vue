@@ -27,48 +27,9 @@ h1 {
 }
 
 .page {
-  height: 100vh;
+  height: 100%;
   position: relative;
   padding-top: 5.255em;
   background-color: white;
-}
-
-.blocklyToolboxDiv {
-  background-color: #585858 !important;
-  color: #ffffff !important;
-}
-
-div.blocklyTreeRow {
-  border-radius: 4px;
-  padding-left: 6px !important;
-}
-.blocklyTreeRow {
-  height: 51px !important;
-}
-
-.blocklyFlyoutBackground {
-  fill: #444;
-  fill-opacity: 0.8;
-}
-
-.blocklyTreeIconCustom {
-  background: none !important;
-  font-family: "Font Awesome\ 5 Free";
-  font-weight: 900;
-  font-size: 1.3rem;
-  margin: 0 0.25em;
-  width: 30px !important;
-  height: 100% !important;
-  line-height: 51px;
-  min-height: 45px;
-  vertical-align: middle;
-}
-
-.blocklyTreeIconCustom.imports::before {
-  content: "\f093";
-}
-
-.blocklyTreeIconCustom.statements::before {
-  content: "\f12a";
 }
 </style>
