@@ -18,6 +18,13 @@ export default {
     const toast = useToast();
 
     onMounted(() => {
+      if (!navigator.onLine) {
+        toast.error(
+          "Whoops! Looks like you're offline. Some features are disabled.",
+          { timeout: 6000, closeButton: false }
+        );
+      }
+
       window.addEventListener("load", () => {
         function handleNetworkChange() {
           if (!navigator.onLine) {
