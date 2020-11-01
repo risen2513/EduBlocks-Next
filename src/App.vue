@@ -5,25 +5,6 @@
     <div class="page">
       <router-view></router-view>
     </div>
-    <div class="update-dialog" v-if="prompt">
-      <div class="update-dialog__content">
-        A new version is found. Refresh to load it?
-      </div>
-      <div class="update-dialog__actions">
-        <button
-          class="update-dialog__button update-dialog__button--confirm"
-          @click="update"
-        >
-          Update
-        </button>
-        <button
-          class="update-dialog__button update-dialog__button--cancel"
-          @click="prompt = false"
-        >
-          Cancel
-        </button>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -53,7 +34,7 @@ export default {
   created() {
     if (wb) {
       wb.addEventListener("waiting", () => {
-        this.prompt = true;
+        this.prompt = false;
       });
     }
   }
