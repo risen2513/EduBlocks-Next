@@ -21,7 +21,7 @@ import { useToast } from "vue-toastification";
 import { onMounted } from "vue";
 import { pythonCode, view } from "../scripts/state/useState";
 import { codemirror } from "vue-codemirror-lite";
-require("codemirror/mode/python/python");
+import "codemirror/mode/python/python";
 import "codemirror/theme/material-darker.css";
 
 export default {
