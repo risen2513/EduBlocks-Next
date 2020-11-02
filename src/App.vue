@@ -28,6 +28,7 @@ h1 {
 
 .page {
   height: 100%;
+  width: 100%;
   position: relative;
   padding-top: 5.255em;
   background-color: white;

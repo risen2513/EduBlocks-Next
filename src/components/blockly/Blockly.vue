@@ -1,9 +1,6 @@
 <template>
-  <div>
-    <div
-      :class="[view === 'Split' ? 'blocklyDiv splitBlockly' : 'blocklyDiv']"
-      ref="blocklyDiv"
-    ></div>
+  <div :class="[view === 'Split' ? 'splitBlockly' : 'fullBlockly']">
+    <div class="blocklyDiv" ref="blocklyDiv"></div>
     <xml ref="blocklyToolbox" style="display:none">
       <slot></slot>
     </xml>

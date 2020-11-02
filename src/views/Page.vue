@@ -1,6 +1,17 @@
 <template>
-  <div id="app">
-    <Blockly />
+  <div id="app" style="display: flex;">
+    <Blockly v-show="view !== 'Python'" />
+    <codemirror
+      :value="pythonCode"
+      :options="{
+        mode: 'python',
+        lineNumbers: true,
+        theme: 'material-darker',
+        readOnly: true
+      }"
+      :class="[view === 'Python' ? 'fullPython' : 'python']"
+      v-if="view !== 'Blocks'"
+    ></codemirror>
   </div>
 </template>
 
@@ -8,11 +19,16 @@
 import Blockly from "../components/blockly/Blockly.vue";
 import { useToast } from "vue-toastification";
 import { onMounted } from "vue";
+import { pythonCode, view } from "../scripts/state/useState";
+import { codemirror } from "vue-codemirror-lite";
+require("codemirror/mode/python/python");
+import "codemirror/theme/material-darker.css";
 
 export default {
   name: "page",
   components: {
-    Blockly
+    Blockly,
+    codemirror
   },
   setup() {
     const toast = useToast();
@@ -39,6 +55,8 @@ export default {
         window.addEventListener("offline", handleNetworkChange);
       });
     });
+
+    return { pythonCode, view };
   }
 };
 </script>
@@ -49,12 +67,17 @@ body {
   margin: 0;
 }
 
-.splitBlockly {
-  width: 60%;
+.CodeMirror {
+  height: 100%;
 }
 
-.fullBlockly {
+.python {
+  width: 40%;
+}
+
+.fullPython {
   width: 100%;
+  height: calc(100vh - 5.25em);
 }
 
 .Vue-Toastification__container {

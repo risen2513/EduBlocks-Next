@@ -10,6 +10,12 @@ import {
 } from "../../scripts/state/useState";
 
 export function setXml(xml: any | null) {
+  if (!Blockly.mainWorkspace) {
+    throw new Error("No Workspace");
+  }
+
+  Blockly.mainWorkspace.clear();
+
   let start = null;
   let new_xml =
     '<xml xmlns="https://developers.google.com/blockly/xml"><block type="events_start_here" id="DI_start_here" x="' +
@@ -27,7 +33,7 @@ export function setXml(xml: any | null) {
         '" y="33" deletable="false" movable="false">';
 
       if (first_block_position < 0) {
-        console.log("No blocks were found");
+        console.log("no blocks were found");
       } else {
         const pos_from_end_of_string = -1 * "</xml>".length;
         new_xml =
@@ -69,11 +75,15 @@ export async function loadBlockly() {
 
   blocklyWorkspace.addChangeListener(Blockly.Events.disableOrphans);
 
+  pythonCode.value = Blockly.Python.workspaceToCode(blocklyWorkspace);
+
   blocklyWorkspace.addChangeListener(() => {
     xml.value = Blockly.Xml.domToPrettyText(
       Blockly.Xml.workspaceToDom(blocklyWorkspace)
     );
-    pythonCode.value = Blockly.Python.workspaceToCode(blocklyWorkspace);
+    if (!blocklyWorkspace.isDragging()) {
+      pythonCode.value = Blockly.Python.workspaceToCode(blocklyWorkspace);
+    }
   });
 
   setXml("");
@@ -98,11 +108,15 @@ export async function updateBlockly() {
 
   const blocklyWorkspace = Blockly.inject(blocklyDiv.value, options);
 
+  pythonCode.value = Blockly.Python.workspaceToCode(blocklyWorkspace);
+
   blocklyWorkspace.addChangeListener(() => {
     xml.value = Blockly.Xml.domToPrettyText(
       Blockly.Xml.workspaceToDom(blocklyWorkspace)
     );
-    pythonCode.value = Blockly.Python.workspaceToCode(blocklyWorkspace);
+    if (!blocklyWorkspace.isDragging()) {
+      pythonCode.value = Blockly.Python.workspaceToCode(blocklyWorkspace);
+    }
   });
 
   setXml("");
