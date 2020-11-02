@@ -2,9 +2,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { getToolboxXml } from "../../blocks/blocks";
-import { xml, pythonCode, blocklyDiv } from "../../scripts/state/useState";
+import {
+  xml,
+  pythonCode,
+  blocklyDiv,
+  filename
+} from "../../scripts/state/useState";
 
-export function setXml(xml: string | null) {
+export function setXml(xml: any | null) {
   let start = null;
   let new_xml =
     '<xml xmlns="https://developers.google.com/blockly/xml"><block type="events_start_here" id="DI_start_here" x="' +
@@ -99,4 +104,11 @@ export async function updateBlockly() {
     );
     pythonCode.value = Blockly.Python.workspaceToCode(blocklyWorkspace);
   });
+
+  setXml("");
+}
+
+export function blocklyNew() {
+  updateBlockly();
+  filename.value = "";
 }

@@ -30,59 +30,38 @@
 
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { saveAs } from "file-saver";
-import { openFile } from "../scripts/openFile";
-import { setXml } from "./blockly/Blockly";
-import { xml } from "../scripts/state/useState.ts";
+import { blocklyNew } from "./blockly/Blockly";
+import { filename, open, save } from "../scripts/state/useState.ts";
 
 export default {
   name: "Nav",
   components: {
     FontAwesomeIcon
   },
-  data() {
-    return {
-      options: [
-        {
-          title: "Save",
-          class: "green-button",
-          icon: ["fas", "save"],
-          func: this.save
-        },
-        { title: "Share", class: "white-button", icon: ["fas", "share-alt"] },
-        {
-          title: "Files",
-          class: "white-button",
-          icon: ["fas", "folder-open"],
-          func: this.open
-        },
-        {
-          title: "New",
-          class: "white-button",
-          icon: ["fas", "plus"],
-          func: this.new
-        }
-      ],
-      filename: "",
-      xml: ""
-    };
-  },
-  methods: {
-    save() {
-      if (xml.value) {
-        const blob = new Blob([xml.value], {
-          type: "text/xml;charset=utf-8"
-        });
-        saveAs(blob, "hello.xml");
+  setup() {
+    const options = [
+      {
+        title: "Save",
+        class: "green-button",
+        icon: ["fas", "save"],
+        func: save
+      },
+      { title: "Share", class: "white-button", icon: ["fas", "share-alt"] },
+      {
+        title: "Files",
+        class: "white-button",
+        icon: ["fas", "folder-open"],
+        func: open
+      },
+      {
+        title: "New",
+        class: "white-button",
+        icon: ["fas", "plus"],
+        func: blocklyNew
       }
-    },
-    async open() {
-      const newxml = await openFile();
-      setXml(newxml);
-    },
-    new() {
-      Blockly.mainWorkspace.clear();
-    }
+    ];
+
+    return { filename, blocklyNew, options };
   }
 };
 </script>
