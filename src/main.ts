@@ -6,7 +6,7 @@ import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
 import "./scripts/state/useIcons";
-import "./main.css";
+import "./assets/css/main.css";
 
 createApp(App)
   .use(router)

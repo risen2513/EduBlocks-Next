@@ -4,7 +4,6 @@
       <img class="logo" src="https://i.ibb.co/2Zp0pyw/weblogo.png" />
     </a>
 
-    <!-- responsive-->
     <input id="bmenub" type="checkbox" class="show" />
     <label for="bmenub" class="burger pseudo button">menu</label>
 
@@ -32,7 +31,8 @@
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { saveAs } from "file-saver";
-import { openFile } from "../scripts/functions/openFile";
+import { openFile } from "../scripts/openFile";
+import { setXml } from "./blockly/Blockly";
 import { xml } from "../scripts/state/useState.ts";
 
 export default {
@@ -78,9 +78,7 @@ export default {
     },
     async open() {
       const newxml = await openFile();
-      const textToDom = Blockly.Xml.textToDom(newxml);
-      const workspace = Blockly.mainWorkspace;
-      Blockly.Xml.domToWorkspace(textToDom, workspace);
+      setXml(newxml);
     },
     new() {
       Blockly.mainWorkspace.clear();
