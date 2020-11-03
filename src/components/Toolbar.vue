@@ -38,7 +38,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { pythonCode, updateView, view } from "../scripts/state/useState";
 
@@ -48,11 +48,18 @@ export default {
     FontAwesomeIcon
   },
   setup() {
-    const showPython = () => {
+    const showPython: Function = () => {
       console.log(pythonCode.value);
     };
 
-    const left = [
+    type Options = {
+      title: string;
+      class: string;
+      icon: Array<string>;
+      func?: Function;
+    };
+
+    const left: Options = [
       {
         title: "Split",
         class: "orange",
@@ -70,7 +77,7 @@ export default {
       }
     ];
 
-    const right = [
+    const right: Options = [
       {
         title: "Run",
         class: "green no-margin-right",

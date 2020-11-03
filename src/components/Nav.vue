@@ -28,7 +28,7 @@
   </nav>
 </template>
 
-<script>
+<script lang="ts">
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { blocklyNew } from "./blockly/Blockly";
 import { filename, open, save } from "../scripts/state/useState.ts";
@@ -39,7 +39,14 @@ export default {
     FontAwesomeIcon
   },
   setup() {
-    const options = [
+    type Options = {
+      title: string;
+      class: string;
+      icon: Array<string>;
+      func?: Function;
+    };
+
+    const options: Options = [
       {
         title: "Save",
         class: "green-button",

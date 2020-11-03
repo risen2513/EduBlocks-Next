@@ -16,8 +16,8 @@ export function setXml(xml: any | null) {
 
   Blockly.mainWorkspace.clear();
 
-  let start = null;
-  let new_xml =
+  let start: any = null;
+  let new_xml: string =
     '<xml xmlns="https://developers.google.com/blockly/xml"><block type="events_start_here" id="DI_start_here" x="' +
     25 +
     '" y="33" deletable="false" movable="false"></block></xml>';
@@ -26,8 +26,8 @@ export function setXml(xml: any | null) {
     start = xml.search("DI_start_here");
 
     if (start < 0) {
-      const first_block_position = xml.search("<block");
-      const start_block_xml =
+      const first_block_position: number = xml.search("<block");
+      const start_block_xml: string =
         '<block type="events_start_here" id="DI_start_here" x="' +
         25 +
         '" y="33" deletable="false" movable="false">';
@@ -44,22 +44,22 @@ export function setXml(xml: any | null) {
           "</next></block>" +
           xml.slice(pos_from_end_of_string);
       }
-      const textToDom = Blockly.Xml.textToDom(new_xml);
+      const textToDom: Element = Blockly.Xml.textToDom(new_xml);
       Blockly.Xml.domToWorkspace(textToDom, Blockly.mainWorkspace);
     } else {
-      const textToDom = Blockly.Xml.textToDom(xml);
+      const textToDom: Element = Blockly.Xml.textToDom(xml);
       Blockly.Xml.domToWorkspace(textToDom, Blockly.mainWorkspace);
     }
   } else {
-    const textToDom = Blockly.Xml.textToDom(new_xml);
+    const textToDom: Element = Blockly.Xml.textToDom(new_xml);
     Blockly.Xml.domToWorkspace(textToDom, Blockly.mainWorkspace);
   }
 }
 
 export async function loadBlockly() {
-  const toolbox = await getToolboxXml();
+  const toolbox: string = await getToolboxXml();
 
-  const options = {
+  const options: object = {
     media: "blockly/media/",
     renderer: "pxt",
     zoom: {
@@ -80,7 +80,10 @@ export async function loadBlockly() {
     toolbox
   };
 
-  const blocklyWorkspace = Blockly.inject(blocklyDiv.value, options);
+  const blocklyWorkspace: Blockly.WorkspaceSvg = Blockly.inject(
+    blocklyDiv.value,
+    options
+  );
 
   blocklyWorkspace.addChangeListener(Blockly.Events.disableOrphans);
 
@@ -99,11 +102,11 @@ export async function loadBlockly() {
 }
 
 export async function updateBlockly() {
-  const toolbox = await getToolboxXml();
+  const toolbox: string = await getToolboxXml();
 
   Blockly.mainWorkspace.dispose();
 
-  const options = {
+  const options: object = {
     media: "blockly/media/",
     renderer: "pxt",
     grid: {
@@ -115,7 +118,10 @@ export async function updateBlockly() {
     toolbox
   };
 
-  const blocklyWorkspace = Blockly.inject(blocklyDiv.value, options);
+  const blocklyWorkspace: Blockly.WorkspaceSvg = Blockly.inject(
+    blocklyDiv.value,
+    options
+  );
 
   pythonCode.value = Blockly.Python.workspaceToCode(blocklyWorkspace);
 

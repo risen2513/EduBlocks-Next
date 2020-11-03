@@ -1,19 +1,19 @@
-import { ref } from "vue";
+import { ref, Ref } from "vue";
 import { setXml } from "@/components/blockly/Blockly";
 import { openFile } from "@/scripts/openFile";
 import { saveAs } from "file-saver";
 
 // Global State
-const pythonCode = ref("");
-const xml = ref("");
-const mode = ref("Split");
-const view = ref("");
-const blocklyDiv = ref("");
-const filename = ref("");
+const pythonCode: Ref<string> = ref("");
+const xml: Ref<string> = ref("");
+const mode: Ref<string> = ref("Split");
+const view: Ref<string> = ref("");
+const blocklyDiv: Ref<string> = ref("");
+const filename: Ref<string> = ref("");
 
 // Global Functions
 
-const resizeWindow = () => {
+const resizeWindow: Function = () => {
   window.dispatchEvent(new Event("resize"));
 };
 
@@ -24,7 +24,7 @@ async function updateView(data: string) {
 }
 
 async function open() {
-  const newxml = await openFile();
+  const newxml: string = await openFile();
   setXml(newxml);
 }
 
@@ -33,7 +33,7 @@ function save() {
     const blob = new Blob([xml.value], {
       type: "text/xml;charset=utf-8"
     });
-    let saveFileName;
+    let saveFileName: string;
     if (filename.value) {
       saveFileName = filename.value + ".xml";
     } else {
