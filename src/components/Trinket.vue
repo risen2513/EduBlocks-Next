@@ -6,7 +6,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { pythonCode } from "@/scripts/state/useState";
 import { ref } from "vue";
 export default {
@@ -15,7 +15,7 @@ export default {
     version: String
   },
   setup(props) {
-    const getTrinketURL: Function = () => {
+    const getTrinketURL = () => {
       let url;
       const python = ref(pythonCode.value);
       const usrBin = "#!/usr/bin/python3 \n";
