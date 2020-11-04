@@ -15,6 +15,7 @@ const view: Ref<string> = ref("");
 const blocklyDiv: Ref<string> = ref("");
 const filename: Ref<string> = ref("");
 const runWindow: Ref<boolean> = ref(false);
+const pythonFontSize: Ref<number> = ref(16);
 
 // Global Functions
 
@@ -48,6 +49,22 @@ const stopPythonCode: Function = () => {
   runWindow.value = false;
 };
 
+const changePythonFontSize: Function = (direction: string) => {
+  const codeMirrorContainer = document.getElementsByClassName(
+    "CodeMirror"
+  ) as HTMLCollectionOf<HTMLElement>;
+  const codeMirror = codeMirrorContainer[0];
+  const initalFontSize = window
+    .getComputedStyle(codeMirror, null)
+    .getPropertyValue("font-size");
+  const fontSize = parseFloat(initalFontSize);
+  if (direction === "in") {
+    codeMirror.style.fontSize = fontSize + 3 + "px";
+  } else {
+    codeMirror.style.fontSize = fontSize - 3 + "px";
+  }
+};
+
 function save() {
   if (xml.value) {
     const blob = new Blob([xml.value], {
@@ -72,6 +89,8 @@ export {
   blocklyDiv,
   filename,
   runWindow,
+  pythonFontSize,
+  changePythonFontSize,
   updateView,
   open,
   save,

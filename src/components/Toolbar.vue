@@ -28,6 +28,7 @@
         <font-awesome-icon class="button-icon" :icon="['fas', 'play']" />
         Run
       </a>
+
       <a
         href="#"
         class="button right red no-margin-right"
@@ -40,6 +41,30 @@
         />
         Stop
       </a>
+
+      <a
+        href="#"
+        class="button right blue"
+        @click="changePythonFontSize('in')"
+        v-if="view !== 'Blocks'"
+      >
+        <font-awesome-icon
+          class="button-icon no-icon-margin"
+          :icon="['fas', 'search-plus']"
+        />
+      </a>
+
+      <a
+        href="#"
+        class="button right blue"
+        @click="changePythonFontSize('out')"
+        v-if="view !== 'Blocks'"
+      >
+        <font-awesome-icon
+          class="button-icon no-icon-margin"
+          :icon="['fas', 'search-minus']"
+        />
+      </a>
     </div>
   </div>
 </template>
@@ -51,7 +76,8 @@ import {
   view,
   runWindow,
   runPythonCode,
-  stopPythonCode
+  stopPythonCode,
+  changePythonFontSize
 } from "../scripts/state/useState";
 import { onMounted } from "vue";
 
@@ -89,7 +115,8 @@ export default {
       updateView,
       runWindow,
       runPythonCode,
-      stopPythonCode
+      stopPythonCode,
+      changePythonFontSize
     };
   }
 };
@@ -108,8 +135,16 @@ export default {
   background-color: rgb(68, 87, 160);
 }
 
+.blue {
+  background-color: #15bad4;
+}
+
 .right {
   float: right;
+}
+
+.no-icon-margin {
+  margin: 0 0em 0 0 !important;
 }
 
 .no-margin-right {

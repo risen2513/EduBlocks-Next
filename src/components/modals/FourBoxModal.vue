@@ -18,7 +18,12 @@
           <img :src="option.image" />
           <div class="optionButtonContainer">
             <button class="optionSelectButton">{{ option.title }}</button>
-            <div class="optionHelpButtonContainer"></div>
+            <div class="optionHelpButtonContainer">
+              <font-awesome-icon
+                class="button-icon"
+                :icon="['fas', 'question-circle']"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -28,10 +33,14 @@
 
 <script lang="ts">
 import { switchMode } from "@/scripts/state/useState";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 export default {
   name: "FourBoxModal",
   props: {
     options: Array
+  },
+  components: {
+    FontAwesomeIcon
   },
   setup() {
     return { switchMode };
@@ -137,6 +146,8 @@ export default {
   position: absolute;
   bottom: 0;
   right: 0;
+  padding-top: 6px;
+  color: white;
   width: 40px;
   height: 37px;
   background: #e71d64;
