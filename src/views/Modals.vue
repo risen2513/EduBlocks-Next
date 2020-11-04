@@ -1,11 +1,21 @@
 <template>
-  <Modal
-    identifier="PlatformSelect"
-    :visible="currentModal === 'PlatformSelect'"
-    :clickToExit="false"
-  >
-    <FourBoxModal :options="platformSelectOptions" />
-  </Modal>
+  <div>
+    <Modal
+      identifier="PlatformSelect"
+      :visible="currentModal === 'PlatformSelect'"
+      :clickToExit="false"
+    >
+      <FourBoxModal :options="platformSelectOptions" />
+    </Modal>
+
+    <Modal
+      identifier="LoginModal"
+      :visible="currentModal === 'LoginModal'"
+      :clickToExit="true"
+    >
+      <LoginModal />
+    </Modal>
+  </div>
 </template>
 
 <script>
@@ -13,12 +23,14 @@ import Modal from "@/components/modals/Modal.vue";
 import { openModal, currentModal } from "@/scripts/state/useModalState";
 import { switchMode } from "@/scripts/state/useState";
 import FourBoxModal from "@/components/modals/FourBoxModal.vue";
+import LoginModal from "@/components/modals/LoginModal.vue";
 
 export default {
   name: "modals",
   components: {
     Modal,
-    FourBoxModal
+    FourBoxModal,
+    LoginModal
   },
   setup() {
     openModal("PlatformSelect");

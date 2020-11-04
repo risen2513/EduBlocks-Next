@@ -12,10 +12,17 @@ import {
   faQuestionCircle,
   faTimesCircle,
   faSearchMinus,
-  faSearchPlus
+  faSearchPlus,
+  faSignInAlt,
+  faBars
 } from "@fortawesome/free-solid-svg-icons";
 
-import { faPython } from "@fortawesome/free-brands-svg-icons";
+import {
+  faPython,
+  faGoogle,
+  faWindows,
+  faApple
+} from "@fortawesome/free-brands-svg-icons";
 
 library.add(
   faCheck,
@@ -31,5 +38,10 @@ library.add(
   faQuestionCircle,
   faTimesCircle,
   faSearchMinus,
-  faSearchPlus
+  faSearchPlus,
+  faSignInAlt,
+  faBars,
+  faGoogle,
+  faWindows,
+  faApple
 );

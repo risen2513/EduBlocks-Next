@@ -7,6 +7,16 @@
     <input id="bmenub" type="checkbox" class="show" />
     <label for="bmenub" class="burger pseudo button">menu</label>
 
+    <div class="login">
+      <a class="button" @click="openModal('LoginModal')"
+        ><font-awesome-icon
+          class="button-icon"
+          :icon="['fas', 'sign-in-alt']"
+        />
+        Login
+      </a>
+    </div>
+
     <div class="menu">
       <input class="filename" placeholder="Untitled" v-model="filename" />
       <a
@@ -82,6 +92,34 @@ nav .brand {
 
 .menu {
   float: left;
+}
+
+.burger {
+  color: white;
+}
+
+.login {
+  color: white;
+  border-radius: 5px;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  float: right;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.login a {
+  background: rgba(0, 0, 0, 0);
+}
+
+.floatRight {
+  float: right;
+}
+
+.noMarginButton {
+  margin-right: 0px !important;
 }
 
 .button-icon {
