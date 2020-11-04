@@ -1,0 +1,13 @@
+<category name="MoveMini" colour="#02AD4D" iconclass="blocklyTreeIconCustom robot">
+<label text="Kitronik MoveMini" web-class="myLabelStyle"></label>
+ <block type="import_movemini"></block>
+ <block type="movemini_init"></block>
+ <block type="movemini_direction">
+    <value name="NAME">
+        <shadow type="textinline">
+        <field name="text">1000</field>
+    </shadow>
+    </value>
+  </block>
+  <block type="movemini_stop"></block>
+</category>

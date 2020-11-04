@@ -1,0 +1,33 @@
+<category name="BitBot XL" colour="#000000" iconclass="blocklyTreeIconCustom robot">
+<label text="BitBot XL" web-class="myLabelStyle"></label>
+ <block type="import_bitbot"></block>
+ <block type="bitbot_init"></block>
+ <block type="bitbot_direction">
+    <value name="NAME">
+        <shadow type="sliderinlinerobot">
+        </shadow>
+    </value>
+  </block>
+  <block type="bitbot_stop">
+  <value name="stop">
+        <shadow type="textinline">
+        <field name="text">brake=False</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="bitbot_sonar"></block>
+  <block type="bitbotneovarnew">
+  <value name="text">
+      <shadow type="textinline">
+        <field name="text">0</field>
+      </shadow>
+    </value>
+  <value name="text1">
+      <shadow type="textinline">
+        <field name="text">255, 0, 128</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="bitbotneoshow"></block>
+  <block type="bitbotneoclear"></block>
+</category>

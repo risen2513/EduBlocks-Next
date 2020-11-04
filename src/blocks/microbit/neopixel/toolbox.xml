@@ -1,0 +1,25 @@
+<category name="Neopixel" colour="#16E57E" iconclass="blocklyTreeIconCustom neopixel"> 
+  <label text="NeoPixel" web-class="myLabelStyle"></label>
+  <block type="importneo"></block>
+  <block type="setneonew">
+  <value name="text">
+      <shadow type="textinline">
+        <field name="text">pin1, 8</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="neovarnew">
+  <value name="text">
+      <shadow type="textinline">
+        <field name="text">0</field>
+      </shadow>
+    </value>
+  <value name="text1">
+      <shadow type="textinline">
+        <field name="text">255, 0, 128</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="neoshow"></block>
+  <block type="neoclear"></block>
+</category>

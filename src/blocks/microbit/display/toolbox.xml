@@ -1,0 +1,40 @@
+<category name="Display" colour="#C3E516" iconclass="blocklyTreeIconCustom display">
+  <label text="Display" web-class="myLabelStyle"></label>
+  <block type="scrollnew">
+    <value name="displaytext">
+      <shadow type="textinline">
+        <field name="text">Hello World</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="scrollvarnew">
+
+    <value name="displaytextvar">
+      <shadow type="textinline">
+        <field name="text">0</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="imagenew">
+    <value name="imagevar">
+      <shadow type="textinline">
+        <field name="text">Image.HAPPY</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="expressions"></block>
+  <block type="clocks"></block>
+  <block type="shapes"></block>
+  <block type="animals"></block>
+  <block type="setpixelnew">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text">0, 0, 5</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="disclear"></block>
+  <block type="disonoff"></block>
+  <block type="imagecreate"></block>
+</category>

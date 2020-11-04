@@ -1,0 +1,43 @@
+<category name="EDU:BIT" colour="#ff4800" iconclass="blocklyTreeIconCustom minecraft">
+    
+    <label text="Import" web-class="myLabelStyle"></label>
+    <block type="import_edubit"></block>
+    <block type="power_state_monitor"></block>
+
+    <label text="Motors" web-class="myLabelStyle"></label>
+    <block type="brake_motor"></block>
+    <block type="run_motor">
+      <value name="speed">
+        <shadow type="textinline">
+          <field name="text">128</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="disable_servo"></block>
+    <block type="set_servo_position">
+      <value name="position">
+        <shadow type="textinline">
+          <field name="text">90</field>
+        </shadow>
+      </value>
+    </block>
+
+    <label text="Traffic_Light_Bit" web-class="myLabelStyle"></label>
+    <block type="set_led"></block>
+
+    <label text="Sound_Bit" web-class="myLabelStyle"></label>
+    <block type="sound_level"></block>
+
+    <label text="Potentio_Bit" web-class="myLabelStyle"></label>
+    <block type="pot_level"></block>
+
+    <label text="IR_Bit" web-class="myLabelStyle"></label>
+    <block type="ir_state"></block>
+    <block type="ir_triggered"></block>
+     
+    <label text="Power" web-class="myLabelStyle"></label>
+    <block type="low_batt"></block>
+    <block type="over_voltage"></block>
+    <block type="read_vin"></block>
+    <!-- BLOCK CODE HERE -->
+</category>

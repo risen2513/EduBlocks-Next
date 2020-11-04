@@ -1,0 +1,12 @@
+<category name="DriveBit" colour="#c51a4a" iconclass="blocklyTreeIconCustom robot">
+<label text="DriveBit" web-class="myLabelStyle"></label>
+ <block type="import_DriveBit"></block>
+ <block type="DriveBit_init"></block>
+ <block type="DriveBit_direction">
+    <value name="NAME">
+        <shadow type="sliderinlinerobot">
+        </shadow>
+    </value>
+  </block>
+  <block type="DriveBit_stop"></block>
+</category>

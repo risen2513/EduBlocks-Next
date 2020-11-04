@@ -52,14 +52,7 @@ export default {
       console.log(pythonCode.value);
     };
 
-    type Options = {
-      title: string;
-      class: string;
-      icon: Array<string>;
-      func?: Function;
-    };
-
-    const left: Options = [
+    const left = [
       {
         title: "Split",
         class: "orange",
@@ -77,7 +70,7 @@ export default {
       }
     ];
 
-    const right: Options = [
+    const right = [
       {
         title: "Run",
         class: "green no-margin-right",

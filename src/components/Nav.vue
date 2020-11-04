@@ -1,7 +1,7 @@
 <template>
   <nav class="demo">
     <a href="#" class="brand">
-      <img class="logo" src="https://i.ibb.co/2Zp0pyw/weblogo.png" />
+      <img class="logo" src="/assets/images/logos/mainlogo.png" />
     </a>
 
     <input id="bmenub" type="checkbox" class="show" />
@@ -31,7 +31,7 @@
 <script lang="ts">
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { blocklyNew } from "./blockly/Blockly";
-import { filename, open, save } from "../scripts/state/useState.ts";
+import { filename, open, save } from "../scripts/state/useState";
 
 export default {
   name: "Nav",
@@ -39,14 +39,7 @@ export default {
     FontAwesomeIcon
   },
   setup() {
-    type Options = {
-      title: string;
-      class: string;
-      icon: Array<string>;
-      func?: Function;
-    };
-
-    const options: Options = [
+    const options = [
       {
         title: "Save",
         class: "green-button",

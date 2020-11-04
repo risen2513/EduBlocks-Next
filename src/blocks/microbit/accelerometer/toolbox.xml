@@ -1,0 +1,20 @@
+<category name="Accelerometer" colour="#E57E16" iconclass="blocklyTreeIconCustom acc">
+    <label text="Accelerometer" web-class="myLabelStyle"></label>
+    <block type="accisgesturenew">
+    <value name="text">
+      <shadow type="accgestures">
+        <field name="gestures">'shake'</field>
+      </shadow>
+    </value>
+  </block>
+    <block type="accwasgesturenew">
+    <value name="text">
+      <shadow type="accgestures">
+        <field name="gestures">'shake'</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="accgestures"></block>
+  <block type="acccurrentgesture"></block>
+  <block type="accget"></block>
+</category> 

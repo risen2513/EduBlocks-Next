@@ -1,12 +1,16 @@
 import { ref, Ref } from "vue";
-import { setXml } from "@/components/blockly/Blockly";
+import { setXml, updateBlockly } from "@/components/blockly/Blockly";
 import { openFile } from "@/scripts/openFile";
 import { saveAs } from "file-saver";
+import { closeModal } from "./useModalState";
 
 // Global State
+
+type modes = "" | "python" | "microbit" | "raspberrypi" | "circuitpython";
+
 const pythonCode: Ref<string> = ref("");
 const xml: Ref<string> = ref("");
-const mode: Ref<string> = ref("Split");
+const mode: Ref<modes> = ref("");
 const view: Ref<string> = ref("");
 const blocklyDiv: Ref<string> = ref("");
 const filename: Ref<string> = ref("");
@@ -27,6 +31,13 @@ async function open() {
   const newxml: string = await openFile();
   setXml(newxml);
 }
+
+const switchMode: Function = (modeKey: modes) => {
+  mode.value = modeKey;
+  updateBlockly();
+  closeModal();
+  console.log(mode.value);
+};
 
 function save() {
   if (xml.value) {
@@ -53,5 +64,6 @@ export {
   filename,
   updateView,
   open,
-  save
+  save,
+  switchMode
 };

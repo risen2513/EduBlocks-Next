@@ -1,0 +1,14 @@
+<category name="Microphone" colour="#008080" iconclass="blocklyTreeIconCustom microphone">
+<label text="Microphone" web-class="myLabelStyle"></label>
+  <block type="microphone_current"></block>
+  <block type="microphone_sound"></block>
+  <block type="microphone_level"></block>
+  <block type="microphone_wassound">
+    <value name="level">
+      <shadow type="textinline">
+        <field name="text">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="microphone_getsounds"></block>
+</category>

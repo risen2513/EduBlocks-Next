@@ -1,0 +1,21 @@
+<category name="Radio" colour="#7EE516" iconclass="blocklyTreeIconCustom radio">
+<label text="Radio" web-class="myLabelStyle"></label>
+  <block type="imradio"></block>
+  <block type="radioon"></block>
+  <block type="radiosendnew">
+  <value name="text">
+      <shadow type="textinline">
+        <field name="text">"hello"</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="radioconfnew">
+  <value name="text">
+      <shadow type="textinline">
+        <field name="text">channel=7</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="ifradio"></block>
+  <block type="incoming"></block>
+</category>

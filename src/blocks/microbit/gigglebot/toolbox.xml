@@ -1,0 +1,81 @@
+<category name="GiggleBot" colour="#46BFB1" iconclass="blocklyTreeIconCustom robot">
+<label text="GiggleBot" web-class="myLabelStyle"></label>
+ <block type="import_gigglebot"></block>
+ <block type="gigglebot_init"></block>
+ <block type="drive"></block>
+<block type="drive_x_milliseconds">
+    <value name="milliseconds">
+    <shadow type="textinline">
+        <field name="text">1000</field>
+    </shadow>
+    </value>
+  </block>
+
+  <block type="turn"></block>
+
+  <block type="turn_x_milliseconds">
+    <value name="milliseconds">
+    <shadow type="textinline">
+        <field name="text">1000</field>
+    </shadow>
+    </value>
+  </block>
+
+<block type="stop"></block>
+<block type="set_speed">
+    <value name="power_left">
+    <shadow type="textinline">
+        <field name="text">100</field>
+    </shadow>
+    </value>
+    <value name="power_right">
+    <shadow type="textinline">
+        <field name="text">100</field>
+    </shadow>
+    </value>
+</block>
+<block type="set_servo">
+    <value name="degrees">
+    <shadow type="textinline">
+        <field name="text">90</field>
+    </shadow>
+    </value>
+</block>
+<block type="servo_off"></block>
+<block type="set_smile">
+    <value name="R">
+    <shadow type="textinline">
+        <field name="text">0</field>
+    </shadow>
+    </value>
+    <value name="G">
+    <shadow type="textinline">
+        <field name="text">0</field>
+    </shadow>
+    </value>
+    <value name="B">
+    <shadow type="textinline">
+        <field name="text">0</field>
+    </shadow>
+    </value>
+</block>
+<block type="set_eyes">
+    <value name="R">
+    <shadow type="textinline">
+        <field name="text">0</field>
+    </shadow>
+    </value>
+    <value name="G">
+    <shadow type="textinline">
+        <field name="text">0</field>
+    </shadow>
+    </value>
+    <value name="B">
+    <shadow type="textinline">
+        <field name="text">0</field>
+    </shadow>
+    </value>
+</block>
+<block type="read_sensor"></block>
+<block type="volt"></block>
+</category>

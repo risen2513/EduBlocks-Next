@@ -1,0 +1,61 @@
+<category name="Pins" colour="#E51616" iconclass="blocklyTreeIconCustom pins">
+<label text="Pins" web-class="myLabelStyle"></label>
+  <block type="pintouchednew">
+  <value name="text">
+      <shadow type="textinline">
+        <field name="text">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="logotouched"></block>
+  <block type="analogreadnew">
+  <value name="text">
+      <shadow type="textinline">
+        <field name="text">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="digitalreadnew">
+  <value name="text">
+      <shadow type="textinline">
+        <field name="text">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="pin_speaker"></block>
+  <block type="writeanalognew">
+  <value name="text">
+      <shadow type="textinline">
+        <field name="text">0</field>
+      </shadow>
+    </value>
+  <value name="text1">
+      <shadow type="sliderinline">
+      </shadow>
+    </value>
+  </block>
+  <block type="writedigitalnew">
+  <value name="text">
+      <shadow type="textinline">
+        <field name="text">0</field>
+      </shadow>
+    </value>
+  <value name="text1">
+      <shadow type="sliderinline">
+      </shadow>
+    </value>
+  </block>
+ <block type="pin_pull">
+  <value name="text">
+      <shadow type="textinline">
+        <field name="text">0</field>
+      </shadow>
+    </value>
+  <value name="text1">
+      <shadow type="textinline">
+        <field name="text">pin0.NO_PULL</field>
+      </shadow>
+    </value>
+  </block>
+</category>
+

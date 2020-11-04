@@ -1,6 +1,7 @@
 <template>
   <div id="app" style="display: flex;">
     <Blockly v-show="view !== 'Python'" />
+
     <codemirror
       :value="pythonCode"
       :options="{
@@ -12,6 +13,8 @@
       :class="[view === 'Python' ? 'fullPython' : 'python']"
       v-if="view !== 'Blocks'"
     ></codemirror>
+
+    <Modals />
   </div>
 </template>
 
@@ -19,7 +22,10 @@
 import Blockly from "../components/blockly/Blockly.vue";
 import { useToast } from "vue-toastification";
 import { onMounted } from "vue";
+
 import { pythonCode, view } from "../scripts/state/useState";
+import Modals from "./Modals.vue";
+
 import { codemirror } from "vue-codemirror-lite";
 import "codemirror/mode/python/python";
 import "codemirror/theme/material-darker.css";
@@ -28,7 +34,8 @@ export default {
   name: "page",
   components: {
     Blockly,
-    codemirror
+    codemirror,
+    Modals
   },
   setup() {
     const toast = useToast();

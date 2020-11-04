@@ -1,0 +1,14 @@
+<category name="envirobit" colour="20">
+    <block type="import_envirobit"></block>
+    <block type="temperature"></block>
+    <block type="pressure"></block>
+    <block type="humidity"></block>
+    <block type="altitude"></block>
+    <block type="set_qnh">
+        <value name="VALUE">
+            <shadow type="textinline">
+                <field name="text">value</field>
+            </shadow>
+        </value>
+    </block>
+</category>

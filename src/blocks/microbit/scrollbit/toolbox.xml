@@ -1,0 +1,61 @@
+<category name="scrollbit" colour="843" iconclass="blocklyTreeIconCustom scroll">
+    <label text="Pimoroni scroll:bit" web-class="myLabelStyle"></label>
+    <block type="scrollbit_import"></block>
+
+    <block type="scrollbit_scroll">
+    <value name="text">
+      <shadow type="stringinline">
+        <field name="text">Hello World</field>
+      </shadow>
+    </value>
+  </block>
+
+
+    <block type="scrollbit_write">
+    <value name="text">
+      <shadow type="stringinline">
+        <field name="text">Hi!</field>
+      </shadow>
+    </value>
+    </block>
+    <block type="scrollbit_draw">
+    <value name="text1">
+      <shadow type="textinline">
+        <field name="text">col</field>
+      </shadow>
+    </value>
+
+    <value name="text2">
+      <shadow type="textinline">
+        <field name="text">row</field>
+      </shadow>
+    </value>
+
+    <value name="text3">
+      <shadow type="textinline">
+        <field name="text">icon</field>
+      </shadow>
+    </value>
+    </block>
+    <block type="scrollbit_pixel">
+    <value name="text1">
+      <shadow type="textinline">
+        <field name="text">col</field>
+      </shadow>
+    </value>
+
+    <value name="text2">
+      <shadow type="textinline">
+        <field name="text">row</field>
+      </shadow>
+    </value>
+
+    <value name="text3">
+      <shadow type="textinline">
+        <field name="text">255</field>
+      </shadow>
+    </value>
+    </block>
+    <block type="scrollbit_show"></block>
+    <block type="scrollbit_clear"></block>
+</category>

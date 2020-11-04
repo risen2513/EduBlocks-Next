@@ -1,0 +1,25 @@
+<category name="Speech" colour="#16E5E5" iconclass="blocklyTreeIconCustom speech">
+<label text="Speech" web-class="myLabelStyle"></label>
+    <block type="imspeech"></block>
+    <block type="speechsaynew">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text">I am a DALEK - EXTERMINATE</field>
+      </shadow>
+    </value>
+    </block>
+    <block type="speechpronew">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text">/HEHLOW</field>
+      </shadow>
+    </value>
+    </block>
+    <block type="speechsingnew">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text">hello</field>
+      </shadow>
+    </value>
+    </block>
+</category>
