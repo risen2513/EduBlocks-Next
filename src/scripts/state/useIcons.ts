@@ -9,7 +9,8 @@ import {
   faCube,
   faPlay,
   faUpload,
-  faQuestionCircle
+  faQuestionCircle,
+  faTimesCircle
 } from "@fortawesome/free-solid-svg-icons";
 
 import { faPython } from "@fortawesome/free-brands-svg-icons";
@@ -25,5 +26,6 @@ library.add(
   faPython,
   faPlay,
   faUpload,
-  faQuestionCircle
+  faQuestionCircle,
+  faTimesCircle
 );

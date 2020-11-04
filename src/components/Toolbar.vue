@@ -21,18 +21,24 @@
     <div class="toolbar-column">
       <a
         href="#"
-        v-for="option in right"
-        :class="option.class"
-        class="button right"
-        :key="option.title"
-        @click="option.func"
+        class="button right green no-margin-right"
+        @click="runPythonCode"
+        v-if="!runWindow"
+      >
+        <font-awesome-icon class="button-icon" :icon="['fas', 'play']" />
+        Run
+      </a>
+      <a
+        href="#"
+        class="button right red no-margin-right"
+        @click="stopPythonCode"
+        v-if="runWindow"
       >
         <font-awesome-icon
-          v-if="option.icon"
           class="button-icon"
-          :icon="option.icon"
+          :icon="['fas', 'times-circle']"
         />
-        {{ option.title }}
+        Stop
       </a>
     </div>
   </div>
@@ -40,7 +46,13 @@
 
 <script lang="ts">
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { updateView, view, runWindow } from "../scripts/state/useState";
+import {
+  updateView,
+  view,
+  runWindow,
+  runPythonCode,
+  stopPythonCode
+} from "../scripts/state/useState";
 import { onMounted } from "vue";
 
 export default {
@@ -49,11 +61,6 @@ export default {
     FontAwesomeIcon
   },
   setup() {
-    const runPython: Function = () => {
-      runWindow.value = true;
-      console.log(runWindow.value);
-    };
-
     const left = [
       {
         title: "Split",
@@ -72,25 +79,17 @@ export default {
       }
     ];
 
-    const right = [
-      {
-        title: "Run",
-        class: "green no-margin-right",
-        icon: ["fas", "play"],
-        func: runPython
-      }
-    ];
     onMounted(() => {
       view.value = "Split";
-      runWindow.value = false;
     });
 
     return {
       left,
-      right,
       view,
       updateView,
-      runWindow
+      runWindow,
+      runPythonCode,
+      stopPythonCode
     };
   }
 };
@@ -119,6 +118,10 @@ export default {
 
 .green {
   background-color: #49b04d;
+}
+
+.red {
+  background-color: red;
 }
 
 .button-icon {

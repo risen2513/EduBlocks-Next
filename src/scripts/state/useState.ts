@@ -40,6 +40,14 @@ const switchMode: Function = (modeKey: modes) => {
   console.log(mode.value);
 };
 
+const runPythonCode: Function = () => {
+  runWindow.value = true;
+};
+
+const stopPythonCode: Function = () => {
+  runWindow.value = false;
+};
+
 function save() {
   if (xml.value) {
     const blob = new Blob([xml.value], {
@@ -67,5 +75,7 @@ export {
   updateView,
   open,
   save,
+  runPythonCode,
+  stopPythonCode,
   switchMode
 };
