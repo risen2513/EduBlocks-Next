@@ -1,6 +1,6 @@
 <template>
   <nav class="demo">
-    <a href="#" class="brand">
+    <a href="#" class="brand" @click="openModal('PlatformSelect')">
       <img class="logo" src="/assets/images/logos/mainlogo.png" />
     </a>
 
@@ -32,6 +32,7 @@
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { blocklyNew } from "./blockly/Blockly";
 import { filename, open, save } from "../scripts/state/useState";
+import { openModal } from "@/scripts/state/useModalState";
 
 export default {
   name: "Nav",
@@ -61,7 +62,7 @@ export default {
       }
     ];
 
-    return { filename, blocklyNew, options };
+    return { filename, blocklyNew, options, openModal };
   }
 };
 </script>

@@ -15,6 +15,8 @@
     ></codemirror>
 
     <Modals />
+
+    <Trinket version="python" v-if="runWindow" />
   </div>
 </template>
 
@@ -23,8 +25,9 @@ import Blockly from "../components/blockly/Blockly.vue";
 import { useToast } from "vue-toastification";
 import { onMounted } from "vue";
 
-import { pythonCode, view } from "../scripts/state/useState";
+import { pythonCode, view, runWindow } from "../scripts/state/useState";
 import Modals from "./Modals.vue";
+import Trinket from "@/components/Trinket.vue";
 
 import { codemirror } from "vue-codemirror-lite";
 import "codemirror/mode/python/python";
@@ -35,7 +38,8 @@ export default {
   components: {
     Blockly,
     codemirror,
-    Modals
+    Modals,
+    Trinket
   },
   setup() {
     const toast = useToast();
@@ -63,7 +67,7 @@ export default {
       });
     });
 
-    return { pythonCode, view };
+    return { pythonCode, view, runWindow };
   }
 };
 </script>
@@ -80,6 +84,7 @@ body {
 
 .python {
   width: 40%;
+  z-index: 1;
 }
 
 .fullPython {

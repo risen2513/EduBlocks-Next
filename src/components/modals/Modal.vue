@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div class="modal">
-      <input :id="identifier" type="checkbox" checked />
+      <input :id="identifier" type="checkbox" :checked="visible" />
       <label
         :for="[clickToExit === true ? identifier : 'whoops']"
         class="overlay"
@@ -17,7 +17,7 @@
 export default {
   name: "modal",
   props: {
-    checked: {
+    visible: {
       type: Boolean,
       default: false
     },

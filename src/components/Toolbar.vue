@@ -40,7 +40,8 @@
 
 <script lang="ts">
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { pythonCode, updateView, view } from "../scripts/state/useState";
+import { updateView, view, runWindow } from "../scripts/state/useState";
+import { onMounted } from "vue";
 
 export default {
   name: "toolbar",
@@ -48,8 +49,9 @@ export default {
     FontAwesomeIcon
   },
   setup() {
-    const showPython: Function = () => {
-      console.log(pythonCode.value);
+    const runPython: Function = () => {
+      runWindow.value = true;
+      console.log(runWindow.value);
     };
 
     const left = [
@@ -75,18 +77,20 @@ export default {
         title: "Run",
         class: "green no-margin-right",
         icon: ["fas", "play"],
-        func: showPython
+        func: runPython
       }
     ];
-
-    view.value = "Split";
+    onMounted(() => {
+      view.value = "Split";
+      runWindow.value = false;
+    });
 
     return {
       left,
       right,
-      showPython,
       view,
-      updateView
+      updateView,
+      runWindow
     };
   }
 };

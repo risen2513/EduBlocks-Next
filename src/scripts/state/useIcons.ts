@@ -8,8 +8,10 @@ import {
   faColumns,
   faCube,
   faPlay,
-  faUpload
+  faUpload,
+  faQuestionCircle
 } from "@fortawesome/free-solid-svg-icons";
+
 import { faPython } from "@fortawesome/free-brands-svg-icons";
 
 library.add(
@@ -22,5 +24,6 @@ library.add(
   faCube,
   faPython,
   faPlay,
-  faUpload
+  faUpload,
+  faQuestionCircle
 );

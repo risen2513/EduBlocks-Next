@@ -1,7 +1,7 @@
 <template>
   <Modal
     identifier="PlatformSelect"
-    v-if="currentModal === 'PlatformSelect'"
+    :visible="currentModal === 'PlatformSelect'"
     :clickToExit="false"
   >
     <FourBoxModal :options="platformSelectOptions" />

@@ -6,6 +6,10 @@ export async function getToolboxXml() {
     toolboxXML = "";
 
     toolboxXML = "<xml>";   
+
+    (await import('./general/definitions')).default(Blockly.Blocks);
+    (await import('./general/generators')).default(Blockly.Python as any);
+
     if (mode.value === "python"){
         (await import('./python/imports/definitions')).default(Blockly.Blocks);
         (await import('./python/imports/generators')).default(Blockly.Python as any);

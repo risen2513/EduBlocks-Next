@@ -14,6 +14,7 @@ const mode: Ref<modes> = ref("");
 const view: Ref<string> = ref("");
 const blocklyDiv: Ref<string> = ref("");
 const filename: Ref<string> = ref("");
+const runWindow: Ref<boolean> = ref(false);
 
 // Global Functions
 
@@ -62,6 +63,7 @@ export {
   view,
   blocklyDiv,
   filename,
+  runWindow,
   updateView,
   open,
   save,
