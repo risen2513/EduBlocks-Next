@@ -8,13 +8,14 @@
     <label for="bmenub" class="burger pseudo button">menu</label>
 
     <div class="login">
-      <a class="button" @click="openModal('LoginModal')"
+      <a class="button" @click="openModal('LoginModal')" v-if="!userData"
         ><font-awesome-icon
           class="button-icon"
           :icon="['fas', 'sign-in-alt']"
         />
         Login
       </a>
+      <UserAvatar v-if="userData" />
     </div>
 
     <div class="menu">
@@ -41,13 +42,15 @@
 <script lang="ts">
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { blocklyNew } from "./blockly/Blockly";
-import { filename, open, save } from "../scripts/state/useState";
+import { filename, open, save, userData } from "../scripts/state/useState";
 import { openModal } from "@/scripts/state/useModalState";
+import UserAvatar from "@/components/UserAvatar.vue";
 
 export default {
   name: "Nav",
   components: {
-    FontAwesomeIcon
+    FontAwesomeIcon,
+    UserAvatar
   },
   setup() {
     const options = [
@@ -72,7 +75,7 @@ export default {
       }
     ];
 
-    return { filename, blocklyNew, options, openModal };
+    return { filename, blocklyNew, options, openModal, userData };
   }
 };
 </script>
@@ -83,11 +86,15 @@ nav {
 }
 
 nav .menu > * {
-  margin-right: 20px;
+  margin-right: 1rem;
 }
 
 nav .brand {
   padding: 0px;
+}
+
+.logo {
+  margin-right: 1rem;
 }
 
 .menu {
@@ -141,11 +148,10 @@ nav .brand {
 }
 
 .filename {
-  width: 247px;
+  width: 238px;
   color: black;
   border: solid white 1px !important;
   font-weight: bold;
-  margin-left: 11px;
   border-radius: 10px;
 }
 </style>

@@ -2,21 +2,33 @@
   <div class="toolbar">
     <div class="toolbar-column">
       <a
-        v-for="option in left"
-        :key="option.title"
-        :class="[view === option.title ? '' : 'toolbar-opacity']"
-        @click="updateView(option.title)"
+        href="#"
+        class="button orange"
+        :class="[view === 'Split' ? '' : 'toolbar-opacity']"
+        @click="updateView('Split')"
       >
-        <a href="#" :class="option.class" class="button">
-          <font-awesome-icon
-            v-if="option.icon"
-            class="button-icon"
-            :icon="option.icon"
-          />
-          {{ option.title }}
-        </a>
+        <font-awesome-icon class="button-icon" :icon="['fas', 'columns']" />
+        Split
       </a>
-      <h1></h1>
+      <a
+        href="#"
+        class="button pink"
+        :class="[view === 'Blocks' ? '' : 'toolbar-opacity']"
+        @click="updateView('Blocks')"
+        v-if="!runWindow"
+      >
+        <font-awesome-icon class="button-icon" :icon="['fas', 'cube']" />
+        Blocks
+      </a>
+      <a
+        href="#"
+        class="button purple"
+        :class="[view === 'Python' ? '' : 'toolbar-opacity']"
+        @click="updateView('Python')"
+      >
+        <font-awesome-icon class="button-icon" :icon="['fab', 'python']" />
+        Python
+      </a>
     </div>
     <div class="toolbar-column">
       <a
@@ -87,30 +99,11 @@ export default {
     FontAwesomeIcon
   },
   setup() {
-    const left = [
-      {
-        title: "Split",
-        class: "orange",
-        icon: ["fas", "columns"]
-      },
-      {
-        title: "Blocks",
-        class: "pink",
-        icon: ["fas", "cube"]
-      },
-      {
-        title: "Python",
-        class: "purple",
-        icon: ["fab", "python"]
-      }
-    ];
-
     onMounted(() => {
       view.value = "Split";
     });
 
     return {
-      left,
       view,
       updateView,
       runWindow,
@@ -125,10 +118,12 @@ export default {
 <style scoped>
 .orange {
   background-color: rgb(235, 154, 64);
+  margin-right: 1rem;
 }
 
 .pink {
   background-color: rgb(214, 54, 100);
+  margin-right: 1rem;
 }
 
 .purple {
@@ -141,6 +136,7 @@ export default {
 
 .right {
   float: right;
+  margin-right: 1rem;
 }
 
 .no-icon-margin {
@@ -183,7 +179,6 @@ export default {
 }
 
 .toolbar a {
-  margin-right: 0.6em;
   height: 2.5em;
   border-radius: 0px;
 }

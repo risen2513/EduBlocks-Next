@@ -17,6 +17,7 @@
     "browserify-fs": "^1.0.0",
     "core-js": "^3.6.5",
     "file-saver": "^2.0.2",
+    "firebase": "^8.0.0",
     "html-loader": "^1.3.2",
     "raw-loader": "^4.0.2",
     "require-text": "^0.0.1",

@@ -1,5 +1,5 @@
 import { ref, Ref } from "vue";
-import { setXml, updateBlockly } from "@/components/blockly/Blockly";
+import { setXml, loadBlockly } from "@/components/blockly/Blockly";
 import { openFile } from "@/scripts/openFile";
 import { saveAs } from "file-saver";
 import { closeModal } from "./useModalState";
@@ -16,6 +16,7 @@ const blocklyDiv: Ref<string> = ref("");
 const filename: Ref<string> = ref("");
 const runWindow: Ref<boolean> = ref(false);
 const pythonFontSize: Ref<number> = ref(16);
+const userData = ref();
 
 // Global Functions
 
@@ -36,12 +37,13 @@ async function open() {
 
 const switchMode: Function = (modeKey: modes) => {
   mode.value = modeKey;
-  updateBlockly();
+  loadBlockly();
   closeModal();
   console.log(mode.value);
 };
 
 const runPythonCode: Function = () => {
+  updateView("Split");
   runWindow.value = true;
 };
 
@@ -89,6 +91,7 @@ export {
   blocklyDiv,
   filename,
   runWindow,
+  userData,
   pythonFontSize,
   changePythonFontSize,
   updateView,

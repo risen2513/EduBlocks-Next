@@ -16,8 +16,8 @@ export function setXml(xml: any | null) {
 
   Blockly.mainWorkspace.clear();
 
-  let start: any = null;
-  let new_xml: string =
+  let start = null;
+  let new_xml =
     '<xml xmlns="https://developers.google.com/blockly/xml"><block type="events_start_here" id="DI_start_here" x="' +
     25 +
     '" y="33" deletable="false" movable="false"></block></xml>';
@@ -26,8 +26,8 @@ export function setXml(xml: any | null) {
     start = xml.search("DI_start_here");
 
     if (start < 0) {
-      const first_block_position: number = xml.search("<block");
-      const start_block_xml: string =
+      const first_block_position = xml.search("<block");
+      const start_block_xml =
         '<block type="events_start_here" id="DI_start_here" x="' +
         25 +
         '" y="33" deletable="false" movable="false">';
@@ -44,20 +44,24 @@ export function setXml(xml: any | null) {
           "</next></block>" +
           xml.slice(pos_from_end_of_string);
       }
-      const textToDom: Element = Blockly.Xml.textToDom(new_xml);
+      const textToDom = Blockly.Xml.textToDom(new_xml);
       Blockly.Xml.domToWorkspace(textToDom, Blockly.mainWorkspace);
     } else {
-      const textToDom: Element = Blockly.Xml.textToDom(xml);
+      const textToDom = Blockly.Xml.textToDom(xml);
       Blockly.Xml.domToWorkspace(textToDom, Blockly.mainWorkspace);
     }
   } else {
-    const textToDom: Element = Blockly.Xml.textToDom(new_xml);
+    const textToDom = Blockly.Xml.textToDom(new_xml);
     Blockly.Xml.domToWorkspace(textToDom, Blockly.mainWorkspace);
   }
 }
 
 export async function loadBlockly() {
   const toolbox: string = await getToolboxXml();
+
+  if (Blockly.mainWorkspace) {
+    Blockly.mainWorkspace.dispose();
+  }
 
   const options: object = {
     media: "blockly/media/",
@@ -101,52 +105,7 @@ export async function loadBlockly() {
   setXml("");
 }
 
-export async function updateBlockly() {
-  const toolbox: string = await getToolboxXml();
-
-  Blockly.mainWorkspace.dispose();
-
-  const options: object = {
-    media: "blockly/media/",
-    renderer: "pxt",
-    zoom: {
-      controls: true,
-      wheel: true,
-      startScale: 1.0,
-      maxScale: 3,
-      minScale: 0.3,
-      scaleSpeed: 1.2
-    },
-    pinch: true,
-    grid: {
-      spacing: 25,
-      length: 3,
-      colour: "#ccc",
-      snap: true
-    },
-    toolbox
-  };
-
-  const blocklyWorkspace: Blockly.WorkspaceSvg = Blockly.inject(
-    blocklyDiv.value,
-    options
-  );
-
-  pythonCode.value = Blockly.Python.workspaceToCode(blocklyWorkspace);
-
-  blocklyWorkspace.addChangeListener(() => {
-    xml.value = Blockly.Xml.domToPrettyText(
-      Blockly.Xml.workspaceToDom(blocklyWorkspace)
-    );
-    if (!blocklyWorkspace.isDragging()) {
-      pythonCode.value = Blockly.Python.workspaceToCode(blocklyWorkspace);
-    }
-  });
-
-  setXml("");
-}
-
 export function blocklyNew() {
-  updateBlockly();
+  loadBlockly();
   filename.value = "";
 }

@@ -6,31 +6,117 @@
       </div>
     </div>
     <div class="right">
-      <h1 class="loginTitle">
-        Login
-        <a class="close" @click="closeModal">Close</a>
-      </h1>
-      <form>
-        <label class="loginLabel">Email</label>
-        <input type="email" placeholder="user@example.com" class="loginInput" />
+      <div id="loginForm" v-if="!signUp">
+        <h1 class="loginTitle">
+          Login
+          <a class="close" @click="closeModal">Close</a>
+        </h1>
+        <form>
+          <label class="loginLabel">Email</label>
+          <input
+            type="email"
+            placeholder="user@example.com"
+            class="loginInput"
+            v-model="emailAddr"
+          />
 
-        <label class="loginLabel">Password</label>
-        <input type="password" placeholder="" class="loginInput" />
-        <button class="loginButton">Login</button>
-        <a class="signUp">Sign Up</a>
-        <button class="socialButtons google">
-          <font-awesome-icon class="button-icon" :icon="['fab', 'google']" />
-          Sign in with Google
-        </button>
-        <button class="socialButtons microsoft">
-          <font-awesome-icon class="button-icon" :icon="['fab', 'windows']" />
-          Sign in with Microsoft
-        </button>
-        <button class="socialButtons apple">
-          <font-awesome-icon class="button-icon" :icon="['fab', 'apple']" />
-          Sign in with Apple
-        </button>
-      </form>
+          <label class="loginLabel">Password</label>
+          <input
+            type="password"
+            placeholder=""
+            class="loginInput"
+            v-model="pwd"
+          />
+          <button class="loginButton" @click="signIn" type="button">
+            Login
+          </button>
+          <a class="signUp" @click="signUp = true">Sign Up</a>
+          <button
+            class="socialButtons google"
+            @click="googleSignIn"
+            type="button"
+          >
+            <font-awesome-icon class="button-icon" :icon="['fab', 'google']" />
+            Sign in with Google
+          </button>
+          <button
+            class="socialButtons microsoft"
+            @click="microsoftSignIn"
+            type="button"
+          >
+            <font-awesome-icon class="button-icon" :icon="['fab', 'windows']" />
+            Sign in with Microsoft
+          </button>
+          <button
+            class="socialButtons apple"
+            type="button"
+            @click="appleSignIn"
+          >
+            <font-awesome-icon class="button-icon" :icon="['fab', 'apple']" />
+            Sign in with Apple
+          </button>
+        </form>
+      </div>
+
+      <div id="signUpForm" v-else>
+        <h1 class="loginTitle">
+          Sign Up
+          <a class="close" @click="closeModal">Close</a>
+        </h1>
+        <form>
+          <label class="loginLabel">Name</label>
+          <input
+            type="email"
+            placeholder="John Appleseed"
+            class="loginInput"
+            v-model="name"
+          />
+
+          <label class="loginLabel">Email</label>
+          <input
+            type="email"
+            placeholder="user@example.com"
+            class="loginInput"
+            v-model="emailAddr"
+          />
+
+          <label class="loginLabel">Password</label>
+          <input
+            type="password"
+            placeholder=""
+            class="loginInput"
+            v-model="pwd"
+          />
+          <button class="loginButton" @click="register" type="button">
+            Sign Up
+          </button>
+          <a class="signUp" @click="signUp = false">Login</a>
+          <button
+            class="socialButtons google"
+            @click="googleSignIn"
+            type="button"
+          >
+            <font-awesome-icon class="button-icon" :icon="['fab', 'google']" />
+            Sign in with Google
+          </button>
+          <button
+            class="socialButtons microsoft"
+            type="button"
+            @click="microsoftSignIn"
+          >
+            <font-awesome-icon class="button-icon" :icon="['fab', 'windows']" />
+            Sign in with Microsoft
+          </button>
+          <button
+            class="socialButtons apple"
+            type="button"
+            @click="appleSignIn"
+          >
+            <font-awesome-icon class="button-icon" :icon="['fab', 'apple']" />
+            Sign in with Apple
+          </button>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -38,6 +124,9 @@
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { closeModal } from "@/scripts/state/useModalState";
+import { ref } from "vue";
+import firebase from "firebase";
+import { useToast } from "vue-toastification";
 
 export default {
   name: "LoginModal",
@@ -45,7 +134,101 @@ export default {
     FontAwesomeIcon
   },
   setup() {
-    return { closeModal };
+    const name = ref("");
+    const emailAddr = ref("");
+    const pwd = ref("");
+
+    const signUp = ref(false);
+
+    const toast = useToast();
+
+    const register = () => {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(emailAddr.value, pwd.value)
+        .then(data => {
+          data.user
+            .updateProfile({
+              displayName: name.value
+            })
+            .then(() => {
+              toast.success("Successfully Logged In!");
+              closeModal();
+            });
+        })
+        .catch(err => {
+          toast.error(err.message, { timeout: 6000, closeButton: false });
+        });
+    };
+
+    const signIn = () => {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(emailAddr.value, pwd.value)
+        .then(() => {
+          toast.success("Successfully Logged In!");
+          closeModal();
+        })
+        .catch(err => {
+          toast.error(err.message, { timeout: 6000, closeButton: false });
+        });
+    };
+
+    const googleSignIn = () => {
+      const provider = new firebase.auth.GoogleAuthProvider();
+
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(() => {
+          toast.success("Successfully Logged In!");
+          closeModal();
+        })
+        .catch(err => {
+          toast.error(err.message, { timeout: 6000, closeButton: false });
+        });
+    };
+
+    const appleSignIn = () => {
+      const provider = new firebase.auth.OAuthProvider("apple.com");
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(() => {
+          toast.success("Successfully Logged In!");
+          closeModal();
+        })
+        .catch(err => {
+          toast.error(err.message, { timeout: 6000, closeButton: false });
+        });
+    };
+
+    const microsoftSignIn = () => {
+      const provider = new firebase.auth.OAuthProvider("microsoft.com");
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(() => {
+          toast.success("Successfully Logged In!");
+          closeModal();
+        })
+        .catch(err => {
+          toast.error(err.message, { timeout: 6000, closeButton: false });
+        });
+    };
+
+    return {
+      closeModal,
+      name,
+      emailAddr,
+      pwd,
+      register,
+      signUp,
+      signIn,
+      googleSignIn,
+      appleSignIn,
+      microsoftSignIn
+    };
   }
 };
 </script>
@@ -56,7 +239,7 @@ export default {
 }
 
 .loginModal {
-  height: 490px;
+  height: 100%;
   width: 755px;
   display: flex;
 }
@@ -91,6 +274,12 @@ export default {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   padding: 25px;
+}
+
+.card .close,
+.modal .overlay ~ * .close {
+  top: 0.6em;
+  right: 0.7em;
 }
 
 .loginInput {
@@ -138,5 +327,6 @@ export default {
   margin-right: 20px;
   margin-bottom: 30px;
   display: block;
+  cursor: pointer;
 }
 </style>

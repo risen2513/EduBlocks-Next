@@ -9,7 +9,7 @@
 
 <script>
 import { mode, view, blocklyDiv } from "../../scripts/state/useState";
-import { loadBlockly, updateBlockly } from "./Blockly.ts";
+import { loadBlockly } from "./Blockly.ts";
 
 export default {
   name: "BlocklyComponent",
@@ -28,7 +28,7 @@ export default {
   methods: {
     updateMode() {
       mode.value = "Python";
-      updateBlockly();
+      loadBlockly();
     }
   },
   setup() {
