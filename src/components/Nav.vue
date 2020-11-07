@@ -20,20 +20,21 @@
 
     <div class="menu">
       <input class="filename" placeholder="Untitled" v-model="filename" />
-      <a
-        href="#"
-        v-for="option in options"
-        :class="option.class"
-        class="button"
-        :key="option.title"
-        @click="option.func"
-      >
-        <font-awesome-icon
-          v-if="option.icon"
-          class="button-icon"
-          :icon="option.icon"
-        />
-        {{ option.title }}
+      <a href="#" class="button green-button" @click="save">
+        <font-awesome-icon class="button-icon" :icon="['fas', 'save']" />
+        Save
+      </a>
+      <a href="#" class="button white-button" @click="openModal('FilesModal')">
+        <font-awesome-icon class="button-icon" :icon="['fas', 'share-alt']" />
+        Share
+      </a>
+      <a href="#" class="button white-button" @click="openFilesModal">
+        <font-awesome-icon class="button-icon" :icon="['fas', 'folder-open']" />
+        Files
+      </a>
+      <a href="#" class="button white-button" @click="blocklyNew">
+        <font-awesome-icon class="button-icon" :icon="['fas', 'plus']" />
+        New
       </a>
     </div>
   </nav>
@@ -42,9 +43,10 @@
 <script lang="ts">
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { blocklyNew } from "./blockly/Blockly";
-import { filename, open, save, userData } from "../scripts/state/useState";
+import { filename, save, userData } from "../scripts/state/useState";
 import { openModal } from "@/scripts/state/useModalState";
 import UserAvatar from "@/components/UserAvatar.vue";
+import { listFirebaseFiles } from "@/scripts/state/useFirebase";
 
 export default {
   name: "Nav",
@@ -53,29 +55,20 @@ export default {
     UserAvatar
   },
   setup() {
-    const options = [
-      {
-        title: "Save",
-        class: "green-button",
-        icon: ["fas", "save"],
-        func: save
-      },
-      { title: "Share", class: "white-button", icon: ["fas", "share-alt"] },
-      {
-        title: "Files",
-        class: "white-button",
-        icon: ["fas", "folder-open"],
-        func: open
-      },
-      {
-        title: "New",
-        class: "white-button",
-        icon: ["fas", "plus"],
-        func: blocklyNew
-      }
-    ];
+    const openFilesModal = () => {
+      listFirebaseFiles();
+      openModal("FilesModal");
+    };
 
-    return { filename, blocklyNew, options, openModal, userData };
+    return {
+      filename,
+      blocklyNew,
+      openModal,
+      userData,
+      save,
+      listFirebaseFiles,
+      openFilesModal
+    };
   }
 };
 </script>

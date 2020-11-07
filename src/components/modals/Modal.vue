@@ -2,10 +2,7 @@
   <transition name="fade">
     <div class="modal">
       <input :id="identifier" type="checkbox" :checked="visible" />
-      <label
-        :for="[clickToExit === true ? identifier : 'whoops']"
-        class="overlay"
-      ></label>
+      <label @click="closeModal" class="overlay"></label>
       <article>
         <slot></slot>
       </article>
@@ -13,7 +10,9 @@
   </transition>
 </template>
 
-<script lang="ts">
+<script>
+import { currentModal } from "@/scripts/state/useModalState";
+
 export default {
   name: "modal",
   props: {
@@ -26,6 +25,15 @@ export default {
       type: Boolean,
       default: true
     }
+  },
+  setup(props) {
+    const closeModal = () => {
+      if (props.clickToExit) {
+        currentModal.value = "";
+      }
+    };
+
+    return { closeModal };
   }
 };
 </script>

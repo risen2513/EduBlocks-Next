@@ -24,6 +24,11 @@ import {
   faApple
 } from "@fortawesome/free-brands-svg-icons";
 
+import {
+  faFolderOpen as faFolderOpenRegular,
+  faTimesCircle as faTimesCircleRegular
+} from "@fortawesome/free-regular-svg-icons";
+
 library.add(
   faCheck,
   faSave,
@@ -43,5 +48,7 @@ library.add(
   faBars,
   faGoogle,
   faWindows,
-  faApple
+  faApple,
+  faFolderOpenRegular,
+  faTimesCircleRegular
 );

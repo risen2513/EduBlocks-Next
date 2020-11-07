@@ -15,6 +15,14 @@
     >
       <LoginModal />
     </Modal>
+
+    <Modal
+      identifier="FilesModal"
+      :visible="currentModal === 'FilesModal'"
+      :clickToExit="true"
+    >
+      <FilesModal v-if="currentModal === 'FilesModal'" />
+    </Modal>
   </div>
 </template>
 
@@ -24,13 +32,15 @@ import { openModal, currentModal } from "@/scripts/state/useModalState";
 import { switchMode } from "@/scripts/state/useState";
 import FourBoxModal from "@/components/modals/FourBoxModal.vue";
 import LoginModal from "@/components/modals/LoginModal.vue";
+import FilesModal from "@/components/modals/FilesModal.vue";
 
 export default {
   name: "modals",
   components: {
     Modal,
     FourBoxModal,
-    LoginModal
+    LoginModal,
+    FilesModal
   },
   setup() {
     openModal("PlatformSelect");

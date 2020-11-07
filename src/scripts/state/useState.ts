@@ -3,6 +3,12 @@ import { setXml, loadBlockly } from "@/components/blockly/Blockly";
 import { openFile } from "@/scripts/openFile";
 import { saveAs } from "file-saver";
 import { closeModal } from "./useModalState";
+import firebase from "firebase";
+
+interface FirebaseFiles {
+  label: string;
+  ref: firebase.storage.Reference;
+}
 
 // Global State
 
@@ -17,6 +23,7 @@ const filename: Ref<string> = ref("");
 const runWindow: Ref<boolean> = ref(false);
 const pythonFontSize: Ref<number> = ref(16);
 const userData = ref();
+const files: Ref<FirebaseFiles[]> = ref([]);
 
 // Global Functions
 
@@ -33,6 +40,7 @@ async function updateView(data: string) {
 async function open() {
   const newxml: string = await openFile();
   setXml(newxml);
+  closeModal();
 }
 
 const switchMode: Function = (modeKey: modes) => {
@@ -92,11 +100,13 @@ export {
   filename,
   runWindow,
   userData,
+  files,
   pythonFontSize,
   changePythonFontSize,
   updateView,
   open,
   save,
+  FirebaseFiles,
   runPythonCode,
   stopPythonCode,
   switchMode
