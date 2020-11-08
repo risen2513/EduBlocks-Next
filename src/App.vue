@@ -3,7 +3,7 @@
     <Nav />
     <Toolbar />
     <div class="page">
-      <router-view></router-view>
+      <Page />
     </div>
   </div>
 </template>
@@ -11,12 +11,14 @@
 <script>
 import Nav from "./components/Nav.vue";
 import Toolbar from "./components/Toolbar.vue";
+import Page from "./views/Page.vue";
 
 export default {
   name: "app",
   components: {
     Nav,
-    Toolbar
+    Toolbar,
+    Page
   }
 };
 </script>

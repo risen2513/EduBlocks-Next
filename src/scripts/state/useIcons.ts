@@ -14,7 +14,9 @@ import {
   faSearchMinus,
   faSearchPlus,
   faSignInAlt,
-  faBars
+  faBars,
+  faDownload,
+  faUserFriends
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -50,5 +52,7 @@ library.add(
   faWindows,
   faApple,
   faFolderOpenRegular,
-  faTimesCircleRegular
+  faTimesCircleRegular,
+  faDownload,
+  faUserFriends
 );

@@ -2,7 +2,7 @@ import { ref, Ref } from "vue";
 import { setXml, loadBlockly } from "@/components/blockly/Blockly";
 import { openFile } from "@/scripts/openFile";
 import { saveAs } from "file-saver";
-import { closeModal } from "./useModalState";
+import { closeModal, openModal } from "./useModalState";
 import firebase from "firebase";
 
 interface FirebaseFiles {
@@ -25,7 +25,11 @@ const pythonFontSize: Ref<number> = ref(16);
 const userData = ref();
 const files: Ref<FirebaseFiles[]> = ref([]);
 const fileListKey: Ref<number> = ref(1);
-
+const isUser: Ref<Boolean> = ref(false);
+const isSaved: Ref<Boolean> = ref(false);
+const shortLink: Ref<string> = ref("");
+const currentFileRef = ref();
+const sharedXML: Ref<string> = ref("");
 // Global Functions
 
 const resizeWindow: Function = () => {
@@ -91,6 +95,39 @@ function save() {
   }
 }
 
+function savePython(fileName: string) {
+  if (xml.value) {
+    const blob = new Blob([pythonCode.value]);
+    let saveFileName: string;
+    saveFileName = fileName + ".py";
+    saveAs(blob, saveFileName);
+  }
+}
+
+async function share () {
+  let fileURL = currentFileRef.value.getDownloadURL();
+  let content = {
+    dynamicLinkInfo: {
+      domainUriPrefix: "https://project.edublocks.org",
+      link: "http://" + location.host + "/#share?" + mode.value + "?" + await btoa(await fileURL)
+    },
+    suffix: {
+      option: "SHORT"
+    }
+  };
+  fetch("https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=" + process.env.VUE_APP_API_KEY, {
+    method: "post",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(content)
+  })
+  .then(response => response.json())
+  .then(data => shortLink.value = data.shortLink)
+  .then(openModal("ShareModal"))
+}
+
+
 // Export State
 export {
   pythonCode,
@@ -98,16 +135,23 @@ export {
   mode,
   view,
   blocklyDiv,
+  isUser,
+  isSaved,
   filename,
+  sharedXML,
   runWindow,
   userData,
   files,
+  shortLink,
   pythonFontSize,
   changePythonFontSize,
   fileListKey,
+  currentFileRef,
+  savePython,
   updateView,
   open,
   save,
+  share,
   FirebaseFiles,
   runPythonCode,
   stopPythonCode,

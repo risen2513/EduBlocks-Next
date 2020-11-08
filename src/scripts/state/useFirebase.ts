@@ -1,10 +1,10 @@
 import firebase from "firebase";
-import { userData, files, switchMode, mode, fileListKey } from "./useState";
-import { closeModal, openModal } from "./useModalState";
+import { userData, files, switchMode, mode, isSaved, currentFileRef } from "./useState";
+import { closeModal } from "./useModalState";
 import { setXml } from "@/components/blockly/Blockly";
 
 const firebaseConfig: object = {
-  apiKey: "AIzaSyDsJfMGnGrAWKAGKm-sowLs1q_JfEGvF1Q",
+  apiKey: process.env.VUE_APP_API_KEY,
   authDomain: "auth.edublocks.org",
   databaseURL: "https://edublocks-38d74.firebaseio.com",
   projectId: "edublocks-38d74",
@@ -30,7 +30,6 @@ export const listFirebaseFiles = () => {
         ref: i
       }));
       files.value = firebaseFiles;
-      console.log(files.value);
     });
   } else {
     console.log("No User");
@@ -60,7 +59,9 @@ export const openFirebaseFile = (fileRef: firebase.storage.Reference) => {
       xhr.responseType = "text";
       xhr.onload = function() {
         closeModal();
-        setXml(xhr.responseText);
+        setXml(xhr.responseText); 
+        isSaved.value = true;
+        currentFileRef.value = fileRef;
       };
       xhr.open("GET", url);
       xhr.send();

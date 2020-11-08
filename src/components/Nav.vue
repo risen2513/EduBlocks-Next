@@ -19,16 +19,35 @@
     </div>
 
     <div class="menu">
-      <input class="filename" placeholder="Untitled" v-model="filename" />
+      <input
+        class="filename"
+        placeholder="Untitled"
+        v-model="filename"
+        v-if="mode !== 'CircuitPython'"
+      />
       <a href="#" class="button green-button" @click="saveFirebaseFile">
         <font-awesome-icon class="button-icon" :icon="['fas', 'save']" />
         Save
       </a>
-      <a href="#" class="button white-button" @click="openModal('FilesModal')">
+      <a
+        href="#"
+        class="button white-button"
+        @click="shareModalOpen"
+        v-if="userData"
+      >
         <font-awesome-icon class="button-icon" :icon="['fas', 'share-alt']" />
         Share
       </a>
-      <a href="#" class="button white-button" @click="openFilesModal">
+      <a href="#" class="button white-button" @click="open" v-if="!userData">
+        <font-awesome-icon class="button-icon" :icon="['fas', 'folder-open']" />
+        Open
+      </a>
+      <a
+        href="#"
+        class="button white-button"
+        @click="openFilesModal"
+        v-if="userData"
+      >
         <font-awesome-icon class="button-icon" :icon="['fas', 'folder-open']" />
         Files
       </a>
@@ -43,7 +62,18 @@
 <script lang="ts">
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { blocklyNew } from "./blockly/Blockly";
-import { filename, save, userData, mode, xml } from "../scripts/state/useState";
+import {
+  filename,
+  save,
+  userData,
+  mode,
+  xml,
+  isUser,
+  open,
+  isSaved,
+  currentFileRef,
+  share
+} from "../scripts/state/useState";
 import { openModal } from "@/scripts/state/useModalState";
 import UserAvatar from "@/components/UserAvatar.vue";
 import { listFirebaseFiles } from "@/scripts/state/useFirebase";
@@ -62,6 +92,14 @@ export default {
     const openFilesModal = () => {
       listFirebaseFiles();
       openModal("FilesModal");
+    };
+
+    const shareModalOpen = () => {
+      if (isSaved.value) {
+        share();
+      } else {
+        toast.error("Please save your code before sharing!");
+      }
     };
 
     const saveFirebaseFile = () => {
@@ -84,7 +122,9 @@ export default {
             toast.error(error.message);
           },
           function() {
+            currentFileRef.value = ref;
             toast.success(filename.value + " Sucessfully Saved!");
+            isSaved.value = true;
           }
         );
       } else {
@@ -98,9 +138,14 @@ export default {
       openModal,
       userData,
       save,
+      mode,
+      open,
+      shareModalOpen,
       listFirebaseFiles,
       openFilesModal,
-      saveFirebaseFile
+      saveFirebaseFile,
+      currentFileRef,
+      isUser
     };
   }
 };

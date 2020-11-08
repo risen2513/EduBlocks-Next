@@ -13,6 +13,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.14.0",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/vue-fontawesome": "^3.0.0-1",
+    "@soerenmartius/vue3-clipboard": "^0.1.0",
     "@types/file-saver": "^2.0.1",
     "browserify-fs": "^1.0.0",
     "core-js": "^3.6.5",

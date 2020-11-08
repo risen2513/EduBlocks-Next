@@ -33,6 +33,8 @@ import { codemirror } from "vue-codemirror-lite";
 import "codemirror/mode/python/python";
 import "codemirror/theme/material-darker.css";
 
+import { runShareProcedure } from "@/scripts/share.ts";
+
 export default {
   name: "page",
   components: {
@@ -64,6 +66,8 @@ export default {
 
         window.addEventListener("online", handleNetworkChange);
         window.addEventListener("offline", handleNetworkChange);
+
+        runShareProcedure();
       });
     });
 

@@ -23,6 +23,14 @@
     >
       <FilesModal v-if="currentModal === 'FilesModal'" />
     </Modal>
+
+    <Modal
+      identifier="ShareModal"
+      :visible="currentModal === 'ShareModal'"
+      :clickToExit="true"
+    >
+      <ShareModal />
+    </Modal>
   </div>
 </template>
 
@@ -33,6 +41,7 @@ import { switchMode } from "@/scripts/state/useState";
 import FourBoxModal from "@/components/modals/FourBoxModal.vue";
 import LoginModal from "@/components/modals/LoginModal.vue";
 import FilesModal from "@/components/modals/FilesModal.vue";
+import ShareModal from "@/components/modals/ShareModal.vue";
 
 export default {
   name: "modals",
@@ -40,7 +49,8 @@ export default {
     Modal,
     FourBoxModal,
     LoginModal,
-    FilesModal
+    FilesModal,
+    ShareModal
   },
   setup() {
     openModal("PlatformSelect");

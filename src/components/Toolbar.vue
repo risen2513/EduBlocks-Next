@@ -31,37 +31,49 @@
       </a>
     </div>
     <div class="toolbar-column">
-      <a
-        href="#"
-        class="button right green no-margin-right"
-        @click="runPythonCode"
-        v-if="!runWindow"
-      >
-        <font-awesome-icon class="button-icon" :icon="['fas', 'play']" />
-        Run
-      </a>
+      <div id="pythonButtons" v-if="mode === 'Python'">
+        <a
+          href="#"
+          class="button right green no-margin-right"
+          @click="runPythonCode"
+          v-if="!runWindow"
+        >
+          <font-awesome-icon class="button-icon" :icon="['fas', 'play']" />
+          Run
+        </a>
+
+        <a
+          href="#"
+          class="button right red no-margin-right"
+          @click="stopPythonCode"
+          v-if="runWindow"
+        >
+          <font-awesome-icon
+            class="button-icon"
+            :icon="['fas', 'times-circle']"
+          />
+          Stop
+        </a>
+      </div>
 
       <a
         href="#"
         class="button right green no-margin-right"
         @click="downloadHex"
-        v-if="!runWindow"
+        v-if="mode === 'microbit'"
       >
-        <font-awesome-icon class="button-icon" :icon="['fas', 'play']" />
+        <font-awesome-icon class="button-icon" :icon="['fas', 'download']" />
         Download
       </a>
 
       <a
         href="#"
-        class="button right red no-margin-right"
-        @click="stopPythonCode"
-        v-if="runWindow"
+        class="button right green no-margin-right"
+        @click="savePython('code')"
+        v-if="mode === 'CircuitPython'"
       >
-        <font-awesome-icon
-          class="button-icon"
-          :icon="['fas', 'times-circle']"
-        />
-        Stop
+        <font-awesome-icon class="button-icon" :icon="['fas', 'download']" />
+        Download
       </a>
 
       <a
@@ -100,7 +112,9 @@ import {
   runPythonCode,
   stopPythonCode,
   changePythonFontSize,
-  pythonCode
+  pythonCode,
+  savePython,
+  mode
 } from "../scripts/state/useState";
 import { onMounted } from "vue";
 
@@ -127,7 +141,9 @@ export default {
       runPythonCode,
       stopPythonCode,
       changePythonFontSize,
-      downloadHex
+      downloadHex,
+      savePython,
+      mode
     };
   }
 };

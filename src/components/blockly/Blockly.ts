@@ -6,7 +6,9 @@ import {
   xml,
   pythonCode,
   blocklyDiv,
-  filename
+  filename,
+  isSaved,
+  sharedXML
 } from "../../scripts/state/useState";
 
 export function setXml(xml: any | null) {
@@ -102,10 +104,15 @@ export async function loadBlockly() {
     }
   });
 
-  setXml("");
+  if (sharedXML.value) {
+    setXml(sharedXML.value);
+  } else {
+    setXml("");
+  }
 }
 
 export function blocklyNew() {
   loadBlockly();
   filename.value = "";
+  isSaved.value = false;
 }
