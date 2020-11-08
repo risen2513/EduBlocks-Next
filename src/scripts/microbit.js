@@ -8,7 +8,6 @@ export async function fsUniversalHex(code) {
         FS.write('main.py', code);
         var result = FS.getUniversalHex()
         var fileName;
-        console.log(filename.value);
         if (filename.value.length < 1){
            fileName = "microbit-untitled.hex";
         }

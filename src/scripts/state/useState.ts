@@ -52,7 +52,6 @@ const switchMode: Function = (modeKey: modes) => {
   mode.value = modeKey;
   loadBlockly();
   closeModal();
-  console.log(mode.value);
 };
 
 const runPythonCode: Function = () => {

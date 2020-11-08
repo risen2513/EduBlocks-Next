@@ -30,8 +30,6 @@ export default {
       } else {
         url = python3URL + encodeURIComponent(usrBin + python.value);
       }
-
-      console.log(url);
       return url;
     };
 

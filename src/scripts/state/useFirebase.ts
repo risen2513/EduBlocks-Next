@@ -32,7 +32,7 @@ export const listFirebaseFiles = () => {
       files.value = firebaseFiles;
     });
   } else {
-    console.log("No User");
+    //No User
   }
 };
 

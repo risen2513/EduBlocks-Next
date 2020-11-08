@@ -35,7 +35,7 @@ export function setXml(xml: any | null) {
         '" y="33" deletable="false" movable="false">';
 
       if (first_block_position < 0) {
-        console.log("no blocks were found");
+        //No Blocks
       } else {
         const pos_from_end_of_string = -1 * "</xml>".length;
         new_xml =

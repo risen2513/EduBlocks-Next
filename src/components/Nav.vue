@@ -115,8 +115,8 @@ export default {
         task.on(
           "state_changed",
           function(snapshot) {
-            const progress = snapshot.bytesTransferred / snapshot.totalBytes;
-            console.log(progress);
+            //Saving
+            snapshot;
           },
           function(error) {
             toast.error(error.message);
