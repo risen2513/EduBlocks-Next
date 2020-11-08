@@ -43,6 +43,16 @@
 
       <a
         href="#"
+        class="button right green no-margin-right"
+        @click="downloadHex"
+        v-if="!runWindow"
+      >
+        <font-awesome-icon class="button-icon" :icon="['fas', 'play']" />
+        Download
+      </a>
+
+      <a
+        href="#"
         class="button right red no-margin-right"
         @click="stopPythonCode"
         v-if="runWindow"
@@ -81,7 +91,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
   updateView,
@@ -89,9 +99,12 @@ import {
   runWindow,
   runPythonCode,
   stopPythonCode,
-  changePythonFontSize
+  changePythonFontSize,
+  pythonCode
 } from "../scripts/state/useState";
 import { onMounted } from "vue";
+
+import { fsUniversalHex } from "@/scripts/microbit.js";
 
 export default {
   name: "toolbar",
@@ -103,13 +116,18 @@ export default {
       view.value = "Split";
     });
 
+    function downloadHex() {
+      fsUniversalHex(pythonCode.value);
+    }
+
     return {
       view,
       updateView,
       runWindow,
       runPythonCode,
       stopPythonCode,
-      changePythonFontSize
+      changePythonFontSize,
+      downloadHex
     };
   }
 };
