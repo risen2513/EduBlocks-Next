@@ -20,7 +20,7 @@
 
     <div class="menu">
       <input class="filename" placeholder="Untitled" v-model="filename" />
-      <a href="#" class="button green-button" @click="save">
+      <a href="#" class="button green-button" @click="saveFirebaseFile">
         <font-awesome-icon class="button-icon" :icon="['fas', 'save']" />
         Save
       </a>
@@ -43,10 +43,12 @@
 <script lang="ts">
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { blocklyNew } from "./blockly/Blockly";
-import { filename, save, userData } from "../scripts/state/useState";
+import { filename, save, userData, mode, xml } from "../scripts/state/useState";
 import { openModal } from "@/scripts/state/useModalState";
 import UserAvatar from "@/components/UserAvatar.vue";
 import { listFirebaseFiles } from "@/scripts/state/useFirebase";
+import firebase from "firebase";
+import { useToast } from "vue-toastification";
 
 export default {
   name: "Nav",
@@ -55,9 +57,39 @@ export default {
     UserAvatar
   },
   setup() {
+    const toast = useToast();
+
     const openFilesModal = () => {
       listFirebaseFiles();
       openModal("FilesModal");
+    };
+
+    const saveFirebaseFile = () => {
+      const user = firebase.auth().currentUser;
+      if (user) {
+        const platform = " (" + mode.value + ")";
+        const ref = firebase
+          .storage()
+          .ref(`blocks/${user.uid}/${filename.value}${platform}`);
+        const task = ref.putString(xml.value, undefined, {
+          contentType: "text/xml"
+        });
+        task.on(
+          "state_changed",
+          function(snapshot) {
+            const progress = snapshot.bytesTransferred / snapshot.totalBytes;
+            console.log(progress);
+          },
+          function(error) {
+            toast.error(error.message);
+          },
+          function() {
+            toast.success(filename.value + " Sucessfully Saved!");
+          }
+        );
+      } else {
+        save();
+      }
     };
 
     return {
@@ -67,7 +99,8 @@ export default {
       userData,
       save,
       listFirebaseFiles,
-      openFilesModal
+      openFilesModal,
+      saveFirebaseFile
     };
   }
 };

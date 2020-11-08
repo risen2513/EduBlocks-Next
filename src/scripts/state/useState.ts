@@ -12,7 +12,7 @@ interface FirebaseFiles {
 
 // Global State
 
-type modes = "" | "python" | "microbit" | "raspberrypi" | "circuitpython";
+type modes = "" | "Python" | "microbit" | "RPi" | "CircuitPython";
 
 const pythonCode: Ref<string> = ref("");
 const xml: Ref<string> = ref("");
@@ -24,6 +24,7 @@ const runWindow: Ref<boolean> = ref(false);
 const pythonFontSize: Ref<number> = ref(16);
 const userData = ref();
 const files: Ref<FirebaseFiles[]> = ref([]);
+const fileListKey: Ref<number> = ref(1);
 
 // Global Functions
 
@@ -103,6 +104,7 @@ export {
   files,
   pythonFontSize,
   changePythonFontSize,
+  fileListKey,
   updateView,
   open,
   save,

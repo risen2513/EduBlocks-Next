@@ -4,18 +4,12 @@
       <!-- <div v-for="file in files" :key="file.label">
         <button @click="openFirebaseFile(file.ref)">{{ file.label }}</button>
       </div> -->
-      <div class="leftContainer">
-        <img
-          v-if="user.photoURL"
-          :src="user.photoURL"
-          class="profileImage"
-          @click="signOut"
-        />
+      <div class="leftContainer" v-if="user">
+        <img v-if="user.photoURL" :src="user.photoURL" class="profileImage" />
         <img
           v-else
           src="/assets/images/global/default-profile-image.png"
           class="profileImage"
-          @click="signOut"
         />
         <h1>{{ greet() }}</h1>
         <span>{{ user.displayName }}</span
@@ -28,7 +22,7 @@
         Files
         <a class="close" @click="closeModal">Close</a>
       </h1>
-      <div class="file-list">
+      <div class="file-list" :key="fileListKey">
         <table type="primary">
           <tbody>
             <tr v-for="file in files" :key="file.label">
@@ -42,6 +36,7 @@
                 <font-awesome-icon
                   class="close-button"
                   :icon="['far', 'times-circle']"
+                  @click="deleteFile(file.ref)"
                 />
               </td>
             </tr>
@@ -55,9 +50,10 @@
 <script>
 import {
   listFirebaseFiles,
-  openFirebaseFile
+  openFirebaseFile,
+  deleteFile
 } from "@/scripts/state/useFirebase";
-import { files, open } from "@/scripts/state/useState";
+import { files, open, fileListKey } from "@/scripts/state/useState";
 import firebase from "firebase";
 import { ref } from "vue";
 import { closeModal } from "@/scripts/state/useModalState";
@@ -88,7 +84,9 @@ export default {
       user,
       greet,
       closeModal,
-      open
+      open,
+      fileListKey,
+      deleteFile
     };
   }
 };

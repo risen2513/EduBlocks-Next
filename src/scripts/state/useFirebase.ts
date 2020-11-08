@@ -1,6 +1,6 @@
 import firebase from "firebase";
-import { userData, files } from "./useState";
-import { closeModal } from "./useModalState";
+import { userData, files, switchMode, mode, fileListKey } from "./useState";
+import { closeModal, openModal } from "./useModalState";
 import { setXml } from "@/components/blockly/Blockly";
 
 const firebaseConfig: object = {
@@ -38,6 +38,21 @@ export const listFirebaseFiles = () => {
 };
 
 export const openFirebaseFile = (fileRef: firebase.storage.Reference) => {
+  if (fileRef.name.indexOf("(Python)") !== -1 && mode.value !== "Python") {
+    switchMode("Python");
+  }
+  if (fileRef.name.indexOf("(microbit)") !== -1 && mode.value !== "microbit") {
+    switchMode("microbit");
+  }
+  if (fileRef.name.indexOf("(RPi)") !== -1 && mode.value !== "RPi") {
+    switchMode("RPi");
+  }
+  if (
+    fileRef.name.indexOf("(CircuitPython)") !== -1 &&
+    mode.value !== "CircuitPython"
+  ) {
+    switchMode("CircuitPython");
+  }
   fileRef
     .getDownloadURL()
     .then(function(url) {
@@ -53,4 +68,9 @@ export const openFirebaseFile = (fileRef: firebase.storage.Reference) => {
     .catch(err => {
       console.log(err);
     });
+};
+
+export const deleteFile = (fileRef: firebase.storage.Reference) => {
+  fileRef.delete();
+  closeModal();
 };

@@ -48,7 +48,7 @@ export default {
     const platformSelectOptions = [
       {
         title: "Python 3",
-        key: "python",
+        key: "Python",
         image: "/assets/images/platforms/python.png",
         func: switchMode
       },
@@ -60,13 +60,13 @@ export default {
       },
       {
         title: "Raspberry Pi",
-        key: "pi",
+        key: "RPi",
         image: "/assets/images/platforms/raspberrypi.png",
         func: switchMode
       },
       {
         title: "CircuitPython",
-        key: "circuitpython",
+        key: "CircuitPython",
         image: "/assets/images/platforms/circuitpython.png",
         func: switchMode
       }
