@@ -58,7 +58,7 @@ export function setXml(xml: any | null) {
   }
 }
 
-export async function loadBlockly(_callback: any) {
+export async function loadBlockly(_callback: Function) {
   const toolbox: string = await getToolboxXml();
 
   if (Blockly.mainWorkspace) {
@@ -106,7 +106,9 @@ export async function loadBlockly(_callback: any) {
 
   setXml("");
 
-  _callback();
+  if (_callback) {
+    _callback();
+  }
 }
 
 export function blocklyNew() {
