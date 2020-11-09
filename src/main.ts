@@ -6,6 +6,7 @@ import "vue-toastification/dist/index.css";
 
 import "./scripts/state/useIcons";
 import "./assets/css/main.css";
+import "./assets/css/xterm.css";
 
 import "@/scripts/state/useFirebase";
 

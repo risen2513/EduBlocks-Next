@@ -1,0 +1,33 @@
+<category name="Digital" colour="#2C97DF" iconclass="blocklyTreeIconCustom pins"> 
+  <label text="Digital" web-class="myLabelStyle"></label>
+  <block type="import_digitalio"></block>
+  <block type="pinconfig">
+  <value name="text">
+    <shadow type="textinline">
+      <field name="text"></field>
+    </shadow>
+  </value> 
+  </block>
+  <block type="pindirection">
+  <value name="text">
+    <shadow type="textinline">
+      <field name="text">Direction.OUTPUT</field>
+    </shadow>
+  </value> 
+  </block>
+  <block type="pull">
+  <value name="text">
+    <shadow type="textinline">
+      <field name="text">Pull.DOWN</field>
+    </shadow>
+  </value> 
+  </block>
+  <block type="pinvalue">
+  <value name="text">
+    <shadow type="textinline">
+      <field name="text"></field>
+    </shadow>
+  </value> 
+  </block>
+  <block type="valuein"></block>
+</category>

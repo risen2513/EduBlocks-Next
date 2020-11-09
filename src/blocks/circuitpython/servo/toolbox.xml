@@ -1,0 +1,18 @@
+<category name="Servo" colour="#9C56B8" iconclass="blocklyTreeIconCustom servo">
+    <label text="Servo" web-class="myLabelStyle"></label>
+    <block type="import_servo"></block>
+    <block type="servo_conf">
+     <value name="text">
+    <shadow type="textinline">
+      <field name="text"></field>
+    </shadow>
+  </value> 
+    </block>
+    <block type="servo_value">
+     <value name="text">
+    <shadow type="textinline">
+      <field name="text">angle</field>
+    </shadow>
+  </value> 
+    </block>
+</category>

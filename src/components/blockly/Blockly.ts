@@ -7,8 +7,7 @@ import {
   pythonCode,
   blocklyDiv,
   filename,
-  isSaved,
-  sharedXML
+  isSaved
 } from "../../scripts/state/useState";
 
 export function setXml(xml: any | null) {

@@ -4,6 +4,10 @@ import { openFile } from "@/scripts/openFile";
 import { saveAs } from "file-saver";
 import { closeModal, openModal } from "./useModalState";
 import firebase from "firebase";
+import { newServerConnection, ServerConnection } from "@/server/server";
+import { Terminal } from "xterm";
+import { FitAddon } from 'xterm-addon-fit';
+
 
 interface FirebaseFiles {
   label: string;
@@ -29,7 +33,9 @@ const isUser: Ref<Boolean> = ref(false);
 const isSaved: Ref<Boolean> = ref(false);
 const shortLink: Ref<string> = ref("");
 const currentFileRef = ref();
-const sharedXML: Ref<string> = ref("");
+const termOutput: Ref<string> = ref("");
+let connection: ServerConnection | undefined;
+const terminal: Ref<boolean> = ref(false);
 // Global Functions
 
 const resizeWindow: Function = () => {
@@ -53,6 +59,10 @@ const switchMode: Function = (modeKey: modes) => {
   loadBlockly(() => {
     closeModal();
   });
+  if (modeKey === "RPi"){
+    terminal.value = true;
+    initConnection();
+  }
 };
 
 const runPythonCode: Function = () => {
@@ -124,7 +134,35 @@ async function share () {
   })
   .then(response => response.json())
   .then(data => shortLink.value = data.shortLink)
-  .then(openModal("ShareModal"))
+  .then(await openModal("ShareModal"))
+}
+
+let term: any; 
+
+async function initConnection() {
+  connection = await newServerConnection();
+  const ws = new WebSocket("ws://localhost:8081/terminal");
+
+  ws.onmessage = function(evt) {
+    const message = JSON.parse(evt.data);
+    termOutput.value += message.payload;
+  };
+
+  term = new Terminal();
+  const fitAddon = new FitAddon();
+  term.loadAddon(fitAddon);
+  term.open(document.getElementById("terminal") as HTMLBodyElement);
+  fitAddon.fit();
+  connection.on('data', (data) => term.write(data));
+  term.onData(connection.sendData)
+}
+
+function runTermCode() {
+  term.reset();
+  if (connection) {
+    termOutput.value = "";
+    connection.runCode(pythonCode.value);
+  }
 }
 
 
@@ -138,8 +176,9 @@ export {
   isUser,
   isSaved,
   filename,
-  sharedXML,
   runWindow,
+  termOutput,
+  connection,
   userData,
   files,
   shortLink,
@@ -147,11 +186,14 @@ export {
   changePythonFontSize,
   fileListKey,
   currentFileRef,
+  terminal,
   savePython,
   updateView,
   open,
   save,
   share,
+  initConnection,
+  runTermCode,
   FirebaseFiles,
   runPythonCode,
   stopPythonCode,

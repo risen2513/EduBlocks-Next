@@ -1,0 +1,50 @@
+<category name="PWM" colour="#FF4A60" iconclass="blocklyTreeIconCustom pwm">
+    <label text="PWM" web-class="myLabelStyle"></label>
+    <block type="import_pulseio"></block>
+    <block type="import_simpleio"></block>
+    <block type="pwm_conf">
+    <value name="text1">
+    <shadow type="textinline">
+      <field name="text">Board.D13</field>
+    </shadow>
+  </value> 
+  <value name="text2">
+    <shadow type="textinline">
+      <field name="text"></field>
+    </shadow>
+  </value> 
+<value name="text3">
+    <shadow type="textinline">
+      <field name="text">50</field>
+    </shadow>
+  </value> 
+    </block>
+    <block type="pwm_conf2">
+    <value name="text">
+    <shadow type="textinline">
+      <field name="text"></field>
+    </shadow>
+  </value> 
+    </block>
+    <block type="pwm_dc">
+    <value name="text">
+    <shadow type="textinline">
+      <field name="text"></field>
+    </shadow>
+  </value> 
+    </block>
+    <block type="pwm_freq">
+    <value name="text">
+    <shadow type="textinline">
+      <field name="text"></field>
+    </shadow>
+  </value> 
+    </block>
+    <block type="simple_tone">
+    <value name="text">
+    <shadow type="textinline">
+      <field name="text"></field>
+    </shadow>
+  </value> 
+    </block>
+</category>

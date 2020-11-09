@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Nav from "./components/Nav.vue";
 import Toolbar from "./components/Toolbar.vue";
 import Page from "./views/Page.vue";

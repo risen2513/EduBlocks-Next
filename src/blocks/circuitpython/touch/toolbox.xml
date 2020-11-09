@@ -1,0 +1,12 @@
+<category name="Touch" colour="#E84C3D" iconclass="blocklyTreeIconCustom touch">
+    <label text="Touch" web-class="myLabelStyle"></label>
+    <block type="import_touchio"></block>
+    <block type="touch_conf">
+    <value name="text1">
+    <shadow type="textinline">
+      <field name="text">board.A1</field>
+    </shadow>
+  </value> 
+    </block>
+    <block type="touch_valinline"></block>
+</category>

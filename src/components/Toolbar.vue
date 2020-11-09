@@ -69,6 +69,16 @@
       <a
         href="#"
         class="button right green no-margin-right"
+        @click="runTermCode"
+        v-if="mode === 'RPi'"
+      >
+        <font-awesome-icon class="button-icon" :icon="['fas', 'play']" />
+        Run
+      </a>
+
+      <a
+        href="#"
+        class="button right green no-margin-right"
         @click="savePython('code')"
         v-if="mode === 'CircuitPython'"
       >
@@ -114,7 +124,8 @@ import {
   changePythonFontSize,
   pythonCode,
   savePython,
-  mode
+  mode,
+  runTermCode
 } from "../scripts/state/useState";
 import { onMounted } from "vue";
 
@@ -143,7 +154,8 @@ export default {
       changePythonFontSize,
       downloadHex,
       savePython,
-      mode
+      mode,
+      runTermCode
     };
   }
 };

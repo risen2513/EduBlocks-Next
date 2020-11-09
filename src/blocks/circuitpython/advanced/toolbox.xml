@@ -1,0 +1,44 @@
+<category name="Advanced" colour="#22a6b3" iconclass="blocklyTreeIconCustom advanced">
+    <label text="CPU Temperature" web-class="myLabelStyle"></label>
+    <block type="import_micro"></block>
+    <block type="cputemp"></block>
+    <label text="Storage" web-class="myLabelStyle"></label>
+    <block type="import_storage"></block>
+    <block type="storage_remount">
+        <value name="text1">
+            <shadow type="stringinline">
+            <field name="text">/</field>
+            </shadow>
+        </value>
+        <value name="text2">
+            <shadow type="textinline">
+            <field name="text"></field>
+            </shadow>
+        </value>
+    </block>
+    <block type="open">
+        <value name="text1">
+            <shadow type="stringinline">
+            <field name="text">/hello.txt</field>
+            </shadow>
+        </value>
+        <value name="text2">
+            <shadow type="textinline">
+            <field name="text">a</field>
+            </shadow>
+        </value>
+    </block>
+    <block type="write">
+        <value name="text1">
+            <shadow type="textinline">
+            <field name="text">fp</field>
+            </shadow>
+        </value>
+        <value name="text2">
+            <shadow type="textinline">
+            <field name="text"></field>
+            </shadow>
+        </value>
+    </block>
+
+</category>

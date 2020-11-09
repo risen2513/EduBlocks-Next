@@ -1,6 +1,6 @@
 import { loadBlockly, setXml } from "@/components/blockly/Blockly";
 import { closeModal } from "@/scripts/state/useModalState";
-import { switchMode, sharedXML, mode } from "@/scripts/state/useState";
+import { mode } from "@/scripts/state/useState";
 
 export async function runShareProcedure() {
     const locURL = window.location.href.toString();

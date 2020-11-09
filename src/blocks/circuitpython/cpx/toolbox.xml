@@ -1,0 +1,69 @@
+<category name="CPX Easy" colour="#556EE6" iconclass="blocklyTreeIconCustom cpx">
+    <label text="Circuit Playground Easy" web-class="myLabelStyle"></label>
+    <block type="import_cpx"></block>
+    <label text="Red LED" web-class="myLabelStyle"></label>
+    <block type="redled">
+      <value name="text">
+        <shadow type="textinline">
+          <field name="text">True</field>
+        </shadow>
+      </value>
+    </block>
+    <label text="Slide Switch" web-class="myLabelStyle"></label>
+    <block type="switch"></block>
+    <label text="Taps" web-class="myLabelStyle"></label>
+    <block type="detect_taps">
+    <value name="text">
+      <shadow type="textinline">
+        <field name="text">2</field>
+      </shadow>
+    </value>
+    </block>
+    <block type="tapped"></block>
+    <label text="Shake" web-class="myLabelStyle"></label>
+    <block type="shake">
+      <value name="text">
+        <shadow type="textinline">
+          <field name="text"></field>
+        </shadow>
+      </value>
+    </block>
+    <label text="Light" web-class="myLabelStyle"></label>
+    <block type="light"></block>
+    <label text="Acceleration" web-class="myLabelStyle"></label>
+    <block type="acc"></block>
+    <label text="Buttons" web-class="myLabelStyle"></label>
+    <block type="button"></block>
+    <label text="Temperature" web-class="myLabelStyle"></label>
+    <block type="temp"></block>
+    <label text="Touch" web-class="myLabelStyle"></label>
+    <block type="touchdrop"></block>
+    <label text="Music" web-class="myLabelStyle"></label>
+    <block type="playtone">
+      <value name="text1">
+        <shadow type="textinline">
+          <field name="text">262</field>
+        </shadow>
+      </value>
+      <value name="text2">
+        <shadow type="textinline">
+          <field name="text">1</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="playfile">
+      <value name="text">
+        <shadow type="stringinline">
+          <field name="text">filename.wav</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="starttone">
+      <value name="text">
+        <shadow type="textinline">
+          <field name="text">262</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="stoptone"></block>
+</category>

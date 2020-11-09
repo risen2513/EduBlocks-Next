@@ -17,6 +17,8 @@
     <Modals />
 
     <Trinket version="python" v-if="runWindow" />
+
+    <Terminal v-show="terminal" />
   </div>
 </template>
 
@@ -25,9 +27,15 @@ import Blockly from "../components/blockly/Blockly.vue";
 import { useToast } from "vue-toastification";
 import { onMounted } from "vue";
 
-import { pythonCode, view, runWindow } from "../scripts/state/useState";
+import {
+  pythonCode,
+  view,
+  runWindow,
+  terminal
+} from "../scripts/state/useState";
 import Modals from "./Modals.vue";
 import Trinket from "@/components/Trinket.vue";
+import Terminal from "@/components/Terminal.vue";
 
 import { codemirror } from "vue-codemirror-lite";
 import "codemirror/mode/python/python";
@@ -41,7 +49,8 @@ export default {
     Blockly,
     codemirror,
     Modals,
-    Trinket
+    Trinket,
+    Terminal
   },
   setup() {
     const toast = useToast();
@@ -71,7 +80,7 @@ export default {
       });
     });
 
-    return { pythonCode, view, runWindow };
+    return { pythonCode, view, runWindow, terminal };
   }
 };
 </script>

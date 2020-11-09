@@ -1,0 +1,26 @@
+<category name="Analog" colour="#E67D21" iconclass="blocklyTreeIconCustom analog">
+  <label text="Analog" web-class="myLabelStyle"></label>
+  <block type="import_analogio"></block>
+  <block type="analog_in">
+  <value name="text">
+    <shadow type="textinline">
+      <field name="text">board.A1</field>
+    </shadow>
+  </value> 
+  </block>
+  <block type="analog_out">
+  <value name="text">
+    <shadow type="textinline">
+      <field name="text">board.A1</field>
+    </shadow>
+  </value> 
+  </block>
+  <block type="analogpinvalue">
+  <value name="text">
+    <shadow type="textinline">
+      <field name="text">True</field>
+    </shadow>
+  </value> 
+  </block>
+  <block type="valinline"></block>
+</category>

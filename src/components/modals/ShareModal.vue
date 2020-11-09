@@ -135,7 +135,7 @@ export default {
 
 .shareButton {
   margin-top: 0.6rem;
-  width: 70%;
+  width: calc(70% - 15px);
 }
 
 .shareURL input {
