@@ -50,8 +50,9 @@ async function open() {
 
 const switchMode: Function = (modeKey: modes) => {
   mode.value = modeKey;
-  loadBlockly();
-  closeModal();
+  loadBlockly(() => {
+    closeModal();
+  });
 };
 
 const runPythonCode: Function = () => {

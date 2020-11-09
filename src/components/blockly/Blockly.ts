@@ -58,7 +58,7 @@ export function setXml(xml: any | null) {
   }
 }
 
-export async function loadBlockly() {
+export async function loadBlockly(_callback: any) {
   const toolbox: string = await getToolboxXml();
 
   if (Blockly.mainWorkspace) {
@@ -104,15 +104,15 @@ export async function loadBlockly() {
     }
   });
 
-  if (sharedXML.value) {
-    setXml(sharedXML.value);
-  } else {
-    setXml("");
-  }
+  setXml("");
+
+  _callback();
 }
 
 export function blocklyNew() {
-  loadBlockly();
+  loadBlockly(() => {
+    // Loaded
+  });
   filename.value = "";
   isSaved.value = false;
 }
