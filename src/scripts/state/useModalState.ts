@@ -1,6 +1,6 @@
 import { ref } from "vue";
 
-type Modals = "" | "PlatformSelect" | "Settings" | "LoginModal" | "FilesModal";
+type Modals = "" | "PlatformSelect" | "SettingsModal" | "LoginModal" | "FilesModal" | "ShareModal";
 
 export const currentModal = ref<Modals>("");
 

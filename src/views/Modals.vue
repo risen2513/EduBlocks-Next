@@ -31,6 +31,14 @@
     >
       <ShareModal />
     </Modal>
+
+    <Modal
+      identifier="SettingsModal"
+      :visible="currentModal === 'SettingsModal'"
+      :clickToExit="true"
+    >
+      <SettingsModal />
+    </Modal>
   </div>
 </template>
 
@@ -38,10 +46,12 @@
 import Modal from "@/components/modals/Modal.vue";
 import { openModal, currentModal } from "@/scripts/state/useModalState";
 import { switchMode } from "@/scripts/state/useState";
+
 import FourBoxModal from "@/components/modals/FourBoxModal.vue";
 import LoginModal from "@/components/modals/LoginModal.vue";
 import FilesModal from "@/components/modals/FilesModal.vue";
 import ShareModal from "@/components/modals/ShareModal.vue";
+import SettingsModal from "@/components/modals/SettingsModal.vue";
 
 export default {
   name: "modals",
@@ -50,7 +60,8 @@ export default {
     FourBoxModal,
     LoginModal,
     FilesModal,
-    ShareModal
+    ShareModal,
+    SettingsModal
   },
   setup() {
     openModal("PlatformSelect");

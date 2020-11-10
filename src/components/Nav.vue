@@ -15,6 +15,9 @@
         />
         Login
       </a>
+      <a class="button settingsButton" @click="openModal('SettingsModal')">
+        <font-awesome-icon :icon="['fas', 'cog']" />
+      </a>
       <UserAvatar v-if="userData" />
     </div>
 
@@ -174,6 +177,11 @@ nav .brand {
 
 .burger {
   color: white;
+}
+
+.settingsButton {
+  margin-right: 10px;
+  padding: 0px 5px;
 }
 
 .login {
