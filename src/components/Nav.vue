@@ -64,14 +64,16 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { blocklyNew } from "./blockly/Blockly";
 import {
   filename,
+  save,
   userData,
   mode,
   xml,
   isUser,
+  open,
   isSaved,
-  currentFileRef
+  currentFileRef,
+  share
 } from "../scripts/state/useState";
-import { save, open, share } from "@/scripts/functions";
 import { openModal } from "@/scripts/state/useModalState";
 import UserAvatar from "@/components/UserAvatar.vue";
 import { listFirebaseFiles } from "@/scripts/state/useFirebase";

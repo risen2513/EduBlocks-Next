@@ -37,7 +37,7 @@
 <script>
 import Modal from "@/components/modals/Modal.vue";
 import { openModal, currentModal } from "@/scripts/state/useModalState";
-import { switchMode } from "@/scripts/functions";
+import { switchMode } from "@/scripts/state/useState";
 import FourBoxModal from "@/components/modals/FourBoxModal.vue";
 import LoginModal from "@/components/modals/LoginModal.vue";
 import FilesModal from "@/components/modals/FilesModal.vue";

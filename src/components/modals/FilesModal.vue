@@ -53,8 +53,7 @@ import {
   openFirebaseFile,
   deleteFile
 } from "@/scripts/state/useFirebase";
-import { files, fileListKey } from "@/scripts/state/useState";
-import { open } from "@/scripts/functions";
+import { files, open, fileListKey } from "@/scripts/state/useState";
 import firebase from "firebase";
 import { ref } from "vue";
 import { closeModal } from "@/scripts/state/useModalState";

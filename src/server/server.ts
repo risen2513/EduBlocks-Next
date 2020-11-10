@@ -56,7 +56,7 @@ export async function newServerConnection(): Promise<ServerConnection> {
   }
 
   function sendData(data: string) {
-    ws.sendPacket({ 
+    ws.sendPacket({
       packetType: 'data',
       payload: data,
     });
