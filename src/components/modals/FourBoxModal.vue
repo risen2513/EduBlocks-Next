@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import { switchMode } from "@/scripts/state/useState";
+import { switchMode } from "@/scripts/functions";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 export default {
   name: "FourBoxModal",

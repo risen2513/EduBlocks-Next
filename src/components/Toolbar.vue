@@ -115,18 +115,15 @@
 
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { view, runWindow, pythonCode, mode } from "../scripts/state/useState";
 import {
   updateView,
-  view,
-  runWindow,
-  runPythonCode,
   stopPythonCode,
-  changePythonFontSize,
-  pythonCode,
   savePython,
-  mode,
-  runTermCode
-} from "../scripts/state/useState";
+  runTermCode,
+  runPythonCode,
+  changePythonFontSize
+} from "@/scripts/functions";
 import { onMounted } from "vue";
 
 import { fsUniversalHex } from "@/scripts/microbit.js";

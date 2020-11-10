@@ -1,5 +1,6 @@
 import firebase from "firebase";
-import { userData, files, switchMode, mode, isSaved, currentFileRef } from "./useState";
+import { userData, files, mode, isSaved, currentFileRef } from "./useState";
+import { switchMode } from "@/scripts/functions"
 import { closeModal } from "./useModalState";
 import { setXml } from "@/components/blockly/Blockly";
 

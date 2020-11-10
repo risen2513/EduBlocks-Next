@@ -3,7 +3,7 @@ import { mode } from '../scripts/state/useState';
 export let toolboxXML: string;
 
 export async function getToolboxXml() {
-    toolboxXML = "";
+    toolboxXML = ""; 
 
     toolboxXML = "<xml>";   
 
@@ -219,6 +219,8 @@ export async function getToolboxXml() {
     }
 
     toolboxXML += '</xml>';
+
+    console.log(toolboxXML)
 
     return toolboxXML;
 }

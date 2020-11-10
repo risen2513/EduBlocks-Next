@@ -11,7 +11,7 @@
     </block>
     <block type="background">
         <value name="text">
-            <shadow type="textinline">
+            <shadow type="textinline"> 
                 <field name="text">255, 0, 0</field>
             </shadow>
         </value>
