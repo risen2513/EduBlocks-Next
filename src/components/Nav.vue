@@ -5,7 +5,9 @@
     </a>
 
     <input id="bmenub" type="checkbox" class="show" />
-    <label for="bmenub" class="burger pseudo button">menu</label>
+    <label for="bmenub" class="burger pseudo button">
+      {{ $t("Menu") }}
+    </label>
 
     <div class="login">
       <a class="button" @click="openModal('LoginModal')" v-if="!userData"
@@ -13,7 +15,7 @@
           class="button-icon"
           :icon="['fas', 'sign-in-alt']"
         />
-        Login
+        {{ $t("Login") }}
       </a>
       <a class="button settingsButton" @click="openModal('SettingsModal')">
         <font-awesome-icon :icon="['fas', 'cog']" />
@@ -30,7 +32,7 @@
       />
       <a href="#" class="button green-button" @click="saveFirebaseFile">
         <font-awesome-icon class="button-icon" :icon="['fas', 'save']" />
-        Save
+        {{ $t("Save") }}
       </a>
       <a
         href="#"
@@ -39,11 +41,11 @@
         v-if="userData"
       >
         <font-awesome-icon class="button-icon" :icon="['fas', 'share-alt']" />
-        Share
+        {{ $t("Share") }}
       </a>
       <a href="#" class="button white-button" @click="open" v-if="!userData">
         <font-awesome-icon class="button-icon" :icon="['fas', 'folder-open']" />
-        Open
+        {{ $t("Open") }}
       </a>
       <a
         href="#"
@@ -52,11 +54,11 @@
         v-if="userData"
       >
         <font-awesome-icon class="button-icon" :icon="['fas', 'folder-open']" />
-        Files
+        {{ $t("Files") }}
       </a>
       <a href="#" class="button white-button" @click="blocklyNew">
         <font-awesome-icon class="button-icon" :icon="['fas', 'plus']" />
-        New
+        {{ $t("New") }}
       </a>
     </div>
   </nav>
@@ -82,6 +84,7 @@ import UserAvatar from "@/components/UserAvatar.vue";
 import { listFirebaseFiles } from "@/scripts/state/useFirebase";
 import firebase from "firebase";
 import { useToast } from "vue-toastification";
+import { useI18n } from "vue-i18n";
 
 export default {
   name: "Nav",
@@ -91,6 +94,7 @@ export default {
   },
   setup() {
     const toast = useToast();
+    const { t } = useI18n();
 
     const openFilesModal = () => {
       listFirebaseFiles();
@@ -101,7 +105,7 @@ export default {
       if (isSaved.value) {
         share();
       } else {
-        toast.error("Please save your code before sharing!");
+        toast.error(t("ShareMessage"));
       }
     };
 
@@ -126,7 +130,7 @@ export default {
           },
           function() {
             currentFileRef.value = ref;
-            toast.success(filename.value + " Sucessfully Saved!");
+            toast.success(filename.value + " " + t("Successfully Saved") + "!");
             isSaved.value = true;
           }
         );
@@ -232,5 +236,9 @@ nav .brand {
   border: solid white 1px !important;
   font-weight: bold;
   border-radius: 10px;
+}
+
+.burger {
+  text-align: right;
 }
 </style>

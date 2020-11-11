@@ -11,16 +11,16 @@
           src="/assets/images/global/default-profile-image.png"
           class="profileImage"
         />
-        <h1>{{ greet() }}</h1>
+        <h1>{{ $t(greet() + "") }},</h1>
         <span>{{ user.displayName }}</span
         ><br />
-        <button class="localFileButton" @click="open">Open local file</button>
+        <button class="localFileButton" @click="open">{{ $t("Open") }}</button>
       </div>
     </div>
     <div class="right">
       <h1 class="filesTitle">
-        Files
-        <a class="close" @click="closeModal">Close</a>
+        {{ $t("Files") }}
+        <a class="close" @click="closeModal">{{ $t("Close") }}</a>
       </h1>
       <div class="file-list" :key="fileListKey">
         <table type="primary">
@@ -71,10 +71,10 @@ export default {
       const myDate = new Date();
       let greet;
       const hrs = myDate.getHours();
-      if (hrs < 12) greet = "Morning,";
-      else if (hrs >= 12 && hrs <= 17) greet = "Afternoon,";
-      else if (hrs >= 17 && hrs <= 24) greet = "Evening,";
-      return greet + "\n";
+      if (hrs < 12) greet = "Morning";
+      else if (hrs >= 12 && hrs <= 17) greet = "Afternoon";
+      else if (hrs >= 17 && hrs <= 24) greet = "Evening";
+      return greet;
     };
 
     return {

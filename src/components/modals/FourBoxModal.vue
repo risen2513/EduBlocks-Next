@@ -3,8 +3,8 @@
     <div class="left">
       <div class="leftContainer">
         <img src="/assets/images/logos/mainlogo.png" />
-        <h1>Welcome!</h1>
-        <h3>Please select a mode</h3>
+        <h1>{{ $t("Welcome") }}!</h1>
+        <h3>{{ $t("ModeSelect") }}</h3>
       </div>
     </div>
     <div class="right">

@@ -1,6 +1,14 @@
 <template>
   <div>
     <Modal
+      identifier="WelcomeModal"
+      :visible="currentModal === 'WelcomeModal'"
+      :clickToExit="false"
+    >
+      <WelcomeModal />
+    </Modal>
+
+    <Modal
       identifier="PlatformSelect"
       :visible="currentModal === 'PlatformSelect'"
       :clickToExit="false"
@@ -37,7 +45,7 @@
       :visible="currentModal === 'SettingsModal'"
       :clickToExit="true"
     >
-      <SettingsModal />
+      <SettingsModal v-if="currentModal === 'SettingsModal'" />
     </Modal>
   </div>
 </template>
@@ -52,6 +60,7 @@ import LoginModal from "@/components/modals/LoginModal.vue";
 import FilesModal from "@/components/modals/FilesModal.vue";
 import ShareModal from "@/components/modals/ShareModal.vue";
 import SettingsModal from "@/components/modals/SettingsModal.vue";
+import WelcomeModal from "@/components/modals/WelcomeModal.vue";
 
 export default {
   name: "modals",
@@ -61,10 +70,11 @@ export default {
     LoginModal,
     FilesModal,
     ShareModal,
-    SettingsModal
+    SettingsModal,
+    WelcomeModal
   },
   setup() {
-    openModal("PlatformSelect");
+    openModal("WelcomeModal");
 
     const platformSelectOptions = [
       {

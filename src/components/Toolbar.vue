@@ -8,7 +8,7 @@
         @click="updateView('Split')"
       >
         <font-awesome-icon class="button-icon" :icon="['fas', 'columns']" />
-        Split
+        {{ $t("Split") }}
       </a>
       <a
         href="#"
@@ -18,7 +18,7 @@
         v-if="!runWindow"
       >
         <font-awesome-icon class="button-icon" :icon="['fas', 'cube']" />
-        Blocks
+        {{ $t("Blocks") }}
       </a>
       <a
         href="#"
@@ -27,7 +27,7 @@
         @click="updateView('Python')"
       >
         <font-awesome-icon class="button-icon" :icon="['fab', 'python']" />
-        Python
+        {{ $t("Python") }}
       </a>
     </div>
     <div class="toolbar-column">
@@ -39,7 +39,7 @@
           v-if="!runWindow"
         >
           <font-awesome-icon class="button-icon" :icon="['fas', 'play']" />
-          Run
+          {{ $t("Run") }}
         </a>
 
         <a
@@ -52,7 +52,7 @@
             class="button-icon"
             :icon="['fas', 'times-circle']"
           />
-          Stop
+          {{ $t("Stop") }}
         </a>
       </div>
 
@@ -63,7 +63,7 @@
         v-if="mode === 'microbit'"
       >
         <font-awesome-icon class="button-icon" :icon="['fas', 'download']" />
-        Download
+        {{ $t("Download") }}
       </a>
 
       <a
@@ -73,7 +73,7 @@
         v-if="mode === 'RPi'"
       >
         <font-awesome-icon class="button-icon" :icon="['fas', 'play']" />
-        Run
+        {{ $t("Run") }}
       </a>
 
       <a
@@ -83,7 +83,7 @@
         v-if="mode === 'CircuitPython'"
       >
         <font-awesome-icon class="button-icon" :icon="['fas', 'download']" />
-        Download
+        {{ $t("Download") }}
       </a>
 
       <a

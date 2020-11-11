@@ -10,10 +10,10 @@
     </div>
     <div class="right">
       <h1 class="shareTitle">
-        Share
-        <a class="close" @click="closeModal">Close</a>
+        {{ $t("Share") }}
+        <a class="close" @click="closeModal">{{ $t("Close") }}</a>
       </h1>
-      <label>Shareable URL</label>
+      <label>{{ $t("Shareable URL") }}</label>
       <div class="shareURL">
         <input type="text" v-model="shortLink" readonly />
         <button
@@ -21,10 +21,10 @@
           v-clipboard:success="onSuccess"
           v-clipboard:error="onError"
         >
-          Copy
+          {{ $t("Copy") }}
         </button>
       </div>
-      <label>Embed Code</label>
+      <label>{{ $t("Embed Code") }}</label>
       <div class="shareURL">
         <input type="text" v-model="embed" readonly />
         <button
@@ -32,20 +32,20 @@
           v-clipboard:success="onSuccess"
           v-clipboard:error="onError"
         >
-          Copy
+          {{ $t("Copy") }}
         </button>
       </div>
-      <label>External Sharing Options</label>
+      <label>{{ $t("External Sharing Options") }}</label>
       <button class="shareButton teams" @click="teams">
         <font-awesome-icon
           class="button-icon"
           :icon="['fas', 'user-friends']"
         />
-        Share to Microsoft Teams
+        {{ $t("Share to Microsoft Teams") }}
       </button>
       <button class="shareButton classroom" @click="classroom">
         <font-awesome-icon class="button-icon" :icon="['fab', 'google']" />
-        Share to Google Classroom
+        {{ $t("Share to Google Classroom") }}
       </button>
     </div>
   </div>
@@ -57,6 +57,8 @@ import { shortLink } from "@/scripts/state/useState";
 import { useToast } from "vue-toastification";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { ref } from "vue";
+import { useI18n } from "vue-i18n";
+
 export default {
   name: "ShareModal",
   components: {
@@ -65,6 +67,8 @@ export default {
   setup() {
     const toast = useToast();
 
+    const { t } = useI18n();
+
     const embed = ref(
       '<iframe src="' +
         shortLink.value +
@@ -72,11 +76,11 @@ export default {
     );
 
     const onSuccess = () => {
-      toast.success("Copied link to clipboard!");
+      toast.success(t("ClipboardCopy"));
     };
 
     const onError = () => {
-      toast.error("Sorry, there was an error copying the link :(");
+      toast.error(t("ClipboardError"));
     };
 
     const classroom = () => {
@@ -135,7 +139,7 @@ export default {
 
 .shareButton {
   margin-top: 0.6rem;
-  width: calc(70% - 15px);
+  width: 100%;
 }
 
 .shareURL input {

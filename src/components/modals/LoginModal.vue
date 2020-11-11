@@ -8,11 +8,11 @@
     <div class="right">
       <div id="loginForm" v-if="!signUp">
         <h1 class="loginTitle">
-          Login
-          <a class="close" @click="closeModal">Close</a>
+          {{ $t("Login") }}
+          <a class="close" @click="closeModal">{{ $t("Close") }}</a>
         </h1>
         <form>
-          <label class="loginLabel">Email</label>
+          <label class="loginLabel">{{ $t("Email") }}</label>
           <input
             type="email"
             placeholder="user@example.com"
@@ -20,7 +20,7 @@
             v-model="emailAddr"
           />
 
-          <label class="loginLabel">Password</label>
+          <label class="loginLabel">{{ $t("Password") }}</label>
           <input
             type="password"
             placeholder=""
@@ -28,16 +28,16 @@
             v-model="pwd"
           />
           <button class="loginButton" @click="signIn" type="button">
-            Login
+            {{ $t("Login") }}
           </button>
-          <a class="signUp" @click="signUp = true">Sign Up</a>
+          <a class="signUp" @click="signUp = true">{{ $t("Sign Up") }}</a>
           <button
             class="socialButtons google"
             @click="googleSignIn"
             type="button"
           >
             <font-awesome-icon class="button-icon" :icon="['fab', 'google']" />
-            Sign in with Google
+            {{ $t("SignInGoogle") }}
           </button>
           <button
             class="socialButtons microsoft"
@@ -45,7 +45,7 @@
             type="button"
           >
             <font-awesome-icon class="button-icon" :icon="['fab', 'windows']" />
-            Sign in with Microsoft
+            {{ $t("SignInMicrosoft") }}
           </button>
           <button
             class="socialButtons apple"
@@ -53,18 +53,18 @@
             @click="appleSignIn"
           >
             <font-awesome-icon class="button-icon" :icon="['fab', 'apple']" />
-            Sign in with Apple
+            {{ $t("SignInApple") }}
           </button>
         </form>
       </div>
 
       <div id="signUpForm" v-else>
         <h1 class="loginTitle">
-          Sign Up
-          <a class="close" @click="closeModal">Close</a>
+          {{ $t("Sign Up") }}
+          <a class="close" @click="closeModal">{{ $t("Close") }}</a>
         </h1>
         <form>
-          <label class="loginLabel">Name</label>
+          <label class="loginLabel">{{ $t("Name") }}</label>
           <input
             type="email"
             placeholder="John Appleseed"
@@ -72,7 +72,7 @@
             v-model="name"
           />
 
-          <label class="loginLabel">Email</label>
+          <label class="loginLabel">{{ $t("Email") }}</label>
           <input
             type="email"
             placeholder="user@example.com"
@@ -80,7 +80,7 @@
             v-model="emailAddr"
           />
 
-          <label class="loginLabel">Password</label>
+          <label class="loginLabel">{{ $t("Password") }}</label>
           <input
             type="password"
             placeholder=""
@@ -88,24 +88,24 @@
             v-model="pwd"
           />
           <button class="loginButton" @click="register" type="button">
-            Sign Up
+            {{ $t("Sign Up") }}
           </button>
-          <a class="signUp" @click="signUp = false">Login</a>
+          <a class="signUp" @click="signUp = false">{{ $t("Login") }}</a>
           <button
             class="socialButtons google"
             @click="googleSignIn"
             type="button"
           >
             <font-awesome-icon class="button-icon" :icon="['fab', 'google']" />
-            Sign in with Google
+            {{ $t("SignInGoogle") }}
           </button>
           <button
             class="socialButtons microsoft"
-            type="button"
             @click="microsoftSignIn"
+            type="button"
           >
             <font-awesome-icon class="button-icon" :icon="['fab', 'windows']" />
-            Sign in with Microsoft
+            {{ $t("SignInMicrosoft") }}
           </button>
           <button
             class="socialButtons apple"
@@ -113,7 +113,7 @@
             @click="appleSignIn"
           >
             <font-awesome-icon class="button-icon" :icon="['fab', 'apple']" />
-            Sign in with Apple
+            {{ $t("SignInApple") }}
           </button>
         </form>
       </div>
@@ -127,6 +127,7 @@ import { closeModal } from "@/scripts/state/useModalState";
 import { ref } from "vue";
 import firebase from "firebase";
 import { useToast } from "vue-toastification";
+import { useI18n } from "vue-i18n";
 
 export default {
   name: "LoginModal",
@@ -142,6 +143,8 @@ export default {
 
     const toast = useToast();
 
+    const { t } = useI18n();
+
     const register = () => {
       firebase
         .auth()
@@ -152,7 +155,7 @@ export default {
               displayName: name.value
             })
             .then(() => {
-              toast.success("Successfully Logged In!");
+              toast.success(t("LoginSuccess"));
               closeModal();
             });
         })
@@ -166,7 +169,7 @@ export default {
         .auth()
         .signInWithEmailAndPassword(emailAddr.value, pwd.value)
         .then(() => {
-          toast.success("Successfully Logged In!");
+          toast.success(t("LoginSuccess"));
           closeModal();
         })
         .catch(err => {
@@ -181,7 +184,7 @@ export default {
         .auth()
         .signInWithPopup(provider)
         .then(() => {
-          toast.success("Successfully Logged In!");
+          toast.success(t("LoginSuccess"));
           closeModal();
         })
         .catch(err => {
@@ -195,7 +198,7 @@ export default {
         .auth()
         .signInWithPopup(provider)
         .then(() => {
-          toast.success("Successfully Logged In!");
+          toast.success(t("LoginSuccess"));
           closeModal();
         })
         .catch(err => {
@@ -209,7 +212,7 @@ export default {
         .auth()
         .signInWithPopup(provider)
         .then(() => {
-          toast.success("Successfully Logged In!");
+          toast.success(t("LoginSuccess"));
           closeModal();
         })
         .catch(err => {

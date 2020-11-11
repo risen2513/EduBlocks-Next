@@ -35,4 +35,10 @@ h1 {
   padding-top: 5.255em;
   background-color: white;
 }
+
+@media (max-width: 60em) {
+  nav .show ~ .menu {
+    background: #1b173d;
+  }
+}
 </style>

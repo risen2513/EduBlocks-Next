@@ -2,7 +2,7 @@
   <div class="settingsModal">
     <div class="left">
       <div class="leftContainer">
-        <h1>Settings</h1>
+        <h1>{{ $t("Settings") }}</h1>
         <button
           v-for="button in tabButtons"
           :key="button.id"
@@ -16,10 +16,10 @@
     <div class="right">
       <h1 class="settingsTitle">
         {{ currentTab }}
-        <a class="close" @click="closeModal">Close</a>
+        <a class="close" @click="closeModal">{{ $t("Close") }}</a>
       </h1>
-      <div v-if="currentTab === 'General'">
-        <label>Extras</label>
+      <div v-if="currentTab === $t('General')">
+        <label>{{ $t("Extras") }}</label>
         <div class="settingsRow">
           <div class="settingsCard" v-for="option in extras" :key="option.id">
             <img :src="option.image" />
@@ -28,7 +28,7 @@
           <div class="emptyCard"></div>
         </div>
 
-        <label>Theme</label>
+        <label>{{ $t("Themes") }}</label>
         <div class="settingsRow">
           <div
             class="settingsCard"
@@ -41,13 +41,14 @@
           </div>
         </div>
       </div>
-      <div v-if="currentTab === 'Languages'">
+      <div v-if="currentTab === $t('Languages')">
         <div class="settingsRow">
           <div
             class="settingsCard"
             v-for="option in languagesRow1"
             :key="option.id"
             :class="[option.end ? 'noMarginRight' : '']"
+            @click="changeLanguage(option.code)"
           >
             <img :src="option.image" />
             <h3>{{ option.title }}</h3>
@@ -58,10 +59,12 @@
             class="settingsCard"
             v-for="option in languagesRow2"
             :key="option.id"
+            @click="$i18n.locale = option.code"
           >
             <img :src="option.image" />
             <h3>{{ option.title }}</h3>
           </div>
+          <div class="emptyCard"></div>
         </div>
       </div>
     </div>
@@ -69,32 +72,39 @@
 </template>
 
 <script>
-import { useToast } from "vue-toastification";
+import { useI18n } from "vue-i18n";
 import { closeModal } from "@/scripts/state/useModalState";
 import { ref } from "vue";
 
 export default {
   name: "settingsModal",
   setup() {
-    const toast = useToast();
-    const currentTab = ref("General");
+    const { t, locale } = useI18n();
+
+    const changeLanguage = code => {
+      closeModal();
+      locale.value = code;
+    };
+
+    const currentTab = ref("");
+    currentTab.value = t("General");
 
     const tabButtons = [
-      { id: 1, title: "General" },
-      { id: 2, title: "Samples" },
-      { id: 2, title: "Languages" },
-      { id: 2, title: "About" }
+      { id: 1, title: t("General") },
+      { id: 2, title: t("Samples") },
+      { id: 2, title: t("Languages") },
+      { id: 2, title: t("About") }
     ];
 
     const extras = [
       {
         id: 1,
-        title: "Export .py",
+        title: t("Export"),
         image: "assets/images/settings/export.png"
       },
       {
         id: 2,
-        title: "Toggle Camera",
+        title: t("ToggleCamera"),
         image: "assets/images/settings/camera.png"
       }
     ];
@@ -102,17 +112,17 @@ export default {
     const themes = [
       {
         id: 1,
-        title: "Default",
+        title: t("Default"),
         image: "assets/images/settings/themes/default.png"
       },
       {
         id: 2,
-        title: "Dark",
+        title: t("Dark"),
         image: "assets/images/settings/themes/dark.png"
       },
       {
         id: 3,
-        title: "Light",
+        title: t("Light"),
         image: "assets/images/settings/themes/light.png",
         end: true
       }
@@ -146,6 +156,12 @@ export default {
         title: "Welsh",
         code: "cy",
         image: "assets/images/settings/languages/welsh.png"
+      },
+      {
+        id: 2,
+        title: "Welsh",
+        code: "cy",
+        image: "assets/images/settings/languages/welsh.png"
       }
     ];
 
@@ -156,7 +172,8 @@ export default {
       extras,
       themes,
       languagesRow1,
-      languagesRow2
+      languagesRow2,
+      changeLanguage
     };
   }
 };
@@ -250,6 +267,7 @@ label {
   margin-right: 20px;
   text-overflow: ellipsis;
   width: 33%;
+  cursor: pointer;
 }
 
 .emptyCard {
@@ -258,7 +276,6 @@ label {
 
 .settingsCard img {
   height: 75px;
-  cursor: pointer;
 }
 
 .settingsCard h3 {
