@@ -113,7 +113,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
   updateView,
@@ -141,9 +141,9 @@ export default {
       view.value = "Split";
     });
 
-    function downloadHex() {
+    const downloadHex: Function = () => {
       fsUniversalHex(pythonCode.value);
-    }
+    };
 
     return {
       view,

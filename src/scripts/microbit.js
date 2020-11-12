@@ -1,5 +1,5 @@
 import { saveAs } from "file-saver";
-import { filename } from "./state/useState.ts"
+import { filename } from "./state/useState"
 
 export async function fsUniversalHex(code) {
     var FS = microbitFsWrapper();

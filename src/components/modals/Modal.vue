@@ -10,7 +10,7 @@
   </transition>
 </template>
 
-<script>
+<script lang="ts">
 import { currentModal } from "@/scripts/state/useModalState";
 
 export default {
@@ -27,7 +27,7 @@ export default {
     }
   },
   setup(props) {
-    const closeModal = () => {
+    const closeModal: Function = () => {
       if (props.clickToExit) {
         currentModal.value = "";
       }

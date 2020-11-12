@@ -14,21 +14,21 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { ref, Ref } from "vue";
 import firebase from "firebase";
 
-export default defineComponent({
+export default {
   name: "UserMenu",
   setup() {
-    const user = ref(firebase.auth().currentUser);
+    const user: Ref = ref(firebase.auth().currentUser);
 
-    const signOut = () => {
+    const signOut: Function = () => {
       firebase.auth().signOut();
     };
 
     return { user, signOut };
   }
-});
+};
 </script>
 
 <style scoped>

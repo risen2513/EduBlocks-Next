@@ -47,7 +47,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import {
   listFirebaseFiles,
   openFirebaseFile,
@@ -55,7 +55,7 @@ import {
 } from "@/scripts/state/useFirebase";
 import { files, open, fileListKey } from "@/scripts/state/useState";
 import firebase from "firebase";
-import { ref } from "vue";
+import { ref, Ref } from "vue";
 import { closeModal } from "@/scripts/state/useModalState";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -65,9 +65,9 @@ export default {
     FontAwesomeIcon
   },
   setup() {
-    const user = ref(firebase.auth().currentUser);
+    const user: Ref<firebase.User> = ref(firebase.auth().currentUser);
 
-    const greet = () => {
+    const greet: Function = () => {
       const myDate = new Date();
       let greet;
       const hrs = myDate.getHours();

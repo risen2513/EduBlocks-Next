@@ -1,9 +1,6 @@
 <template>
   <div class="shareModal">
     <div class="left">
-      <!-- <div v-for="file in files" :key="file.label">
-        <button @click="openFirebaseFile(file.ref)">{{ file.label }}</button>
-      </div> -->
       <div class="leftContainer">
         <img src="/assets/images/logos/mainlogo.png" />
       </div>
@@ -51,12 +48,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { closeModal } from "@/scripts/state/useModalState";
 import { shortLink } from "@/scripts/state/useState";
 import { useToast } from "vue-toastification";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { ref } from "vue";
+import { ref, Ref } from "vue";
 import { useI18n } from "vue-i18n";
 
 export default {
@@ -69,21 +66,21 @@ export default {
 
     const { t } = useI18n();
 
-    const embed = ref(
+    const embed: Ref<string> = ref(
       '<iframe src="' +
         shortLink.value +
         'height="600px" width="900px"></iframe>'
     );
 
-    const onSuccess = () => {
+    const onSuccess: Function = () => {
       toast.success(t("ClipboardCopy"));
     };
 
-    const onError = () => {
+    const onError: Function = () => {
       toast.error(t("ClipboardError"));
     };
 
-    const classroom = () => {
+    const classroom: Function = () => {
       window.open(
         "https://classroom.google.com/u/0/share?url=" +
           encodeURIComponent(shortLink.value) +
@@ -93,7 +90,7 @@ export default {
       );
     };
 
-    const teams = () => {
+    const teams: Function = () => {
       window.open(
         "https://teams.microsoft.com/share?href=" +
           encodeURIComponent(shortLink.value),

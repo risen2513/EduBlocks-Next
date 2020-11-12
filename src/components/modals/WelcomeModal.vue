@@ -105,13 +105,13 @@
   </div>
 </template>
 
-<script>
-import { ref } from "vue";
+<script lang="ts">
+import { ref, Ref } from "vue";
 import { openModal } from "@/scripts/state/useModalState";
 export default {
   name: "welcomeModal",
   setup() {
-    const currentTab = ref(0);
+    const currentTab: Ref<number> = ref(0);
 
     return { currentTab, openModal };
   }

@@ -6,29 +6,29 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { pythonCode } from "@/scripts/state/useState";
-import { ref } from "vue";
+import { ref, Ref } from "vue";
 export default {
   name: "Trinket",
   props: {
     version: String
   },
-  setup(props) {
-    const getTrinketURL = () => {
-      let url;
-      const python = ref(pythonCode.value);
+  setup() {
+    const getTrinketURL: Function = () => {
+      let url: string;
+      const python: Ref<Ref<string>> = ref(pythonCode.value);
       const usrBin = "#!/usr/bin/python3 \n";
       const pythonURL =
         "https://trinket.io/tools/1.0/jekyll/embed/python?runOption=run&outputOnly=true&start=result#code=";
 
       const python3URL =
-        "https://trinket.io/tools/1.0/jekyll/embed/python?runOption=run&outputOnly=true&start=result#code=";
+        "https://trinket.io/tools/1.0/jekyll/embed/python3?runOption=run&outputOnly=true&start=result#code=";
 
-      if (props.version === "python") {
-        url = pythonURL + encodeURIComponent(usrBin + python.value);
-      } else {
+      if (pythonCode.value.indexOf("requests") !== -1) {
         url = python3URL + encodeURIComponent(usrBin + python.value);
+      } else {
+        url = pythonURL + encodeURIComponent(usrBin + python.value);
       }
       return url;
     };

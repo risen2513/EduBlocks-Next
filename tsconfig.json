@@ -32,7 +32,7 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx", "src/components/blockly/blockly-core.d.ts", "global.d.ts"
+    "tests/**/*.tsx", "src/components/blockly/blockly-core.d.ts", "global.d.ts", "src/scripts/microbit.js"
   ],
   "exclude": [
     "node_modules",

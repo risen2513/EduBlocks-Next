@@ -71,32 +71,33 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { useI18n } from "vue-i18n";
 import { closeModal } from "@/scripts/state/useModalState";
-import { ref } from "vue";
+import { ref, Ref } from "vue";
+import "@/scripts/types";
 
 export default {
   name: "settingsModal",
   setup() {
     const { t, locale } = useI18n();
 
-    const changeLanguage = code => {
+    const changeLanguage = (code: string) => {
       closeModal();
       locale.value = code;
     };
 
-    const currentTab = ref("");
+    const currentTab: Ref<string> = ref("");
     currentTab.value = t("General");
 
-    const tabButtons = [
+    const tabButtons: Array<TabButtons> = [
       { id: 1, title: t("General") },
       { id: 2, title: t("Samples") },
       { id: 2, title: t("Languages") },
       { id: 2, title: t("About") }
     ];
 
-    const extras = [
+    const extras: Array<SettingsOptions> = [
       {
         id: 1,
         title: t("Export"),
@@ -109,7 +110,7 @@ export default {
       }
     ];
 
-    const themes = [
+    const themes: Array<SettingsOptions> = [
       {
         id: 1,
         title: t("Default"),
@@ -128,7 +129,7 @@ export default {
       }
     ];
 
-    const languagesRow1 = [
+    const languagesRow1: Array<LanguageOptions> = [
       {
         id: 1,
         title: "English",
@@ -150,7 +151,7 @@ export default {
       }
     ];
 
-    const languagesRow2 = [
+    const languagesRow2: Array<LanguageOptions> = [
       {
         id: 1,
         title: "Welsh",

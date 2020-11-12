@@ -96,12 +96,12 @@ export default {
     const toast = useToast();
     const { t } = useI18n();
 
-    const openFilesModal = () => {
+    const openFilesModal: Function = () => {
       listFirebaseFiles();
       openModal("FilesModal");
     };
 
-    const shareModalOpen = () => {
+    const shareModalOpen: Function = () => {
       if (isSaved.value) {
         share();
       } else {
@@ -109,8 +109,8 @@ export default {
       }
     };
 
-    const saveFirebaseFile = () => {
-      const user = firebase.auth().currentUser;
+    const saveFirebaseFile: Function = () => {
+      const user: firebase.User | null = firebase.auth().currentUser;
       if (user) {
         const platform = " (" + mode.value + ")";
         const ref = firebase

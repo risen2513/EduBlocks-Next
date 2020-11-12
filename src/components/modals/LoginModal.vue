@@ -121,10 +121,10 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { closeModal } from "@/scripts/state/useModalState";
-import { ref } from "vue";
+import { ref, Ref } from "vue";
 import firebase from "firebase";
 import { useToast } from "vue-toastification";
 import { useI18n } from "vue-i18n";
@@ -135,17 +135,17 @@ export default {
     FontAwesomeIcon
   },
   setup() {
-    const name = ref("");
-    const emailAddr = ref("");
-    const pwd = ref("");
+    const name: Ref<string> = ref("");
+    const emailAddr: Ref<string> = ref("");
+    const pwd: Ref<string> = ref("");
 
-    const signUp = ref(false);
+    const signUp: Ref<boolean> = ref(false);
 
     const toast = useToast();
 
     const { t } = useI18n();
 
-    const register = () => {
+    const register: Function = () => {
       firebase
         .auth()
         .createUserWithEmailAndPassword(emailAddr.value, pwd.value)
@@ -164,7 +164,7 @@ export default {
         });
     };
 
-    const signIn = () => {
+    const signIn: Function = () => {
       firebase
         .auth()
         .signInWithEmailAndPassword(emailAddr.value, pwd.value)
@@ -177,7 +177,7 @@ export default {
         });
     };
 
-    const googleSignIn = () => {
+    const googleSignIn: Function = () => {
       const provider = new firebase.auth.GoogleAuthProvider();
 
       firebase
@@ -192,7 +192,7 @@ export default {
         });
     };
 
-    const appleSignIn = () => {
+    const appleSignIn: Function = () => {
       const provider = new firebase.auth.OAuthProvider("apple.com");
       firebase
         .auth()
@@ -206,7 +206,7 @@ export default {
         });
     };
 
-    const microsoftSignIn = () => {
+    const microsoftSignIn: Function = () => {
       const provider = new firebase.auth.OAuthProvider("microsoft.com");
       firebase
         .auth()
