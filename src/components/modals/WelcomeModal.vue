@@ -6,22 +6,22 @@
         <img
           src="/assets/images/slides/blocks.png"
           class="slide"
-          v-if="currentTab === 1"
+          v-show="currentTab === 1"
         />
         <img
           src="/assets/images/slides/split.png"
           class="slide"
-          v-if="currentTab === 2"
+          v-show="currentTab === 2"
         />
         <img
           src="/assets/images/slides/mode.png"
           class="slide"
-          v-if="currentTab === 3"
+          v-show="currentTab === 3"
         />
         <img
           src="/assets/images/slides/files.png"
           class="slide"
-          v-if="currentTab === 4"
+          v-show="currentTab === 4"
         />
       </div>
     </div>
