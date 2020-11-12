@@ -43,6 +43,7 @@ export default {
     FontAwesomeIcon
   },
   setup() {
+    localStorage.setItem("visited", "true");
     return { switchMode };
   }
 };

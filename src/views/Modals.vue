@@ -74,7 +74,14 @@ export default {
     WelcomeModal
   },
   setup() {
-    openModal("WelcomeModal");
+    if (
+      !localStorage.getItem("visited") ||
+      location.host === "localhost:8080"
+    ) {
+      openModal("WelcomeModal");
+    } else {
+      openModal("PlatformSelect");
+    }
 
     const platformSelectOptions = [
       {

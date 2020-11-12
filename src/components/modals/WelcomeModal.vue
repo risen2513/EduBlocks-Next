@@ -2,75 +2,103 @@
   <div class="welcomeModal">
     <div class="left">
       <div class="leftContainer">
-        <img src="/assets/images/logos/mainlogo.png" />
+        <img src="/assets/images/logos/mainlogo.png" v-if="currentTab === 0" />
+        <img
+          src="/assets/images/slides/blocks.png"
+          class="slide"
+          v-if="currentTab === 1"
+        />
+        <img
+          src="/assets/images/slides/split.png"
+          class="slide"
+          v-if="currentTab === 2"
+        />
+        <img
+          src="/assets/images/slides/mode.png"
+          class="slide"
+          v-if="currentTab === 3"
+        />
+        <img
+          src="/assets/images/slides/files.png"
+          class="slide"
+          v-if="currentTab === 4"
+        />
       </div>
     </div>
     <div class="right">
       <div class="center" v-if="currentTab === 0">
         <h1>Welcome!</h1>
-        <h3>Would you like to get started or learn more about the platform?</h3>
+        <h3>
+          It looks like you're here for the first time! Would you like to
+          <b>get started</b> or <b>learn more</b> about what EduBlocks has to
+          offer?
+        </h3>
       </div>
       <div class="center" v-if="currentTab === 1">
         <h1>Python Blocks</h1>
         <h3>
           Every block represents a line of Python Code so that you're always
-          learning.
+          learning text based programming.
         </h3>
       </div>
       <div class="center" v-if="currentTab === 2">
         <h1>Split View</h1>
         <h3>
           You can view the generated Python code in realtime as you drag and
-          drop blocks.
+          drop blocks with the split view.
         </h3>
       </div>
       <div class="center" v-if="currentTab === 3">
         <h1>Multiple Platforms</h1>
         <h3>
-          EduBlocks supports multiple platforms that run Python like the BBC
-          micro:bit & Raspberry Pi.
+          EduBlocks supports multiple platforms that run Python code like the
+          BBC micro:bit & Raspberry Pi. You can even run Python directly in the
+          browser.
         </h3>
       </div>
       <div class="center" v-if="currentTab === 4">
         <h1>Cloud Accounts</h1>
         <h3>
-          You can save and share files with a free EduBlocks cloud account. This
-          includes support for Teams & Classroom.
+          With a free EduBlocks Cloud account, you can save files to the cloud
+          and share them with other users via a link or through Microsoft
+          Teams/Google Classroom.
         </h3>
       </div>
       <div class="buttonContainer">
-        <button
-          class="outline"
-          @click="openModal('PlatformSelect')"
-          v-if="currentTab === 0"
-        >
-          Get Started
-        </button>
-        <button
-          class="floatRight pink"
-          @click="currentTab = 1"
-          v-if="currentTab === 0"
-        >
-          Learn More
-        </button>
-        <div id="ClassSlideButton" v-if="currentTab !== 0">
-          <button class="outline" @click="currentTab -= 1">
-            Back
-          </button>
+        <div>
           <button
-            class="floatRight pink"
-            @click="currentTab += 1"
-            v-if="currentTab !== 4"
-          >
-            Next
-          </button>
-          <button
-            class="floatRight pink"
+            class="outline"
             @click="openModal('PlatformSelect')"
-            v-if="currentTab === 4"
+            v-if="currentTab === 0"
           >
             Get Started
           </button>
+          <button
+            class="floatRight pink"
+            @click="currentTab = 1"
+            v-if="currentTab === 0"
+          >
+            Learn More
+          </button>
+          <div id="ClassSlideButton" v-if="currentTab !== 0">
+            <button class="outline" @click="currentTab -= 1">
+              Back
+            </button>
+            <button
+              class="floatRight pink"
+              @click="currentTab += 1"
+              v-if="currentTab !== 4"
+            >
+              Next
+            </button>
+            <button
+              class="floatRight pink"
+              @click="openModal('PlatformSelect')"
+              v-if="currentTab === 4"
+            >
+              Get Started
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -118,7 +146,7 @@ export default {
   background: white;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  padding: 25px;
+  padding: 22px;
 }
 
 .leftContainer {
@@ -186,7 +214,10 @@ label {
 }
 
 .buttonContainer {
-  margin-top: 200px;
+  position: absolute;
+  bottom: 0;
+  width: 44%;
+  margin-bottom: 30px;
 }
 
 .buttonContainer button {
@@ -199,11 +230,28 @@ label {
 
 .pink {
   background-color: #e71d64;
+  border: solid 2px #e71d64;
+  width: 127.65px;
 }
 
 .outline {
   background-color: transparent;
   border: solid 2px lightgray;
   color: black;
+  width: 127.65px;
+}
+
+.slide {
+  margin-top: 35px !important;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
