@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 <template>
   <transition name="fade">
     <div class="modal">
@@ -10,7 +11,7 @@
   </transition>
 </template>
 
-<script lang="ts">
+<script>
 import { currentModal } from "@/scripts/state/useModalState";
 
 export default {
@@ -27,7 +28,7 @@ export default {
     }
   },
   setup(props) {
-    const closeModal: Function = () => {
+    const closeModal = () => {
       if (props.clickToExit) {
         currentModal.value = "";
       }

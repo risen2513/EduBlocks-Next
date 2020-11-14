@@ -1,6 +1,6 @@
 <template>
   <nav class="demo">
-    <a href="#" class="brand" @click="openModal('PlatformSelect')">
+    <a href="#" class="brand" @click="openModal('QuestionModal')">
       <img class="logo" src="/assets/images/logos/mainlogo.png" />
     </a>
 

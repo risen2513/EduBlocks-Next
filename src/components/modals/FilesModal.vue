@@ -65,7 +65,7 @@ export default {
     FontAwesomeIcon
   },
   setup() {
-    const user: Ref<firebase.User> = ref(firebase.auth().currentUser);
+    const user: Ref = ref(firebase.auth().currentUser);
 
     const greet: Function = () => {
       const myDate = new Date();

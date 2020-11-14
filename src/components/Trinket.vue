@@ -17,7 +17,7 @@ export default {
   setup() {
     const getTrinketURL: Function = () => {
       let url: string;
-      const python: Ref<Ref<string>> = ref(pythonCode.value);
+      const python: Ref = ref(pythonCode.value);
       const usrBin = "#!/usr/bin/python3 \n";
       const pythonURL =
         "https://trinket.io/tools/1.0/jekyll/embed/python?runOption=run&outputOnly=true&start=result#code=";

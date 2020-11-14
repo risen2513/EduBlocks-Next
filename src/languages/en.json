@@ -48,5 +48,7 @@
     "SignInGoogle": "Sign in with Google",
     "SignInMicrosoft": "Sign in with Microsoft",
     "SignInApple": "Sign in with Apple",
-    "Name": "Name"
+    "Name": "Name",
+    "Just To Check": "Just to check...",
+    "OverwriteMessage": "Changing mode will wipe your code, are you sure you want to change modes without saving your work?"
 }

@@ -48,5 +48,7 @@
     "SignInGoogle": "Connectez-vous avec Google",
     "SignInMicrosoft": "Connectez-vous avec Microsoft",
     "SignInApple": "Connectez-vous avec Apple",
-    "Name": "Nom"
+    "Name": "Nom",
+    "Just To Check": "Juste pour vérifier...",
+    "OverwriteMessage": "Changer de mode effacera votre code. Êtes-vous sûr de vouloir changer de mode sans sauvegarder votre travail?"
 }

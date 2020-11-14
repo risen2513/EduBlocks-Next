@@ -56,7 +56,9 @@ export default {
     const toast = useToast();
 
     onMounted(() => {
-      if (!navigator.onLine) {
+      if (navigator.onLine) {
+        //Online
+      } else {
         toast.error(
           "Whoops! Looks like you're offline. Some features are disabled.",
           { timeout: 6000, closeButton: false }

@@ -41,6 +41,19 @@
     </Modal>
 
     <Modal
+      identifier="QuestionModal"
+      :visible="currentModal === 'QuestionModal'"
+      :clickToExit="true"
+    >
+      <QuestionModal
+        :yesFunc="yes"
+        :noFunc="no"
+        :title="$t('Just To Check')"
+        :body="$t('OverwriteMessage')"
+      />
+    </Modal>
+
+    <Modal
       identifier="SettingsModal"
       :visible="currentModal === 'SettingsModal'"
       :clickToExit="true"
@@ -52,7 +65,12 @@
 
 <script>
 import Modal from "@/components/modals/Modal.vue";
-import { openModal, currentModal } from "@/scripts/state/useModalState";
+import {
+  openModal,
+  currentModal,
+  closeModal
+} from "@/scripts/state/useModalState";
+
 import { switchMode } from "@/scripts/state/useState";
 
 import FourBoxModal from "@/components/modals/FourBoxModal.vue";
@@ -61,6 +79,7 @@ import FilesModal from "@/components/modals/FilesModal.vue";
 import ShareModal from "@/components/modals/ShareModal.vue";
 import SettingsModal from "@/components/modals/SettingsModal.vue";
 import WelcomeModal from "@/components/modals/WelcomeModal.vue";
+import QuestionModal from "@/components/modals/QuestionModal.vue";
 
 export default {
   name: "modals",
@@ -71,7 +90,8 @@ export default {
     FilesModal,
     ShareModal,
     SettingsModal,
-    WelcomeModal
+    WelcomeModal,
+    QuestionModal
   },
   setup() {
     if (
@@ -110,7 +130,15 @@ export default {
       }
     ];
 
-    return { currentModal, platformSelectOptions };
+    const yes = () => {
+      openModal("PlatformSelect");
+    };
+
+    const no = () => {
+      closeModal();
+    };
+
+    return { currentModal, platformSelectOptions, yes, no };
   }
 };
 </script>

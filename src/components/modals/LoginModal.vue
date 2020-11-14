@@ -150,14 +150,16 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(emailAddr.value, pwd.value)
         .then(data => {
-          data.user
-            .updateProfile({
-              displayName: name.value
-            })
-            .then(() => {
-              toast.success(t("LoginSuccess"));
-              closeModal();
-            });
+          if (data.user) {
+            data.user
+              .updateProfile({
+                displayName: name.value
+              })
+              .then(() => {
+                toast.success(t("LoginSuccess"));
+                closeModal();
+              });
+          }
         })
         .catch(err => {
           toast.error(err.message, { timeout: 6000, closeButton: false });
