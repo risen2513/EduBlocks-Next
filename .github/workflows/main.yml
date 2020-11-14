@@ -10,13 +10,13 @@ jobs:
           persist-credentials: false
 
       - name: Install and Build 🔧 
+        env:
+          VUE_APP_API_KEY: ${{ secrets.VUE_APP_API_KEY }}
         run: |
           yarn
           yarn build
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.5.9
-        env:
-          VUE_APP_API_KEY: ${{ secrets.VUE_APP_API_KEY }}
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages 
