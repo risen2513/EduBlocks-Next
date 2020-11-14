@@ -33,6 +33,7 @@ import {
   runWindow,
   terminal
 } from "../scripts/state/useState";
+
 import Modals from "./Modals.vue";
 import Trinket from "@/components/Trinket.vue";
 import Terminal from "@/components/Terminal.vue";
