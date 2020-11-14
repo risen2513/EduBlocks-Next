@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0b656a"],{"1d78":function(n,c,t){"use strict";function a(n){n["compasscalibrate"]=function(n){let c="compass.calibrate()\n";return c},n["compasscalibrated"]=function(n){let c="compass.is_calibrated()";return[c,Blockly.Python.ORDER_ATOMIC]}}t.r(c),t.d(c,"default",(function(){return a}))}}]);
+//# sourceMappingURL=chunk-2d0b656a.bfd8d72e.js.map

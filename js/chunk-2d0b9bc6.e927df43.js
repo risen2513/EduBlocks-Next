@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0b9bc6"],{"33e5":function(n,t,e){"use strict";function o(n){n["buttonispressed"]=function(n){const t=n.getFieldValue("NAME"),e="button_"+t+".is_pressed()";return[e,Blockly.Python.ORDER_ATOMIC]},n["buttonwaspressed"]=function(n){const t=n.getFieldValue("NAME"),e="button_"+t+".was_pressed()";return[e,Blockly.Python.ORDER_ATOMIC]}}e.r(t),e.d(t,"default",(function(){return o}))}}]);
+//# sourceMappingURL=chunk-2d0b9bc6.e927df43.js.map
