@@ -74,6 +74,7 @@
 <script lang="ts">
 import { useI18n } from "vue-i18n";
 import { closeModal } from "@/scripts/state/useModalState";
+import { savePython } from "@/scripts/state/useState";
 import { ref, Ref } from "vue";
 import "@/scripts/types";
 
@@ -101,7 +102,8 @@ export default {
       {
         id: 1,
         title: t("Export"),
-        image: "assets/images/settings/export.png"
+        image: "assets/images/settings/export.png",
+        func: savePython
       },
       {
         id: 2,

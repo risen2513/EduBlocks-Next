@@ -58,6 +58,7 @@ const switchMode: Function = (modeKey: modes) => {
   mode.value = modeKey;
   loadBlockly(() => {
     closeModal();
+    filename.value = "";
   });
   if (modeKey === "RPi"){
     terminal.value = true;
@@ -105,12 +106,10 @@ function save() {
   }
 }
 
-function savePython(fileName: string) {
+function savePython() {
   if (xml.value) {
     const blob = new Blob([pythonCode.value]);
-    let saveFileName: string;
-    saveFileName = fileName + ".py";
-    saveAs(blob, saveFileName);
+    saveAs(blob, "code.py");
   }
 }
 

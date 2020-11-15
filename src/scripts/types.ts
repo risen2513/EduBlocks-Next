@@ -8,6 +8,7 @@ interface SettingsOptions {
     title: string;
     image: string;
     end?: boolean;
+    func?: Function | void;
 }
 
 type lang = "en" | "de" | "fr" | "cy"

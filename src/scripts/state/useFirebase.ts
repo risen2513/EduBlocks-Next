@@ -37,37 +37,38 @@ export const listFirebaseFiles = () => {
 };
 
 export const openFirebaseFile = (fileRef: firebase.storage.Reference) => {
+  if (fileRef.name.indexOf("(Python)") !== -1){
+    filename.value = fileRef.name.replace("(Python)", "");
+  }
   if (fileRef.name.indexOf("(Python)") !== -1 && mode.value !== "Python") {
     switchMode("Python");
-    filename.value = fileRef.name.replace(" (Python)", "");
+    filename.value = fileRef.name.replace("(Python)", "");
   }
-  else {
-    filename.value = fileRef.name.replace(" (Python)", "");
+
+  if (fileRef.name.indexOf("(microbit)") !== -1){
+    filename.value = fileRef.name.replace("(microbit)", "");
   }
   if (fileRef.name.indexOf("(microbit)") !== -1 && mode.value !== "microbit") {
     switchMode("microbit");
-    filename.value = fileRef.name.replace(" (microbit)", "");
+    filename.value = fileRef.name.replace("(microbit)", "");
   }
-  else {
-    filename.value = fileRef.name.replace(" (microbit)", "");
+
+  if (fileRef.name.indexOf("(RPi)") !== -1){
+    filename.value = fileRef.name.replace("(RPi)", "");
   }
   if (fileRef.name.indexOf("(RPi)") !== -1 && mode.value !== "RPi") {
     switchMode("RPi");
-    filename.value = fileRef.name.replace(" (RPi)", "");
+    filename.value = fileRef.name.replace("(RPi)", "");
   }
-  else {
-    filename.value = fileRef.name.replace(" (RPi)", "");
+
+  if (fileRef.name.indexOf("(CircuitPython)") !== -1){
+    filename.value = fileRef.name.replace("(CircuitPython)", "");
   }
-  if (
-    fileRef.name.indexOf("(CircuitPython)") !== -1 &&
-    mode.value !== "CircuitPython"
-  ) {
+  if (fileRef.name.indexOf("(CircuitPython)") !== -1 && mode.value !== "CircuitPython") {
     switchMode("CircuitPython");
-    filename.value = fileRef.name.replace(" (CircuitPython)", "");
+    filename.value = fileRef.name.replace("(CircuitPython)", "");
   }
-  else {
-    filename.value = fileRef.name.replace(" (CircuitPython)", "");
-  }
+ 
   fileRef
     .getDownloadURL()
     .then(function(url) {

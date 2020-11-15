@@ -79,7 +79,7 @@
       <a
         href="#"
         class="button right green no-margin-right"
-        @click="savePython('code')"
+        @click="savePython"
         v-if="mode === 'CircuitPython'"
       >
         <font-awesome-icon class="button-icon" :icon="['fas', 'download']" />
